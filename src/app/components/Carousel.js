@@ -1,9 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "./carousel.css";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
