@@ -1,18 +1,87 @@
 import React from "react";
+import Rating from "react-rating";
+// import { faStar } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AiOutlineStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 
-const Product = ({ name, en, id, description, price }) => {
+const Product = ({
+  name,
+  en,
+  id,
+  description,
+  price,
+  discount_price,
+  rate,
+  enable_booking,
+  featured,
+}) => {
   return (
-    <div className="card w-96 glass">
+    <div className="card w-80 glass">
       <figure>
         <img
           src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
           alt="Product Image"
         />
       </figure>
+
       <div className="card-body">
+        {" "}
+        {featured ? (
+          <p class="absolute top-0 bg-orange-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
+            Featured
+          </p>
+        ) : (
+          ""
+        )}
         <h2 className="card-title">{name?.en}</h2>
-        <p>Description: {description?.en}</p>
-        <p className="font-semibold">Price: {price}</p>
+        {/*  <p>
+          <span className="font-semibold"> Description: </span>
+          <span>{description?.en}</span>{" "}
+        </p> */}
+        <p className="font-semibold">
+          <Rating
+            initialRating={rate}
+            emptySymbol={
+              <AiOutlineStar icon={AiOutlineStar} style={{ color: "orange" }} />
+            }
+            fullSymbol={
+              <AiFillStar style={{ color: "orange" }} icon={AiFillStar} />
+            }
+            readonly
+          ></Rating>
+        </p>
+        <div className="mt-8 flex justify-between">
+          {/*   {enable_booking ? (
+            <button className="w-56 rounded bg-primary px-6 py-3 text-sm font-medium transition hover:scale-105">
+              Booking
+            </button>
+          ) : (
+            <button className="w-56 rounded bg-primary px-6 py-3 text-sm font-medium transition hover:scale-105">
+              Closed
+            </button>
+          )} */}
+          <span className="text-base text-gray-600 font-semibold">
+            Start from
+          </span>
+          <div className="items-end">
+            {discount_price ? (
+              <>
+                <del className="text-xs font-semibold text-gray-600 sm:text-sm">
+                  {" "}
+                  ${price}{" "}
+                </del>
+                <p className="text-xs font-normal text-orange-600 sm:text-sm md:text-base">
+                  ${discount_price}
+                </p>
+              </>
+            ) : (
+              <p className="text-xs font-normal text-orange-600 sm:text-sm md:text-base">
+                ${price}{" "}
+              </p>
+            )}
+          </div>{" "}
+        </div>
       </div>
     </div>
   );

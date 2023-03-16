@@ -1,6 +1,6 @@
 import React from "react";
-import Loading from "../shared/Loading";
-import useCategories from "./../hooks/useCategories";
+import Loading from "../../shared/Loading";
+import useCategories from "../../hooks/useCategories";
 
 const CategoriesAll = () => {
   const { categories, loading } = useCategories();

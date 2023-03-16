@@ -9,14 +9,17 @@ const Categories = () => {
 
   return (
     <div className="px-8 md:px-20 mx-auto mt-20 mb-10 flex flex-col gap-10">
-      <div className="self-end">
-        <button
-          type="button"
-          onClick={() => navigate("/categories")}
-          className="text-orange-500 text-end w-full px-4 py-2 rounded-2xl bg-orange-300 border-none bg-opacity-20"
-        >
-          View All
-        </button>
+      <div className="mt-20 flex justify-between">
+        <h2 className="text-xl font-bold">Categories</h2>
+        <div className="">
+          <button
+            type="button"
+            onClick={() => navigate("/categories")}
+            className="text-orange-500 text-end w-full px-4 py-2 rounded-2xl bg-orange-300 border-none bg-opacity-20"
+          >
+            View All
+          </button>
+        </div>
       </div>
       {loading ? (
         <Loading />
