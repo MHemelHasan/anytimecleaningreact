@@ -6,6 +6,7 @@ const useProducts = () => {
 
   useEffect(() => {
     fetch(`https://api.anytimecleaning.net/public/api/e_services`)
+      // fetch(`https://home-services.smartersvision.com/api/e_services`)
       .then((response) => response.json())
       .then((data) => {
         setLoading(false);

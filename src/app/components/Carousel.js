@@ -62,7 +62,7 @@ const Carousel = () => {
               <p className="mt-52 mb-5">Fix the Broken stuff by Asking </p>
               <span className="mt-8"> for the Technicians</span>
             </div>
-            <button className="btn bg-orange-500 border-none w-40 rounded-3xl ml-12 text-white mt-96">
+            <button className="btn bg-orange-500 hover:bg-orange-600 border-none w-40 rounded-3xl ml-12 text-white mt-96">
               Repair it
             </button>
           </div>
@@ -79,7 +79,7 @@ const Carousel = () => {
               <p className="mt-52 mb-5">Add Hands to Your</p>
               <span className="mt-8 ">Cleaning Chores</span>
             </div>
-            <button className="btn bg-cyan-500 border-none  w-40 rounded-3xl ml-12 text-white mt-96">
+            <button className="btn bg-cyan-500 hover:bg-cyan-600 border-none w-40 rounded-3xl ml-12 text-white mt-96">
               Book Now
             </button>
           </div>

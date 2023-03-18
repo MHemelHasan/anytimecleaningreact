@@ -4,6 +4,7 @@ import Rating from "react-rating";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const Product = ({
   name,
@@ -14,15 +15,17 @@ const Product = ({
   discount_price,
   rate,
   enable_booking,
+  media,
   featured,
 }) => {
+  const navigate = useNavigate();
+  const navigateToServicesDetail = (id) => {
+    navigate(`/e_services/${id}`);
+  };
   return (
     <div className="card w-80 glass">
-      <figure>
-        <img
-          src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-          alt="Product Image"
-        />
+      <figure className="">
+        <img src={media[0]?.url} alt="Product Image" />
       </figure>
 
       <div className="card-body">
