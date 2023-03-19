@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Rating from "react-rating";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import useProductDetails from "../../hooks/useProductDetails";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
@@ -8,7 +8,6 @@ import { AiFillStar } from "react-icons/ai";
 const ProductDetails = () => {
   const { id } = useParams();
   const { productDetail } = useProductDetails(id);
-  const navigate = useNavigate();
   const [isReadMore, setIsReadMore] = useState(true);
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
@@ -96,7 +95,7 @@ const ProductDetails = () => {
                     {isReadMore
                       ? productDetail?.description?.en
                           .slice(0, 100)
-                          .replace(/(<([^>]+)>)/gi, "")
+                          .replace(/(<([^>]+)>)/gi, "") + "..."
                       : productDetail?.description?.en.replace(
                           /(<([^>]+)>)/gi,
                           ""
@@ -129,16 +128,14 @@ const ProductDetails = () => {
                     id="quantity"
                     min="1"
                     defaultValue="1"
-                    className="w-12 rounded border border-gray-600 focus:ring-gray-500 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+                    className="w-12 rounded border border-gray-600 focus:ring-gray-500 py-3 text-center text-base [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                   />
                 </div>
                 {productDetail?.enable_booking ? (
-                  <NavLink
-                    to={`/cart?productName=${productDetail?.name?.en}&price=${productDetail?.price}`}
-                  >
+                  <NavLink to={`/checkout`}>
                     {" "}
-                    <button className="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500">
-                      Add to Cart
+                    <button className="block rounded bg-primary px-5 py-3 text-base font-medium text-white hover:bg-emerald-600">
+                      Book this service
                     </button>
                   </NavLink>
                 ) : (

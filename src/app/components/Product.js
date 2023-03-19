@@ -20,7 +20,7 @@ const Product = ({
 }) => {
   const navigate = useNavigate();
   const navigateToServicesDetail = (id) => {
-    navigate(`/product/${id}`);
+    navigate(`/service/${id}=${name?.en}`);
   };
   return (
     <div
@@ -41,10 +41,6 @@ const Product = ({
           ""
         )}
         <h2 className="card-title">{name?.en}</h2>
-        {/*  <p>
-          <span className="font-semibold"> Description: </span>
-          <span>{description?.en}</span>{" "}
-        </p> */}
         <p className="font-semibold">
           <Rating
             initialRating={rate}
@@ -58,15 +54,6 @@ const Product = ({
           ></Rating>
         </p>
         <div className="mt-8 flex justify-between">
-          {/*   {enable_booking ? (
-            <button className="w-56 rounded bg-primary px-6 py-3 text-sm font-medium transition hover:scale-105">
-              Booking
-            </button>
-          ) : (
-            <button className="w-56 rounded bg-primary px-6 py-3 text-sm font-medium transition hover:scale-105">
-              Closed
-            </button>
-          )} */}
           <span className="text-base text-gray-600 font-semibold">
             Start from
           </span>

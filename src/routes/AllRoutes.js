@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import FAQ from "../app/components/FAQ";
 import NotFoundPage from "../app/components/NotFoundPage";
-import Cart from "../app/pages/Cart/Cart";
 import CategoriesAll from "../app/pages/Categories/CategoriesAll";
 import CheckoutForm from "../app/pages/CheckoutForm/CheckoutForm";
 import Contact from "../app/pages/Contact/Contact";
@@ -24,8 +23,7 @@ const AllRoutes = () => {
         <Route path="/shop" element={<Shop />} />
         <Route path="/categories" element={<CategoriesAll />}></Route>
         <Route path="/products" element={<ProductsAll />}></Route>
-        <Route path="/product/:id" element={<ProductDetails />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/service/:id" element={<ProductDetails />}></Route>
         <Route path="/checkout" element={<CheckoutForm />}></Route>
         <Route path="/faq" element={<FAQ />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
