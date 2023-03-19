@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Rating from "react-rating";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import useProductDetails from "../../hooks/useProductDetails";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
@@ -96,13 +96,13 @@ const ProductDetails = () => {
                     {isReadMore
                       ? productDetail?.description?.en
                           .slice(0, 100)
-                          .replace(/(<([^>]+)>)/gi, "") + ``
+                          .replace(/(<([^>]+)>)/gi, "")
                       : productDetail?.description?.en.replace(
                           /(<([^>]+)>)/gi,
                           ""
                         )}
                   </span>{" "}
-                  {productDetail?.description?.en?.length > 20 && (
+                  {productDetail?.description?.en?.length > 100 && (
                     <>
                       {" "}
                       <button
@@ -133,12 +133,14 @@ const ProductDetails = () => {
                   />
                 </div>
                 {productDetail?.enable_booking ? (
-                  <button
-                    onClick={() => navigate("/cart")}
-                    className="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500"
+                  <NavLink
+                    to={`/cart?productName=${productDetail?.name?.en}&price=${productDetail?.price}`}
                   >
-                    Add to Cart
-                  </button>
+                    {" "}
+                    <button className="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500">
+                      Add to Cart
+                    </button>
+                  </NavLink>
                 ) : (
                   <button className="w-56 rounded bg-primary px-6 py-3 text-sm font-medium transition hover:scale-105">
                     Closed
