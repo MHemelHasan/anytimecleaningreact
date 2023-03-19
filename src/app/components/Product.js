@@ -20,10 +20,13 @@ const Product = ({
 }) => {
   const navigate = useNavigate();
   const navigateToServicesDetail = (id) => {
-    navigate(`/e_services/${id}`);
+    navigate(`/product/${id}`);
   };
   return (
-    <div className="card w-80 glass">
+    <div
+      className="card w-80 glass"
+      onClick={() => navigateToServicesDetail(id)}
+    >
       <figure className="">
         <img src={media[0]?.url} alt="Product Image" />
       </figure>

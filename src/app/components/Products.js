@@ -10,7 +10,7 @@ const Products = () => {
   return (
     <div className="px-8 md:px-20 mx-auto mt-20 mb-10 flex flex-col gap-10">
       <div className="mt-20 flex justify-between">
-        <h2 className="text-xl font-bold">Recommended for you</h2>
+        <h2 className="text-xl font-bold">Featured</h2>
         <div className="">
           <button
             type="button"

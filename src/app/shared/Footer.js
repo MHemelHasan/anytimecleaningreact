@@ -54,7 +54,7 @@ const Footer = () => {
               <li className="mt-6">
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href="about"
                   className="hover:text-primary"
                 >
                   About us
@@ -63,7 +63,7 @@ const Footer = () => {
               <li className="mt-3">
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href="contact"
                   className="hover:text-primary"
                 >
                   Contact
@@ -72,7 +72,7 @@ const Footer = () => {
               <li className="mt-3">
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href="faq"
                   className="hover:text-primary"
                 >
                   FAQ
@@ -117,15 +117,6 @@ const Footer = () => {
                   className="hover:text-primary"
                 >
                   Cookie
-                </a>
-              </li>
-              <li className="mt-3">
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="hover:text-primary"
-                >
-                  Help
                 </a>
               </li>
             </ul>

@@ -4,11 +4,11 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { RxCross2 } from "react-icons/rx";
 import { BiFilterAlt } from "react-icons/bi";
 import { HiOutlineViewGrid } from "react-icons/hi";
-import useCategories from "./../hooks/useCategories";
-import Category from "./../components/Category";
-import useProducts from "./../hooks/useProducts";
-import Product from "../components/Product";
-import Loading from "../shared/Loading";
+import useCategories from "../../hooks/useCategories";
+import Category from "../../components/Category";
+import useProducts from "../../hooks/useProducts";
+import Product from "../../components/Product";
+import Loading from "../../shared/Loading";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },

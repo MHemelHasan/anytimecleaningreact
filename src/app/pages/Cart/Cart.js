@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <section className="px-8 md:px-20 mx-auto my-10 ">
@@ -187,7 +189,7 @@ const Cart = () => {
                     </div>
                   </dl>
 
-                  <div class="flex justify-end">
+                  {/* <div class="flex justify-end">
                     <span class="inline-flex items-center justify-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-indigo-700">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -208,15 +210,15 @@ const Cart = () => {
                         2 Discounts Applied
                       </p>
                     </span>
-                  </div>
+                  </div> */}
 
                   <div class="flex justify-end">
-                    <a
-                      href="#"
-                      class="block rounded bg-primary hover:bg-teal-500 px-5 py-3 text-sm text-gray-100 transition"
+                    <button
+                      onClick={() => navigate("/checkout")}
+                      class="block rounded bg-primary hover:bg-emerald-600 px-5 py-3 text-sm text-white transition"
                     >
                       Checkout
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>

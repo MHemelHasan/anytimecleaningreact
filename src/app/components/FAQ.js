@@ -5,7 +5,7 @@ import Loading from "./../shared/Loading";
 const FAQ = () => {
   const { faqs, loading } = useFaqs();
   return (
-    <div className="px-8 md:px-20 mx-auto my-20">
+    <div className="px-8 md:px-20 mx-auto my-20" id="faq">
       {loading ? (
         <Loading />
       ) : (

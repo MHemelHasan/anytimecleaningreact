@@ -7,10 +7,14 @@ const Header = () => {
     <>
       <CustomLink to="/home">Home</CustomLink>
       <CustomLink to="/shop">Shop</CustomLink>
+      <CustomLink to="/contact">Contact</CustomLink>{" "}
       <CustomLink to="/login">Login</CustomLink>
-      <CustomLink to="/signup">Signup</CustomLink>
-      <CustomLink to="/contact">Contact</CustomLink>
-      <CustomLink to="/faqs">FAQs</CustomLink>
+      <CustomLink
+        to="/provider-signup"
+        className="ml-0 md:ml-20 mt-6 md:mt-0 btn btn-warning"
+      >
+        Become a Provider
+      </CustomLink>
     </>
   );
   return (

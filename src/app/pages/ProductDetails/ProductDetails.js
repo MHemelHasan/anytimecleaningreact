@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import Rating from "react-rating";
+import { useNavigate, useParams } from "react-router-dom";
+import useProductDetails from "../../hooks/useProductDetails";
+import { AiOutlineStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 
 const ProductDetails = () => {
+  const { id } = useParams();
+  const { productDetail } = useProductDetails(id);
+  const navigate = useNavigate();
+  const [isReadMore, setIsReadMore] = useState(true);
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
+
   return (
     <section>
       <div className="relative mx-auto max-w-screen-xl px-4 py-8">
@@ -41,87 +54,73 @@ const ProductDetails = () => {
 
           <div className="sticky top-0">
             <strong className="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600">
-              Featured
+              {productDetail?.featured ? "Featured" : ""}
             </strong>
 
             <div className="mt-8 flex justify-between">
               <div className="max-w-[35ch] space-y-2">
                 <h1 className="text-xl font-bold sm:text-2xl">
-                  Fun Product That Does Something Cool
+                  {productDetail?.name?.en}
                 </h1>
 
                 <p className="text-sm">Highest Rated Product</p>
 
                 <div className="-ml-0.5 flex">
-                  <svg
-                    className="h-5 w-5 text-yellow-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-
-                  <svg
-                    className="h-5 w-5 text-yellow-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-
-                  <svg
-                    className="h-5 w-5 text-yellow-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-
-                  <svg
-                    className="h-5 w-5 text-yellow-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-
-                  <svg
-                    className="h-5 w-5 text-gray-200"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
+                  <Rating
+                    initialRating={productDetail?.rate}
+                    emptySymbol={
+                      <AiOutlineStar
+                        icon={AiOutlineStar}
+                        style={{ color: "orange" }}
+                      />
+                    }
+                    fullSymbol={
+                      <AiFillStar
+                        style={{ color: "orange" }}
+                        icon={AiFillStar}
+                      />
+                    }
+                    readonly
+                  ></Rating>
                 </div>
               </div>
 
-              <p className="text-lg font-bold">$119.99</p>
+              <p className="text-lg font-bold">${productDetail?.price}</p>
             </div>
 
             <div className="mt-4">
               <div className="prose max-w-none">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                  veniam dicta beatae eos ex error culpa delectus rem tenetur,
-                  architecto quam nesciunt, dolor veritatis nisi minus
-                  inventore, rerum at recusandae?
+                  <span className="font-semibold"> Description: </span>
+                  <span>
+                    {isReadMore
+                      ? productDetail?.description?.en
+                          .slice(0, 100)
+                          .replace(/(<([^>]+)>)/gi, "") + ``
+                      : productDetail?.description?.en.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                  </span>{" "}
+                  {productDetail?.description?.en?.length > 20 && (
+                    <>
+                      {" "}
+                      <button
+                        onClick={toggleReadMore}
+                        className="mt-2 text-sm font-medium underline"
+                      >
+                        {isReadMore ? "Read More" : " Read Less"}
+                      </button>
+                    </>
+                  )}
                 </p>
               </div>
-
-              <button className="mt-2 text-sm font-medium underline">
-                Read More
-              </button>
             </div>
 
             <form className="mt-8">
               <div className="mt-8 flex gap-4">
                 <div>
-                  <label for="quantity" className="sr-only">
+                  <label htmlFor="quantity" className="sr-only">
                     Qty
                   </label>
 
@@ -129,17 +128,22 @@ const ProductDetails = () => {
                     type="number"
                     id="quantity"
                     min="1"
-                    value="1"
+                    defaultValue="1"
                     className="w-12 rounded border border-gray-600 focus:ring-gray-500 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                   />
                 </div>
-
-                <button
-                  type="submit"
-                  className="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500"
-                >
-                  Add to Cart
-                </button>
+                {productDetail?.enable_booking ? (
+                  <button
+                    onClick={() => navigate("/cart")}
+                    className="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500"
+                  >
+                    Add to Cart
+                  </button>
+                ) : (
+                  <button className="w-56 rounded bg-primary px-6 py-3 text-sm font-medium transition hover:scale-105">
+                    Closed
+                  </button>
+                )}
               </div>
             </form>
           </div>
