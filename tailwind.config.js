@@ -8,8 +8,8 @@ module.exports = {
     themes: [
       {
         cleanyTheme: {
-          primary: "#10b981",
-          secondary: "#34d399",
+          primary: "#00ffe7",
+          secondary: "#00cfc1",
           accent: "#3A4256",
           neutral: "#3d4451",
           "base-100": "#ffffff",

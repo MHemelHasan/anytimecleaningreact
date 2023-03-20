@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/icons/icon-72x72.png";
+import logo from "../../assets/company-logo.png";
 import CustomLink from "./CustomLink";
 
 const Header = () => {
@@ -11,14 +11,14 @@ const Header = () => {
       <CustomLink to="/login">Login</CustomLink>
       <CustomLink
         to="/provider-signup"
-        className="ml-0 md:ml-20 mt-6 md:mt-0 btn btn-warning"
+        className="ml-0 md:ml-20 mt-6 md:mt-0 w-48 text-center border-2 border-black px-6 py-2 bg-[#FF9F1C] rounded-3xl"
       >
         Become a Provider
       </CustomLink>
     </>
   );
   return (
-    <div className="navbar px-4 md:px-20 mx-0 md:mx-auto bg-[#f3f3f3] shadow-lg rounded">
+    <div className="navbar px-4 md:px-20 mx-0 md:mx-auto bg-white shadow-lg rounded">
       <div className="navbar-start">
         <div className="dropdown">
           <label
@@ -41,18 +41,20 @@ const Header = () => {
           </label>
           <ul
             tabIndex="0"
-            className="menu menu-compact dropdown-content mt-3 p-2 text-black hover:text-primary shadow bg-base-100 rounded-box  w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 text-black font-serif font-medium hover:text-primary shadow bg-base-100 rounded-box  w-52"
           >
             {" "}
             {menuItems}
           </ul>
         </div>
-        <div className="ml-2 w-10 rounded-full">
-          <img src={logo} alt={logo} />
+        <div className="ml-2 w-28 rounded-full">
+          <img src={logo} alt={logo} className="" />
         </div>
       </div>
       <div className="hidden lg:flex">
-        <ul className="menu menu-horizontal p-1 text-blacks">{menuItems}</ul>
+        <ul className="menu menu-horizontal p-1 text-blackfont-serif font-medium ">
+          {menuItems}
+        </ul>
       </div>
     </div>
   );

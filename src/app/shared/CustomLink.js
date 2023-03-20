@@ -8,8 +8,8 @@ function CustomLink({ children, to, ...props }) {
   return (
     <NavLink
       className={`${match} ${
-        match ? "text-emerald-500 font-semibold" : "text-black"
-      } block py-2 px-4 hover:text-emerald-500`}
+        match ? "text-[#00ffe7] font-semibold" : "text-black"
+      } text-lg block py-2 px-4 hover:text-[#00ffe7] hover:underline`}
       to={to}
       {...props}
     >

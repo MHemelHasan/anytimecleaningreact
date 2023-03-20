@@ -1,19 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../../../assets/logo_default.png";
+import Logo from "../../../../assets/company-logo.png";
 
 const UserSignup = () => {
   return (
     <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <img className="mx-auto h-12 w-auto" src={Logo} alt="logo" />
-        <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
-          Sign up as Customer
+        <img className="mx-auto h-40 w-auto" src={Logo} alt="logo" />
+        <h2 className="text-center text-3xl font-bold text-gray-900">
+          Sign up as <span className="text-[#00cfc1]">Customer</span>
         </h2>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div className="bg-[#00cfc1] py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" action="#" method="POST">
             <div>
               <label
@@ -106,7 +106,7 @@ const UserSignup = () => {
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-[#fe621d] hover:bg-[#fd5200] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00cfc1]"
               >
                 Signup
               </button>
@@ -116,7 +116,7 @@ const UserSignup = () => {
             <p className="text-base font-semibold mb-0">
               Already have an account?{" "}
               <Link
-                className="text-cyan-700 font-bold hover:text-cyan-800 focus:text-cyan-800 transition duration-200 ease-in-out"
+                className="text-white font-bold hover:text-[#fe621d] focus:text-[#fe621d] transition duration-200 ease-in-out"
                 to="/login"
               >
                 Login
