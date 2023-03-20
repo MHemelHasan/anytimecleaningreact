@@ -134,12 +134,12 @@ const ProductDetails = () => {
                 {productDetail?.enable_booking ? (
                   <NavLink to={`/checkout`}>
                     {" "}
-                    <button className="block rounded bg-primary px-5 py-3 text-base font-medium text-white hover:bg-emerald-600">
+                    <button className="block rounded bg-secondary px-5 py-3 text-base font-medium text-white hover:bg-emerald-600">
                       Book this service
                     </button>
                   </NavLink>
                 ) : (
-                  <button className="w-56 rounded bg-primary px-6 py-3 text-sm font-medium transition hover:scale-105">
+                  <button className="w-56 rounded bg-secondary px-6 py-3 text-sm font-medium transition hover:scale-105">
                     Closed
                   </button>
                 )}

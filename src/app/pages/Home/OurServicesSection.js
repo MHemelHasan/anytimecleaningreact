@@ -1,9 +1,9 @@
 import React from "react";
-import Pic from "../../../src/assets/our-service-section-pic.jpg";
-import window from "../../../src/assets/window-cleaning.jpeg";
-import gutter from "../../../src/assets/GUTTER-CLEANING.png";
-import house from "../../../src/assets/house-washing.png";
-import pressure from "../../../src/assets/pressure-washing.png";
+import Pic from "../../../assets/our-service-section-pic.jpg";
+import window from "../../../assets/window-cleaning.jpeg";
+import gutter from "../../../assets/GUTTER-CLEANING.png";
+import house from "../../../assets/house-washing.png";
+import pressure from "../../../assets/pressure-washing.png";
 
 const OurServicesSection = () => {
   return (

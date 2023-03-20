@@ -2,8 +2,9 @@ import React from "react";
 import Categories from "../../components/Categories";
 import Banner from "../../components/Banner";
 import Products from "../../components/Products";
-import OurServicesSection from "../../components/OurServicesSection";
-import WhyUsSection from "../../components/WhyUsSection";
+import OurServicesSection from "./OurServicesSection";
+import WhyUsSection from "./WhyUsSection";
+import Review from "./Review";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Products />
       <OurServicesSection />
       <WhyUsSection />
+      <Review />
     </div>
   );
 };

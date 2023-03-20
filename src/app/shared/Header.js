@@ -47,9 +47,10 @@ const Header = () => {
             {menuItems}
           </ul>
         </div>
-        <div className="ml-2 w-28 rounded-full">
-          <img src={logo} alt={logo} className="" />
-        </div>
+
+        <CustomLink to="/home" className="ml-2 w-20 rounded-full">
+          <img src={logo} alt={logo} />
+        </CustomLink>
       </div>
       <div className="hidden lg:flex">
         <ul className="menu menu-horizontal p-1 text-blackfont-serif font-medium ">

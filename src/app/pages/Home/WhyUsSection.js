@@ -1,5 +1,5 @@
 import React from "react";
-import Pic from "../../../src/assets/why-us-section.png";
+import Pic from "../../../assets/why-us-section.png";
 import { MdOutlineCleaningServices } from "react-icons/md";
 import { TbDeviceMobileMessage } from "react-icons/tb";
 import { MdOutlineHandshake } from "react-icons/md";
