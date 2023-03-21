@@ -4,16 +4,17 @@ import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import logo from "../../../src/assets/company-logo.png";
+import CustomLink from "./CustomLink";
 
 const Footer = () => {
   return (
     <div className="">
-      <footer className="sm:h-48 footer p-10  bg-[#3a506b] text-white grid grid-cols-2 divide-x-reverse md:grid-cols-6 gap-10">
+      <footer className="sm:h-48 footer p-10  bg-secondary text-white grid grid-cols-2 md:grid-cols-4 gap-6">
         <div className="items-center grid-flow-row">
-          <div className="w-32 h-24 rounded-full">
+          <div className="w-40 h-24 rounded-full">
             <img src={logo} alt={logo} />
           </div>
-          <div className="md:place-self-center md:justify-self-end">
+          <div className="mt-6 md:place-self-center md:justify-self-end">
             <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <a>
                 <FaFacebook className="w-5 h-full mx-auto text-white hover:text-secondary" />
@@ -31,29 +32,34 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div></div>
+        <vr className="h-36 border border-slate-200" />
+
         <div>
           <span className="footer-title">Company</span>
-          <a href="about" className="hover:text-secondary">
+          <a href="about" className="hover:text-black">
             About us
           </a>
-          <a href="contact" className="hover:text-secondary">
+          <a href="contact" className="hover:text-black">
             Contact
           </a>
-          <a href="faq" className="hover:text-secondary">
+          <a href="faq" className="hover:text-black">
             FAQ
           </a>
         </div>
         <div>
           <span className="footer-title">Legal</span>
-          <a className="hover:text-secondary">Terms of use</a>
-          <a className="hover:text-secondary">Privacy policy</a>
-          <a className="hover:text-secondary">Cookie policy</a>
+          <a className="hover:text-black">Terms of use</a>
+          <a className="hover:text-black">Privacy policy</a>
+          <a className="hover:text-black">Cookie policy</a>
         </div>
-        <div></div>
-        <div>
-          <span className="footer-title"></span>
-        </div>
+        <vr className="h-36 border border-slate-200" />
+
+        <CustomLink
+          to="/provider-signup"
+          className="ml-0 mt-6 md:mt-0 w-48 text-center border-2 border-primary px-6 py-2 bg-action-color hover:bg-primary hover:text-white rounded-3xl"
+        >
+          Become a Provider
+        </CustomLink>
       </footer>
       <footer className="footer px-10 py-4 border-t bg-black text-white border-base-300">
         <div>

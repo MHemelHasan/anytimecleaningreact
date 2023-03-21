@@ -18,7 +18,7 @@ module.exports = {
       {
         cleanyTheme: {
           primary: "#00ffe7",
-          secondary: "#00cfc1",
+          secondary: "#0069ab",
           accent: "#3A4256",
           neutral: "#3d4451",
           "base-100": "#ffffff",
