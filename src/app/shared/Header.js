@@ -11,7 +11,7 @@ const Header = () => {
       <CustomLink to="/login">Login</CustomLink>
       <CustomLink
         to="/provider-signup"
-        className="ml-0 md:ml-20 mt-6 md:mt-0 w-48 text-center border-2 border-black px-6 py-2 bg-[#FF9F1C] rounded-3xl"
+        className="ml-0 md:ml-20 mt-6 md:mt-0 w-48 text-center border-2 border-primary px-6 py-2 bg-action-color hover:bg-primary hover:text-white rounded-3xl"
       >
         Become a Provider
       </CustomLink>

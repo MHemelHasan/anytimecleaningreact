@@ -19,7 +19,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="carousel-container mb-10">
+    <div className="carousel-container mb-4">
       <Swiper
         autoplay={{
           delay: 2500,
@@ -33,10 +33,13 @@ const Carousel = () => {
       >
         <SwiperSlide>
           <div
-            className="carousel-slide bg-no-repeat bg-cover mb-10 relative"
-            style={{ backgroundImage: `url(${images[0]})`, height: 540 }}
+            className="carousel-slide bg-no-repeat bg-cover"
+            style={{
+              backgroundImage: `url(${images[0]})`,
+              height: 540,
+            }}
           >
-            <div
+            {/* <div
               className="title text-black font-semibold text-xl ml-12 md:text-3xl lg:text-5xl absolute mb-20"
               data-swiper-parallax="-300"
             >
@@ -45,15 +48,18 @@ const Carousel = () => {
             </div>
             <button className="btn btn-primary w-40 rounded-3xl ml-12 text-black mt-96">
               Discover it
-            </button>
+            </button> */}
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div
-            className="carousel-slide bg-no-repeat bg-cover relative"
-            style={{ backgroundImage: `url(${images[1]})`, height: 540 }}
+            className="carousel-slide bg-no-repeat bg-cover"
+            style={{
+              backgroundImage: `url(${images[1]})`,
+              height: 540,
+            }}
           >
-            <div
+            {/* <div
               className="title text-black font-semibold text-xl ml-12 md:text-3xl lg:text-5xl absolute mb-20"
               data-swiper-parallax="-300"
             >
@@ -62,15 +68,18 @@ const Carousel = () => {
             </div>
             <button className="btn bg-orange-500 hover:bg-orange-600 border-none w-40 rounded-3xl ml-12 text-black mt-96">
               Repair it
-            </button>
+            </button> */}
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div
-            className="carousel-slide bg-no-repeat bg-cover relative"
-            style={{ backgroundImage: `url(${images[2]})`, height: 540 }}
+            className="carousel-slide bg-no-repeat bg-cover"
+            style={{
+              backgroundImage: `url(${images[2]})`,
+              height: 540,
+            }}
           >
-            <div
+            {/* <div
               className="title text-black font-semibold text-xl ml-12 md:text-3xl lg:text-5xl absolute mb-20"
               data-swiper-parallax="-300"
             >
@@ -79,7 +88,7 @@ const Carousel = () => {
             </div>
             <button className="btn bg-cyan-500 hover:bg-cyan-600 border-none w-40 rounded-3xl ml-12 text-black mt-96">
               Book Now
-            </button>
+            </button> */}
           </div>
         </SwiperSlide>
       </Swiper>

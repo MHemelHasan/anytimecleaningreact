@@ -92,17 +92,17 @@ const Contact = () => {
           w-full
           px-6
           py-2.5
-          bg-[#fe621d]
-          text-white
+          bg-action-color
+          text-black
           font-bold
           text-base
           leading-tight
           uppercase
           rounded
           shadow-md
-          hover:bg-[#fe621d] hover:shadow-lg
-          focus:bg-[#fe621d] focus:shadow-lg focus:outline-none focus:ring-0
-          active:bg-[#fe621d] active:shadow-lg
+          hover:bg-action-color hover:shadow-lg
+          focus:bg-action-color focus:shadow-lg focus:outline-none focus:ring-0
+          active:bg-action-color active:shadow-lg
           transition
           duration-150
           ease-in-out"

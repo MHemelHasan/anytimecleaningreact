@@ -1,21 +1,115 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
-SwiperCore.use([Navigation, Pagination, Autoplay]);
+import React from "react";
 
 const Review = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const handleSlideChange = (swiper) => {
-    setCurrentSlide(swiper.activeIndex);
-  };
   return (
-    <div class="container my-24 px-6 mx-auto">
-      <section class="mb-32 text-gray-800 text-center">
-        <h2 class="text-3xl font-bold mb-12">Testimonials</h2>
-        <div class="carousel-inner carousel-container mb-20 relative w-full overflow-hidden">
+    <div className="container my-24 px-6 mx-auto">
+      <section className="mb-32 text-gray-800 text-center">
+        <h2 className="text-3xl font-bold mb-12">
+          <span className="text-secondary">Review</span>
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-x-6 lg:gap-x-12">
+          <div className="mb-6 lg:mb-0">
+            <div className="bg-white block rounded-lg shadow-lg">
+              <div className="relative overflow-hidden bg-no-repeat bg-cover">
+                <img
+                  src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+                  className="w-full rounded-t-lg"
+                  alt=""
+                />
+                <a href="#!">
+                  <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"></div>
+                </a>
+                <svg
+                  className="absolute"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 1440 320"
+                  style={{ left: 0, bottom: 0 }}
+                >
+                  <path
+                    fill="#fff"
+                    d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+                  ></path>
+                </svg>
+              </div>
+              <div className="p-6">
+                <h5 className="text-lg font-bold mb-4">Maria Smith</h5>
+                <p className="text-gray-500 mb-4">Frontend Developer</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-6 lg:mb-0">
+            <div className="bg-white block rounded-lg shadow-lg">
+              <div className="relative overflow-hidden bg-no-repeat bg-cover">
+                <img
+                  src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                  className="w-full rounded-t-lg"
+                  alt=""
+                />
+                <a href="#!">
+                  <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"></div>
+                </a>
+                <svg
+                  className="absolute"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 1440 320"
+                  style={{ left: 0, bottom: 0 }}
+                >
+                  <path
+                    fill="#fff"
+                    d="M0,96L48,128C96,160,192,224,288,240C384,256,480,224,576,213.3C672,203,768,213,864,202.7C960,192,1056,160,1152,128C1248,96,1344,64,1392,48L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+                  ></path>
+                </svg>
+              </div>
+              <div className="p-6">
+                <h5 className="text-lg font-bold mb-4">Darren Randolph</h5>
+                <p className="text-gray-500 mb-4">Marketing expert</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="">
+            <div className="bg-white block rounded-lg shadow-lg">
+              <div className="relative overflow-hidden bg-no-repeat bg-cover">
+                <img
+                  src="https://mdbootstrap.com/img/new/avatars/15.jpg"
+                  className="w-full rounded-t-lg"
+                  alt=""
+                />
+                <a href="#!">
+                  <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"></div>
+                </a>
+                <svg
+                  className="absolute"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 1440 320"
+                  style={{ left: 0, bottom: 0 }}
+                >
+                  <path
+                    fill="#fff"
+                    d="M0,288L48,256C96,224,192,160,288,160C384,160,480,224,576,213.3C672,203,768,117,864,85.3C960,53,1056,75,1152,69.3C1248,64,1344,32,1392,16L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+                  ></path>
+                </svg>
+              </div>
+              <div className="p-6">
+                <h5 className="text-lg font-bold mb-4">Ayat Black</h5>
+                <p className="text-gray-500 mb-4">Web designer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Review;
+{
+  /* <div className="container my-24 px-6 mx-auto">
+      <section className="mb-32 text-gray-800 text-center">
+        <h2 className="text-3xl font-bold mb-12 text-secondary">Reviews</h2>
+        <div className="carousel-inner carousel-container mb-20 relative w-full overflow-hidden">
           {" "}
           <Swiper
             autoplay={{
@@ -30,24 +124,24 @@ const Review = () => {
           >
             {" "}
             <SwiperSlide>
-              <div class="mb-20 carousel-item active relative float-left w-full">
+              <div className="px-6 mt-20 mb-20 carousel-item active relative float-left w-full">
                 <img
-                  class="rounded-full shadow-lg mb-6 mx-auto"
+                  className="rounded-full shadow-lg mb-6 ml-20"
                   src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg"
                   alt="avatar"
                   style={{ width: "150px" }}
                 />
-                <div class="flex flex-wrap justify-center">
-                  <div class="grow-0 shrink-0 basis-auto w-full lg:w-8/12 px-3">
-                    <h5 class="text-lg font-bold mb-3">Maria Kate</h5>
-                    <p class="font-medium text-gray-700 mb-4">Lorem</p>
-                    <p class="text-gray-500 mb-6">
+                <div className="flex flex-wrap justify-center">
+                  <div className="grow-0 shrink-0 basis-auto w-full lg:w-8/12 px-3">
+                    <h5 className="text-lg font-bold mb-3">Maria Kate</h5>
+                    <p className="font-medium text-gray-700 mb-4">Lorem</p>
+                    <p className="text-gray-500 mb-6">
                       <svg
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fas"
                         data-icon="quote-left"
-                        class="w-6 pr-2 inline-block"
+                        className="w-6 pr-2 inline-block"
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"
@@ -64,14 +158,14 @@ const Review = () => {
                       est, nec posuere ex arcu sit amet erat. Sed a dictum sem.
                       Duis pretium condimentum nulla.
                     </p>
-                    <ul class="flex justify-center mb-0">
+                    <ul className="flex justify-center mb-0">
                       <li>
                         <svg
                           aria-hidden="true"
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -88,7 +182,7 @@ const Review = () => {
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -105,7 +199,7 @@ const Review = () => {
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -122,7 +216,7 @@ const Review = () => {
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -139,7 +233,7 @@ const Review = () => {
                           focusable="false"
                           data-prefix="far"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -157,24 +251,24 @@ const Review = () => {
             </SwiperSlide>
             <SwiperSlide>
               {" "}
-              <div class="mb-20 carousel-item relative float-left w-full">
+              <div className="px-6 mt-20 mb-20 carousel-item relative float-left w-full">
                 <img
-                  class="rounded-full shadow-lg mb-6 mx-auto"
+                  className="rounded-full shadow-lg mb-6 ml-20"
                   src="https://mdbootstrap.com/img/Photos/Avatars/img%20(32).jpg"
                   alt="avatar"
                   style={{ width: "150px" }}
                 />
-                <div class="flex flex-wrap justify-center">
-                  <div class="grow-0 shrink-0 basis-auto w-full lg:w-8/12 px-3">
-                    <h5 class="text-lg font-bold mb-3">John Doe</h5>
-                    <p class="font-medium text-gray-700 mb-4">Lorem</p>
-                    <p class="text-gray-500 mb-6">
+                <div className="flex flex-wrap justify-center">
+                  <div className="grow-0 shrink-0 basis-auto w-full lg:w-8/12 px-3">
+                    <h5 className="text-lg font-bold mb-3">John Doe</h5>
+                    <p className="font-medium text-gray-700 mb-4">Lorem</p>
+                    <p className="text-gray-500 mb-6">
                       <svg
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fas"
                         data-icon="quote-left"
-                        class="w-6 pr-2 inline-block"
+                        className="w-6 pr-2 inline-block"
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"
@@ -189,14 +283,14 @@ const Review = () => {
                       libero. Quisque vitae semper metus. Aliquam eu dui
                       aliquam, faucibus metus quis, elementum nunc.
                     </p>
-                    <ul class="flex justify-center mb-0">
+                    <ul className="flex justify-center mb-0">
                       <li>
                         <svg
                           aria-hidden="true"
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -213,7 +307,7 @@ const Review = () => {
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -230,7 +324,7 @@ const Review = () => {
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -247,7 +341,7 @@ const Review = () => {
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -264,7 +358,7 @@ const Review = () => {
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star-half-alt"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 536 512"
@@ -281,24 +375,24 @@ const Review = () => {
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div class="mb-20 carousel-item relative float-left w-full">
+              <div className="px-6 mt-20 mb-20 carousel-item relative float-left w-full">
                 <img
-                  class="rounded-full shadow-lg mb-6 mx-auto"
+                  className="rounded-full shadow-lg mb-6 ml-20"
                   src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg"
                   alt="avatar"
                   style={{ width: "150px" }}
                 />
-                <div class="flex flex-wrap justify-center">
-                  <div class="grow-0 shrink-0 basis-auto w-full lg:w-8/12 px-3">
-                    <h5 class="text-lg font-bold mb-3">Anna Deynah</h5>
-                    <p class="font-medium text-gray-700 mb-4">Lorem</p>
-                    <p class="text-gray-500 mb-6">
+                <div className="flex flex-wrap justify-center">
+                  <div className="grow-0 shrink-0 basis-auto w-full lg:w-8/12 px-3">
+                    <h5 className="text-lg font-bold mb-3">Anna Deynah</h5>
+                    <p className="font-medium text-gray-700 mb-4">Lorem</p>
+                    <p className="text-gray-500 mb-6">
                       <svg
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fas"
                         data-icon="quote-left"
-                        class="w-6 pr-2 inline-block"
+                        className="w-6 pr-2 inline-block"
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"
@@ -313,14 +407,14 @@ const Review = () => {
                       Curabitur in justo at lorem laoreet ultricies. Nunc ligula
                       felis, sagittis eget nisi vitae.
                     </p>
-                    <ul class="flex justify-center mb-0">
+                    <ul className="flex justify-center mb-0">
                       <li>
                         <svg
                           aria-hidden="true"
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -337,7 +431,7 @@ const Review = () => {
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -354,7 +448,7 @@ const Review = () => {
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -371,7 +465,7 @@ const Review = () => {
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -388,7 +482,7 @@ const Review = () => {
                           focusable="false"
                           data-prefix="fas"
                           data-icon="star"
-                          class="w-4 text-yellow-500"
+                          className="w-4 text-yellow-500"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
@@ -407,8 +501,5 @@ const Review = () => {
           </Swiper>
         </div>
       </section>
-    </div>
-  );
-};
-
-export default Review;
+    </div> */
+}

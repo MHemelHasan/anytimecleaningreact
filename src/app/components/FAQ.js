@@ -13,7 +13,7 @@ const FAQ = () => {
           {faqs?.map((faq) => (
             <>
               <div
-                class="max-w-sm overflow-hidden shadow-lg rounded-xl"
+                className="max-w-sm overflow-hidden shadow-lg rounded-xl"
                 key={faq?.id}
               >
                 <div className="collapse">

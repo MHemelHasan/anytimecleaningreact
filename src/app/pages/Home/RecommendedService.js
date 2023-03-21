@@ -1,17 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import useProducts from "./../hooks/useProducts";
-import Loading from "./../shared/Loading";
-import Product from "./Product";
+import Product from "../../components/Product";
+import useProducts from "../../hooks/useProducts";
+import Loading from "../../shared/Loading";
 
-const Products = () => {
+const RecommendedService = () => {
   const { products, loading } = useProducts();
   const navigate = useNavigate();
   return (
     <div className="container my-24 px-6 mx-auto flex flex-col gap-10">
       <div className="mt-20 flex justify-between">
         <h2 className="text-xl font-bold">
-          Featured <span className="text-secondary">Service</span>
+          Recommended <span className="text-secondary">Service</span>{" "}
         </h2>
         <div className="">
           <button
@@ -37,4 +37,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default RecommendedService;

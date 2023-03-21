@@ -8,7 +8,7 @@ const Categories = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="px-8 md:px-20 mx-auto mt-20 mb-10 flex flex-col gap-10">
+    <div className="container my-24 px-6 mx-auto flex flex-col gap-10">
       <div className="mt-20 flex justify-between">
         <h2 className="text-xl font-bold">Categories</h2>
         <div className="">
@@ -24,8 +24,8 @@ const Categories = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6 w-full">
-          {categories?.slice(0, 6)?.map((category) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 w-full">
+          {categories?.slice(0, 8)?.map((category) => (
             <div
               className="relative p-4 w-full bg-white rounded-lg overflow-hidden hover:shadow flex flex-col justify-center items-center cursor-pointer"
               style={{ minHeight: "100px", backgroundColor: category?.color }}
