@@ -8,9 +8,6 @@ const Category = ({ name, color, order, description }) => {
     >
       <div className={`w-full md:w-2/3 px-4 py-4 rounded-lg`}>
         <h2 className="text-lg text-gray-800 font-medium mr-auto">{name}</h2>
-        {/*  <span className="text-gray-800 font-semibold tracking-tighter">
-          Order: {order}
-        </span> */}
       </div>
     </div>
   );

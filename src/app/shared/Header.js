@@ -110,16 +110,16 @@ const Header = () => {
 
   return (
     <nav
-      className={classNames(
-        "fixed w-full transition-all duration-300 ease-in-out z-50",
-        {
-          "translate-y-0": isNavbarVisible,
-          "-translate-y-full": !isNavbarVisible,
-        }
-      )}
+    // className={classNames(
+    //   "w-full transition-all duration-300 ease-in-out z-10",
+    //   {
+    //     "translate-y-0": isNavbarVisible,
+    //     "-translate-y-full": isNavbarVisible,
+    //   }
+    // )}
     >
       {/* Your navbar content here */}
-      <div className="navbar sticky top-0 z-10 px-4 md:px-20 mx-0 md:mx-auto bg-white shadow-lg rounded">
+      <div className="navbar fixed top-0 z-30 px-4 md:px-20 mx-0 md:mx-auto bg-white shadow-lg rounded">
         <div className="navbar-start">
           <div className="dropdown">
             <label

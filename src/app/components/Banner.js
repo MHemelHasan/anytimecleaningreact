@@ -1,35 +1,34 @@
 import React from "react";
 import Carousel from "./Carousel";
+import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div
-      className="container mt-0 px-6 mx-auto bg-slate-100"
-      style={{ height: 540 }}
-    >
-      <section className="mb-32 text-gray-800 text-center lg:text-left">
-        <div className="mt-20 flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-10 xl:gap-12">
-          <div className="lg:w-1/2">
+    <div className="px-6 py-28 md:px-12 bg-gray-50 text-gray-800 text-center lg:text-left">
+      <div className="container mx-auto xl:px-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+          <div className="mt-12 lg:mt-0 bg-gray-50">
             <h2 className="text-center text-2xl md:text-3xl xl:text-4xl font-bold tracking-tight">
-              Assign a Handyman <br />
+              Assign a Handyman <br />{" "}
               <span className="text-secondary">
                 at work to Fix the Household
-              </span>
-            </h2>
+              </span>{" "}
+            </h2>{" "}
             <p className="text-center mt-10 text-base md:text-lg lg:text-xl font-semibold text-slate-400">
               Trust the job to your tough-to-tackle cleaning team.
-            </p>
+            </p>{" "}
             <div className="text-center">
+              {" "}
               <button className="mt-8 btn btn-primary w-40 rounded-3xl text-black hover:bg-action-color">
-                Discover it
-              </button>
+                Discover it{" "}
+              </button>{" "}
             </div>
           </div>
-          <div className="lg:w-1/2">
+          <div className="mb-12 lg:mb-0">
             <Carousel />
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

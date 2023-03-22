@@ -93,15 +93,17 @@ const Contact = () => {
           px-6
           py-2.5
           bg-action-color
+          border-2
+          border-bg-primary
           text-black
           font-bold
           text-base
           leading-tight
           uppercase
-          rounded
+          rounded-3xl
           shadow-md
-          hover:bg-action-color hover:shadow-lg
-          focus:bg-action-color focus:shadow-lg focus:outline-none focus:ring-0
+          hover:bg-primary hover:border-bg-action-color 
+          focus:bg-action-color focus:outline-none focus:ring-0
           active:bg-action-color active:shadow-lg
           transition
           duration-150

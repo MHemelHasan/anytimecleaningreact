@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../../../assets/company-logo.png";
-
+import "../Signup.css";
 const ProviderSignup = () => {
   return (
-    <div className="bg-action-color min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="bg-action-color min-h-full flex flex-col justify-center py-24 sm:px-6 lg:px-8 signup">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <img className="mx-auto h-40 w-auto" src={Logo} alt="logo" />
         <h2 className="text-center text-3xl font-bold text-gray-900">
@@ -14,7 +14,7 @@ const ProviderSignup = () => {
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className=" py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div className="py-8 px-4 sm:rounded-lg sm:px-10">
           <form className="space-y-6" action="#" method="POST">
             <div>
               <label
@@ -107,7 +107,7 @@ const ProviderSignup = () => {
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 rounded-md shadow-sm text-sm font-medium text-black border-2 border-primary bg-action-color hover:bg-action-color focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full flex justify-center py-2 px-4 rounded-md shadow-sm text-sm font-medium text-black border-2 border-bg-action-color hover:border-bg-primary hover:bg-action-color bg-primary focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 Signup
               </button>
@@ -117,7 +117,7 @@ const ProviderSignup = () => {
             <p className="text-base font-semibold mb-0">
               Already have an account?{" "}
               <Link
-                className="text-action-color font-bold hover:black focus:text-black transition duration-200 ease-in-out"
+                className="text-secondary font-bold hover:black focus:text-black transition duration-200 ease-in-out"
                 to="/login"
               >
                 Login

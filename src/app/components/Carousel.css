@@ -1,6 +1,6 @@
-/* .carousel-slide {
-  height: 50%;
-  width: 50%;
+.carousel-slide {
+  height: 100%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -8,19 +8,4 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
-}
- */
-
-.carousel-half {
-  width: 50%;
-  float: left;
-  height: 100vh;
-  position: relative;
-}
-
-.text-half {
-  width: 50%;
-  float: right;
-  height: 100vh;
-  display: flex;
 }
