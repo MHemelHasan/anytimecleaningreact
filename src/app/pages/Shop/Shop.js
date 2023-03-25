@@ -9,6 +9,7 @@ import Category from "../../components/Category";
 import useProducts from "../../hooks/useProducts";
 import Product from "../../components/Product";
 import Loading from "../../shared/Loading";
+import ProductCard from "../Products/ProductCard";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -314,13 +315,20 @@ export default function Shop() {
         ))} */}
                   </form>
 
-                  {/* Product grid */}
+
+                   {/*Product grid */}
+                  <div className="mx-auto">
                   <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:col-span-3 lg:gap-x-8">
                     {products?.map((product) => (
                       <Product key={product?.id} {...product} />
                     ))}
                   </div>
+                  </div>
+                  {/*<div>*/}
+                  {/*  <ProductCard />*/}
+                  {/*</div>*/}
                 </div>
+
               </section>
             </main>
           </div>

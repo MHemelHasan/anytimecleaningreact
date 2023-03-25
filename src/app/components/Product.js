@@ -28,7 +28,7 @@ const Product = ({
       onClick={() => navigateToServicesDetail(id)}
     >
       <figure className="">
-        <img src={media[0]?.url} alt="Product Image" />
+        <img src={media[0]?.url} alt="Product" />
       </figure>
 
       <div className="card-body">
