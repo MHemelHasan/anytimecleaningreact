@@ -38,39 +38,39 @@ const Carousel = () => {
 export default Carousel;
  */
 
-import React, { useState } from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import "./Carousel.css";
-import banner1 from "../../../src/assets/banner-1.jpg";
-import banner2 from "../../../src/assets/banner-2.jpg";
-import banner3 from "../../../src/assets/banner-3.jpg";
+// import React, { useState } from "react";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import Slider from "react-slick";
+// import "./Carousel.css";
+// import banner1 from "../../../src/assets/banner-1.jpg";
+// import banner2 from "../../../src/assets/banner-2.jpg";
+// import banner3 from "../../../src/assets/banner-3.jpg";
 
-const Carousel = () => {
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
-  return (
-    <div className="carousel-container">
-      <Slider {...settings}>
-        <div className="carousel-slide bg-no-repeat bg-cover">
-          <img className="" src={banner1} alt=" " />
-        </div>
-        <div className="carousel-slide bg-no-repeat bg-cover">
-          <img src={banner2} alt=" " />
-        </div>
-        <div className="carousel-slide bg-no-repeat bg-cover">
-          <img src={banner3} alt=" " />
-        </div>
-      </Slider>
-    </div>
-  );
-};
-
-export default Carousel;
+// const Carousel = () => {
+//   var settings = {
+//     dots: true,
+//     infinite: true,
+//     speed: 500,
+//     slidesToShow: 1,
+//     slidesToScroll: 1,
+//   };
+//
+//   return (
+//     <div className="carousel-container">
+//       <Slider {...settings}>
+//         <div className="carousel-slide bg-no-repeat bg-cover">
+//           <img className="" src={banner1} alt=" " />
+//         </div>
+//         <div className="carousel-slide bg-no-repeat bg-cover">
+//           <img src={banner2} alt=" " />
+//         </div>
+//         <div className="carousel-slide bg-no-repeat bg-cover">
+//           <img src={banner3} alt=" " />
+//         </div>
+//       </Slider>
+//     </div>
+//   );
+// };
+//
+// export default Carousel;

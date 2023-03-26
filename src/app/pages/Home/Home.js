@@ -1,379 +1,36 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// import React from "react";
-// import Categories from "../../components/Categories";
-// import Banner from "../../components/Banner";
-// import Products from "../../components/Products";
-// import OurServicesSection from "./OurServicesSection";
-// import WhyUsSection from "./WhyUsSection";
-// import Review from "./Review";
-// import RecommendedService from "./RecommendedService";
-// import Provider from "./Provider";
-// import PrideSection from "./PrideSection";
-//
-// const Home = () => {
-//   return (
-//     <div>
-//       <Banner />
-//       <hr className="border-2" />
-//       <PrideSection />
-//       <hr className="border-2" />
-//       <Categories />
-//       <hr className="border-2" />
-//       <Products />
-//       <hr className="border-2" />
-//       <OurServicesSection />
-//       <hr className="border-2" />
-//       <RecommendedService />
-//       <Provider />
-//       <WhyUsSection />
-//       <Review />
-//     </div>
-//   );
-// };
-//
-// export default Home;
-
-import logo from "../../../assets/uploads/media-uploader/site-logo1618651031.png";
-import bg1 from "../../../assets/uploads/media-uploader/bg-011618830463.jpg";
-import bg2 from "../../../assets/uploads/media-uploader/bg-021618830463.jpg";
-import bg3 from "../../../assets/uploads/media-uploader/bg-011618830463.jpg";
-import bg4 from "../../../assets/uploads/media-uploader/bg-041618830464.jpg";
-import img1 from  "../../../assets/uploads/media-uploader/011618747632.png";
+import img1 from "../../../assets/uploads/media-uploader/011618747632.png";
 import Service_bg from "../../../assets/uploads/media-uploader/011618730370.png";
 import Service_bg2 from "../../../assets/uploads/media-uploader/011618730370.png";
 import Service_bg3 from "../../../assets/uploads/media-uploader/011618730370.png";
 import Service_bg4 from "../../../assets/uploads/media-uploader/011618730370.png";
 import Service_bg5 from "../../../assets/uploads/media-uploader/011618730370.png";
-import Icon_bg1 from "../../../assets/frontend/important/choose/01.png"
+import Icon_bg1 from "../../../assets/frontend/important/choose/01.png";
 import Icon_bg2 from "../../../assets/frontend/important/choose/01.png";
 import Image1 from "../../../assets/uploads/media-uploader/bg-min-service1618907068.png";
 import Image2 from "../../../assets/uploads/media-uploader/bg-right1618906912.jpg";
 import Testimonial from "../../../assets/uploads/media-uploader/testimonial-011618929870.png";
-import Testimonial2 from  "../../../assets/uploads/media-uploader/testimonial-021618929870.png";
+import Testimonial2 from "../../../assets/uploads/media-uploader/testimonial-021618929870.png";
 import Testimonial3 from "../../../assets/uploads/media-uploader/testimonial-031618930158.png";
 import Testimonial4 from "../../../assets/uploads/media-uploader/testimonial-bg1618991543.png";
-import Image3 from "../../../assets/uploads/media-uploader/021618991591.png"
+import Image3 from "../../../assets/uploads/media-uploader/021618991591.png";
 import Team1 from "../../../assets/uploads/media-uploader/group-1-min1620466547.png";
 import Team2 from "../../../assets/uploads/media-uploader/group-2-min1620466899.png";
 import Team3 from "../../../assets/uploads/media-uploader/group-3-min1620467338.png";
 import Team4 from "../../../assets/uploads/media-uploader/group-5-min1620467501.png";
-import FooterImage from "../../../assets/uploads/media-uploader/footer-bg-min1619971609.png";
+import ContactImage from "../../../assets/uploads/media-uploader/011618994172.png";
+import PriceImage from "../../../assets/uploads/media-uploader/price-011618998094.png";
+import PriceImage2 from "../../../assets/uploads/media-uploader/price-021618998094.png";
+import PriceImage3 from "../../../assets/uploads/media-uploader/price-031618998093.png";
+import PostImage1 from "../../../assets/uploads/media-uploader/pexels-karolina-grabowska-4239146-min1620223752.jpg";
+import PostImage2 from "../../../assets/uploads/media-uploader/pexels-karolina-grabowska-4239032-min1620225734.jpg";
+import PostImage3 from "../../../assets/uploads/media-uploader/pexels-karolina-grabowska-4239113-min1620225894.jpg";
+import Banner from "../../components/Banner";
 
 const Home = () => {
   return (
     <>
-      <div className="header-style-01">
-        <div className="topbar-area">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="topbar-inner">
-                  <div className="left-contnet">
-                    <ul className="info-items">
-                      <li>
-                        <i className="far fa-clock"></i> Mon - Fri: 08.00am -
-                        10.00 pm
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="right-contnet">
-                    <ul className="info-items">
-                      <li>
-                        <a href="login.html">Login</a>
-                      </li>
-                      <li>/</li>
-                      <li>
-                        <a href="register.html">Register</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="info-bar">
-          <div className="info-bar-bottom style-01">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="info-bar-inner">
-                    <div className="left-content-area">
-                      <div className="social-link">
-                        <ul>
-                          <li>
-                            <a href="twitter.com" target="_blank">
-                              <i className="fab fa-twitter"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="www.linkedin.com" target="_blank">
-                              <i className="fab fa-linkedin-in"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="www.facebook.com" target="_blank">
-                              <i className="fab fa-facebook-f"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="www.youtube.com/" target="_blank">
-                              <i className="fab fa-youtube"></i>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <nav className="navbar navbar-area navbar-expand-lg has-topbar nav-style-02">
-          <div className="container nav-container">
-            <div className="responsive-mobile-menu">
-              <div className="logo-wrapper">
-                <a
-                  href="https://xgenious.com/laravel/neateller"
-                  className="logo"
-                >
-                  <img
-                    src= {logo}
-                    alt="site_logo"
-                  />
-                </a>
-              </div>
-              <div className="mobile-cart">
-                <a href="products-cart.html">
-                  <i className="flaticon-shopping-cart-2"></i>
-                  <span className="pcount">0</span>
-                </a>
-              </div>
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#bizcoxx_main_menu"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="navbar-toggler-icon"></span>
-              </button>
-            </div>
-            <div className="collapse navbar-collapse" id="bizcoxx_main_menu">
-              <ul className="navbar-nav">
-                <li>
-                  <a href="https://xgenious.com/laravel/neateller">Home</a>
-                </li>
-                <li>
-                  <a href="about-us.html">About Us</a>
-                </li>
-                <li className="menu-item-has-mega-menu">
-                  <a href="service.html">Service</a>
-                  <div className="xg_mega_menu_wrapper service_mega_menu">
-                    <div className="xg-mega-menu-container">
-                      <div className="row">
-                        <div className="col-lg-3 col-md-6">
-                          <div className="xg-mega-menu-single-column-wrap">
-                            <h4 className="mega-menu-title">
-                              Residential Service
-                            </h4>
-                            <ul>
-                              <li>
-                                <a href="service/cyber-security/1.html">
-                                  We Are Experience Cleaner
-                                </a>
-                              </li>
-                              <li>
-                                <a href="service/over-200-complete-task/8.html">
-                                  Over 200+ Complete Task
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="col-lg-3 col-md-6">
-                          <div className="xg-mega-menu-single-column-wrap">
-                            <h4 className="mega-menu-title">
-                              Institutional Service
-                            </h4>
-                            <ul>
-                              <li>
-                                <a href="service/over-200-complete-task/9.html">
-                                  100% Clients Satisfaction
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="col-lg-3 col-md-6">
-                          <div className="xg-mega-menu-single-column-wrap">
-                            <h4 className="mega-menu-title">Others Service</h4>
-                            <ul>
-                              <li>
-                                <a href="service/over-200-complete-task/10.html">
-                                  Global cleaning service
-                                </a>
-                              </li>
-                              <li>
-                                <a href="service/colonel-or-passage-to-ability/11.html">
-                                  Colonel or passage to ability
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <a href="contact-us.html">Contact Us</a>
-                </li>
-              </ul>
-            </div>
-            <div className="nav-right-content">
-              <div className="icon-part nav-style-01">
-                <ul>
-                  <li className="cart">
-                    <a href="products-cart.html">
-                      <i className="flaticon-shopping-cart-2"></i>
-                      <span className="pcount">0</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="btn-wrapper">
-                <a href="https://xgenious.com/" className="request-btn">
-                  Become Provider<i className="fas fa-long-arrow-alt-right"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-
-      <div className="header-slider-one">
-        <div
-          className="header-area header-bg"
-          style={{
-            backgroundImage: `url(${bg1})`
-          }}
-        >
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-7">
-                <div className="header-inner">
-                  <span className="subtitle">We provide cleaning service</span>
-                  <h1 className="title">We are certified cleaning Company</h1>
-                  <div className="header-bottom">
-                    <div className="btn-wrapper desktop-left">
-                      <a href="#" className="boxed-btn">
-                        Request a quote
-                      </a>
-                    </div>
-                    <span className="or">OR</span>
-                    <div className="header-buttom-content style-01">
-                      <p>Need Help Now? Call Us!</p>
-                      <span>+91 458 654 528</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="header-area header-bg"
-          style={{
-            backgroundImage: `url(${bg2})`
-          }}
-        >
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-7">
-                <div className="header-inner">
-                  <span className="subtitle">We provide cleaning service</span>
-                  <h1 className="title">We are certified cleaning Company</h1>
-                  <div className="header-bottom">
-                    <div className="btn-wrapper desktop-left">
-                      <a href="#" className="boxed-btn">
-                        Request a quote
-                      </a>
-                    </div>
-                    <span className="or">OR</span>
-                    <div className="header-buttom-content style-01">
-                      <p>Need Help Now? Call Us!</p>
-                      <span>+91 458 654 528</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="header-area header-bg"
-          style={{
-            backgroundImage: `url(${bg3})`
-          }}
-        >
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-7">
-                <div className="header-inner">
-                  <span className="subtitle">We provide cleaning service</span>
-                  <h1 className="title">We are certified cleaning Company</h1>
-                  <div className="header-bottom">
-                    <div className="btn-wrapper desktop-left">
-                      <a href="#" className="boxed-btn">
-                        Request a quote
-                      </a>
-                    </div>
-                    <span className="or">OR</span>
-                    <div className="header-buttom-content style-01">
-                      <p>Need Help Now? Call Us!</p>
-                      <span>+91 458 654 528</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="header-area header-bg"
-          style={{
-            backgroundImage: `url(${bg4})`
-          }}
-        >
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-7">
-                <div className="header-inner">
-                  <span className="subtitle">We provide cleaning service</span>
-                  <h1 className="title">We are certified cleaning Company</h1>
-                  <div className="header-bottom">
-                    <div className="btn-wrapper desktop-left">
-                      <a href="#" className="boxed-btn">
-                        Request a quote
-                      </a>
-                    </div>
-                    <span className="or">OR</span>
-                    <div className="header-buttom-content style-01">
-                      <p>Need Help Now? Call Us!</p>
-                      <span>+91 458 654 528</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <Banner />
       <div
         className="header-bottom-area bg-blue-03 bg-image padding-bottom-80"
         style={{
@@ -1177,10 +834,7 @@ const Home = () => {
           <div className="row">
             <div className="col-lg-6">
               <div className="contact-img bg-image">
-                <img
-                  src="../../../assets/uploads/media-uploader/011618994172.png"
-                  alt=""
-                />
+                <img src={ContactImage} alt="" />
               </div>
             </div>
             <div className="col-lg-5 offset-lg-1">
@@ -1279,10 +933,7 @@ const Home = () => {
               <div className="single-price-plan-01">
                 <div className="price-header">
                   <div className="img-icon">
-                    <img
-                      src="../../../assets/uploads/media-uploader/price-011618998094.png"
-                      alt=""
-                    />
+                    <img src={PriceImage} alt="price1" />
                   </div>
                   <h4 className="title">Basic Pack</h4>
                 </div>
@@ -1322,10 +973,7 @@ const Home = () => {
               <div className="single-price-plan-01 active">
                 <div className="price-header">
                   <div className="img-icon">
-                    <img
-                      src="../../../assets/uploads/media-uploader/price-021618998094.png"
-                      alt=""
-                    />
+                    <img src={PriceImage2} alt="price2" />
                   </div>
                   <h4 className="title">Resident Pack</h4>
                 </div>
@@ -1365,10 +1013,7 @@ const Home = () => {
               <div className="single-price-plan-01">
                 <div className="price-header">
                   <div className="img-icon">
-                    <img
-                      src="../../../assets/uploads/media-uploader/price-031618998093.png"
-                      alt=""
-                    />
+                    <img src={PriceImage3} alt="price3" />
                   </div>
                   <h4 className="title">Business Pack</h4>
                 </div>
@@ -1616,10 +1261,7 @@ const Home = () => {
             <div className="col-md-6 col-lg-4">
               <div className="single-blog-grid-01 margin-bottom-30">
                 <div className="thumb">
-                  <img
-                    src="../../../assets/uploads/media-uploader/pexels-karolina-grabowska-4239146-min1620223752.jpg"
-                    alt=""
-                  />
+                  <img src={PostImage1} alt="post1" />
                   <div className="news-date">
                     <h5 className="title">24</h5>
                     <span>Apr</span>
@@ -1649,10 +1291,7 @@ const Home = () => {
             <div className="col-md-6 col-lg-4">
               <div className="single-blog-grid-01 margin-bottom-30">
                 <div className="thumb">
-                  <img
-                    src="../../../assets/uploads/media-uploader/pexels-karolina-grabowska-4239032-min1620225734.jpg"
-                    alt=""
-                  />
+                  <img src={PostImage2} alt="post2" />
                   <div className="news-date">
                     <h5 className="title">24</h5>
                     <span>Apr</span>
@@ -1682,10 +1321,7 @@ const Home = () => {
             <div className="col-md-6 col-lg-4">
               <div className="single-blog-grid-01 margin-bottom-30">
                 <div className="thumb">
-                  <img
-                    src="../../../assets/uploads/media-uploader/pexels-karolina-grabowska-4239113-min1620225894.jpg"
-                    alt=""
-                  />
+                  <img src={PostImage3} alt="post3" />
                   <div className="news-date">
                     <h5 className="title">22</h5>
                     <span>Apr</span>
@@ -1716,146 +1352,6 @@ const Home = () => {
         </div>
       </section>
 
-      <footer
-        className="footer-area bg-blue-02 bg-image"
-        style={{
-          backgroundImage: `url(${FooterImage})`
-        }}
-      >
-        <div className="footer-top padding-bottom-50 padding-top-80">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-3 col-md-6">
-                <div className="footer-widget widget">
-                  <div className="footer-widget widget">
-                    <div className="about_us_widget style-01">
-                      <img
-                        src="../../../assets/uploads/media-uploader/site-white-logo1618651031.png"
-                        className="footer-logo"
-                        alt="site_white_logo"
-                      />
-                      <p>
-                        Sed do eiusmod tempor incididunt ut labore et dolore
-                        eiusmod tempor incididunt
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6">
-                <div className="footer-widget widget">
-                  <h4 className="widget-title style-01">Recent Posts</h4>
-                  <ul className="recent_post_item">
-                    <li className="single-recent-post-item">
-                      <div className="thumb">
-                        <img
-                          src="../../../assets/uploads/media-uploader/thumb-pexels-karolina-grabowska-4239146-min1620223752.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <div className="content">
-                        <h4 className="title">
-                          <a href="blog/healthy-life-is-clean-life/5.html">
-                            A healthy life is a clean life for everyone
-                          </a>
-                        </h4>
-                        <span className="time">
-                          <i className="far fa-calendar-alt"></i>24 Apr 2021
-                        </span>
-                      </div>
-                    </li>
-                    <li className="single-recent-post-item">
-                      <div className="thumb">
-                        <img
-                          src="../../../assets/uploads/media-uploader/thumb-pexels-karolina-grabowska-4239032-min1620225734.jpg"
-                          alt=""
-                        />
-                      </div>
-                      <div className="content">
-                        <h4 className="title">
-                          <a href="blog/cleaning-are-best-business-for-future/4.html">
-                            Cleaning are best business for future
-                          </a>
-                        </h4>
-                        <span className="time">
-                          <i className="far fa-calendar-alt"></i>24 Apr 2021
-                        </span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6">
-                <div className="footer-widget widget">
-                  <div className="footer-widget widget widget_nav_menu">
-                    <h4 className="widget-title">Useful Links</h4>
-                    <ul>
-                      <li>
-                        <a href="how-it-works.html">How It Works</a>
-                      </li>
-                      <li>
-                        <a href="faq.html">Faq</a>
-                      </li>
-                      <li>
-                        <a href="about-us.html">About Us</a>
-                      </li>
-                      <li>
-                        <a href="contact-us.html">Contact Us</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6">
-                <div className="footer-widget widget">
-                  <h4 className="widget-title">Contact us</h4>
-                  <ul className="contact_info_list">
-                    <li className="single-info-item">
-                      <div className="icon">
-                        <i className="fa fa-home"></i>
-                      </div>
-                      <div className="details">
-                        66 Brooklyn street, New York
-                      </div>
-                    </li>
-                    <li className="single-info-item">
-                      <div className="icon">
-                        <i className="fa fa-phone"></i>
-                      </div>
-                      <div className="details">+458 123 657</div>
-                    </li>
-                    <li className="single-info-item">
-                      <div className="icon">
-                        <i className="fas fa-envelope-open"></i>
-                      </div>
-                      <div className="details">
-                        <a
-                          href="https://xgenious.com/cdn-cgi/l/email-protection"
-                          className="__cf_email__"
-                          data-cfemail="b3d0dcddc7d2d0c7f3cbd4d6dddadcc6c09dd0dcde"
-                        >
-                          [email&#160;protected]
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="copyright-area">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="copyright-area-inner">
-                  © Copyright 2023 . All Right Reserved By Neateller
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
 
       <div className="back-to-top">
         <span className="back-top">
