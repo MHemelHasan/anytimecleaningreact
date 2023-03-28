@@ -77,8 +77,8 @@ const Header = () => {
                 <div className="container nav-container">
                     <div className="responsive-mobile-menu">
                         <div className="logo-wrapper">
-                            <a
-                                href="https://xgenious.com/laravel/neateller"
+                            <Link
+                                to="/home"
                                 className="logo"
                             >
                                 <img
@@ -86,7 +86,7 @@ const Header = () => {
                                     alt="site_logo"
                                     style={{ height: 60, width: 60 }}
                                 />
-                            </a>
+                            </Link>
                         </div>
                         <div className="mobile-cart">
                             <a href="products-cart.html">

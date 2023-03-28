@@ -119,36 +119,34 @@ const Footer = () => {
               </div>
               <div className="col-lg-3 col-md-6">
                 <div className="footer-widget widget">
-                  <h4 className="widget-title style-01">Recent Posts</h4>
+                  <h4 className="widget-title style-01">Services</h4>
                   <ul className="recent_post_item">
                     <li className="single-recent-post-item">
-                      <div className="thumb">
-                        <img src={PostImage4} alt="post4" />
-                      </div>
+                      {/*<div className="thumb">*/}
+                      {/*  <img src={PostImage4} alt="post4" />*/}
+                      {/*</div>*/}
                       <div className="content">
                         <h4 className="title">
-                          <a href="blog/healthy-life-is-clean-life/5.html">
-                            A healthy life is a clean life for everyone
-                          </a>
+                          {/*<a href="blog/healthy-life-is-clean-life/5.html">*/}
+                          {/*  A healthy life is a clean life for everyone*/}
+                          {/*</a>*/}
+                          <a>Residential Service</a>
                         </h4>
-                        <span className="time">
-                          <i className="far fa-calendar-alt"></i>24 Apr 2021
-                        </span>
+
                       </div>
                     </li>
                     <li className="single-recent-post-item">
-                      <div className="thumb">
-                        <img src={PostImage5} alt="post5" />
-                      </div>
+                      {/*<div className="thumb">*/}
+                      {/*  <img src={PostImage5} alt="post5" />*/}
+                      {/*</div>*/}
                       <div className="content">
                         <h4 className="title">
-                          <a href="blog/cleaning-are-best-business-for-future/4.html">
-                            Cleaning are best business for future
-                          </a>
+                          {/*<a href="blog/cleaning-are-best-business-for-future/4.html">*/}
+                          {/*  Cleaning are best business for future*/}
+                          {/*</a>*/}
+                          <a>Commercial Service</a>
                         </h4>
-                        <span className="time">
-                          <i className="far fa-calendar-alt"></i>24 Apr 2021
-                        </span>
+
                       </div>
                     </li>
                   </ul>
