@@ -91,7 +91,7 @@ const Header = () => {
                         <div className="mobile-cart">
                             <a href="products-cart.html">
                                 <i className="flaticon-shopping-cart-2"></i>
-                                <span className="pcount">0</span>
+                                {/*<span className="pcount">0</span>*/}
                             </a>
                         </div>
                         <button
@@ -108,13 +108,13 @@ const Header = () => {
                     <div className="collapse navbar-collapse" id="bizcoxx_main_menu">
                         <ul className="navbar-nav">
                             <li>
-                                <a href="https://xgenious.com/laravel/neateller">Home</a>
+                                <a href="/home">Home</a>
                             </li>
                             <li>
-                                <a href="about-us.html">About Us</a>
+                                <Link to="/about">About Us</Link>
                             </li>
                             <li className="menu-item-has-mega-menu">
-                                <a href="service.html">Service</a>
+                                <a href="#">Service</a>
                                 <div className="xg_mega_menu_wrapper service_mega_menu">
                                     <div className="xg-mega-menu-container">
                                         <div className="row">
@@ -190,9 +190,9 @@ const Header = () => {
                             </ul>
                         </div>
                         <div className="btn-wrapper">
-                            <a href="https://xgenious.com/" className="request-btn">
+                            <Link to="/provider-signup" className="request-btn">
                                 Become Provider<i className="fas fa-long-arrow-alt-right"></i>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

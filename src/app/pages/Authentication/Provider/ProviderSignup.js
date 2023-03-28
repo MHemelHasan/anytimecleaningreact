@@ -1,132 +1,72 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Logo from "../../../../assets/company-logo.png";
-import "../Signup.css";
+import React, {useState} from "react";
+import { Link} from "react-router-dom";
+import "../Login.css";
+import RootURL from '../../../components/Contants'
+
 const ProviderSignup = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [phone_number, setPhoneNumber] = useState('');
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    await fetch(RootURL + 'provider/register', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+        phone_number})
+    }).then(response => console.log(response))
+  }
+
   return (
-    <div className="bg-action-color min-h-full flex flex-col justify-center py-24 sm:px-6 lg:px-8 signup">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <img className="mx-auto h-40 w-auto" src={Logo} alt="logo" />
-        <h2 className="text-center text-3xl font-bold text-gray-900">
-          Become a <span className="text-secondary">Provider</span> If you are
-          interested contact us today
-        </h2>
-      </div>
-
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="py-8 px-4 sm:rounded-lg sm:px-10">
-          <form className="space-y-6" action="#" method="POST">
-            <div>
-              <label
-                htmlFor="fullName"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Full Name
-              </label>
-              <div className="mt-1">
-                <input
-                  id="fullName"
-                  name="fullName"
-                  type="fullName"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                />
+      <div className="container-fluid h-100 custom">
+        <div className="row justify-content-center align-items-center h-100">
+          <div className="col-sm-12 col-md-6 login-form">
+            <h2 className="text-center">Register as a Provider</h2>
+            <form>
+              <div className="form-group">
+                <label htmlFor="name">Full Name</label>
+                <input type="text" className="form-control" name="name" id="name"
+                       placeholder="Enter Full Name"
+                       onChange={(e) => setName(e.target.value)}/>
               </div>
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Email address
-              </label>
-              <div className="mt-1">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                />
+              <div className="form-group">
+                <label htmlFor="Email">Email:</label>
+                <input type="text" className="form-control" name="email" id="email"
+                       placeholder="Enter email"
+                       onChange={(e) => setEmail(e.target.value)}/>
               </div>
-            </div>
-
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Password
-              </label>
-              <div className="mt-1">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                />
+              <div className="form-group">
+                <label htmlFor="password">Password:</label>
+                <input type="password" className="form-control" id="password"
+                       name="password" placeholder="Enter password"
+                       onChange={(e) => setPassword(e.target.value)}/>
               </div>
-            </div>
-            <div>
-              <label
-                htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Confirm Password
-              </label>
-              <div className="mt-1">
-                <input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="confirmPassword"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                />
+              <div className="form-group">
+                <label htmlFor="confirm-password">Confirm Password:</label>
+                <input type="password" name="password" className="form-control" id="confirm-password"
+                       placeholder="Confirm password"/>
               </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 focus:ring-0 focus:outline-none text-indigo-600 border-gray-300 rounded"
-                />
-                <label
-                  htmlFor="remember-me"
-                  className="ml-2 block text-sm text-gray-900 font-medium"
-                >
-                  I agree to the terms
-                </label>
+              <div className="form-group">
+                <label htmlFor="phone_number">Phone Number:</label>
+                <input type="text" name="phone_number" className="form-control" id="phone_number"
+                       placeholder="Enter Phone Number" onChange={e => setPhoneNumber(e.target.value)}/>
               </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="w-full flex justify-center py-2 px-4 rounded-md shadow-sm text-sm font-medium text-black border-2 border-bg-action-color hover:border-bg-primary hover:bg-action-color bg-primary focus:outline-none focus:ring-2 focus:ring-primary"
-              >
-                Signup
-              </button>
-            </div>
-          </form>
-          <div className="mt-6">
-            <p className="text-base font-semibold mb-0">
-              Already have an account?{" "}
-              <Link
-                className="text-secondary font-bold hover:black focus:text-black transition duration-200 ease-in-out"
-                to="/login"
-              >
-                Login
-              </Link>
-            </p>
+              <div className="text-center">
+                <button type="submit" className="btn btn-primary mx-auto" onClick={submitHandler}>Register
+                </button>
+              </div>
+              <p className="text-center m-4">Already have an account? <Link to="/login"
+                                                                            style={{color: "blue"}}>Login</Link>
+              </p>
+            </form>
+            {/*<p className="text-center">Provider? <Link to="/provider">Login here.</Link></p>*/}
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
