@@ -89,7 +89,7 @@ const Header = () => {
                             </Link>
                         </div>
                         <div className="mobile-cart">
-                            <a href="products-cart.html">
+                            <a href="#">
                                 <i className="flaticon-shopping-cart-2"></i>
                                 {/*<span className="pcount">0</span>*/}
                             </a>
@@ -125,12 +125,12 @@ const Header = () => {
                                                     </h4>
                                                     <ul>
                                                         <li>
-                                                            <a href="service/cyber-security/1.html">
+                                                            <a href="#">
                                                                 We Are Experience Cleaner
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="service/over-200-complete-task/8.html">
+                                                            <a href="#">
                                                                 Over 200+ Complete Task
                                                             </a>
                                                         </li>
@@ -144,7 +144,7 @@ const Header = () => {
                                                     </h4>
                                                     <ul>
                                                         <li>
-                                                            <a href="service/over-200-complete-task/9.html">
+                                                            <a href="#">
                                                                 100% Clients Satisfaction
                                                             </a>
                                                         </li>
@@ -156,12 +156,12 @@ const Header = () => {
                                                     <h4 className="mega-menu-title">Others Service</h4>
                                                     <ul>
                                                         <li>
-                                                            <a href="service/over-200-complete-task/10.html">
+                                                            <a href="#">
                                                                 Global cleaning service
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="service/colonel-or-passage-to-ability/11.html">
+                                                            <a href="#">
                                                                 Colonel or passage to ability
                                                             </a>
                                                         </li>
@@ -174,7 +174,7 @@ const Header = () => {
                             </li>
 
                             <li>
-                                <a href="contact-us.html">Contact Us</a>
+                                <Link to="/contact">Contact Us</Link>
                             </li>
                         </ul>
                     </div>
@@ -182,7 +182,7 @@ const Header = () => {
                         <div className="icon-part nav-style-01">
                             <ul>
                                 <li className="cart">
-                                    <a href="products-cart.html">
+                                    <a href="#">
                                         <i className="flaticon-shopping-cart-2"></i>
                                         <span className="pcount">0</span>
                                     </a>
