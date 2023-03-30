@@ -8,6 +8,8 @@ import Service_bg2 from "../../../assets/uploads/media-uploader/011618730370.png
 import Service_bg3 from "../../../assets/uploads/media-uploader/011618730370.png";
 import Service_bg4 from "../../../assets/uploads/media-uploader/011618730370.png";
 import Service_bg5 from "../../../assets/uploads/media-uploader/011618730370.png";
+import { AiFillStar } from "react-icons/ai";
+import Provider from "../Home/Provider";
 
 const Service = () => {
     return (<>
@@ -180,8 +182,99 @@ const Service = () => {
                         <p>That means sparkling windows that don’t just look good – they’ll be better protected against
                             scratches and cracks and able to add some natural light into your home.</p>
                         <p><strong>Our home window cleaning company also offers the following services:</strong></p>
+                        <div>
+                            <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Deep cleaning of tracks</span></div>
+                            <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Screen cleaning</span></div>
+                            <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Screen repair</span></div>
+                            <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Deck glass cleaning</span></div>
+                            <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Removal of stickers & other construction debris</span></div>
+                            <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Glass Restoration from Hard Water Stains</span></div>
+                            <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Glass Resurfacing (select locations only)</span></div>
+                        </div>
+                        <div className="py-3">
+                            <button className="btn btn-info">Book Now</button>
+                        </div>
                     </div>
                 </div>
+                <div>
+                    <Provider />
+                </div>
+                <div className="row">
+                    <div className="col-md-6 col-sm-12 col-lg-5">
+                        <div className="d-flex">
+                            <div className=""><strong>our process </strong> </div>   
+                            <div className="px-3"><AiFillStar style={{ color: '#ffa00e' }}/></div>
+                            <div><hr /></div>
+                        </div>
+                        <div>
+                            <h2 className="title font-weight-bold">How we clean windows</h2>
+                            <h3 className="">Our four-step process means you’ll always get the best results.</h3>
+                        </div>
+                    </div>
+                    <div className="col-md-6 col-sm-12 col-lg-6">
+                        <div className="d-flex">
+                            <div className="numbering">
+                                <b>1</b>
+                            </div>
+                            <div>
+                            One of our kilted cleaning experts thoroughly inspects your windows and notes any damage, leaks, broken glass, or other problems.
+
+                            </div>
+                        </div>
+                        <div className="d-flex py-4">
+                            <div className="numbering">
+                                <b>2</b>
+                            </div>
+                            <div>
+                            We clean your windows using non-abrasive materials, including mops, scrubs, and squeegees, for a streak-free shine.
+
+                            </div>
+                        </div>
+                        <div className="d-flex">
+                            <div className="numbering">
+                                <b>3</b>
+                            </div>
+                            <div>
+                            We detail clean the window sill, corners, and edges.
+                            </div>
+                        </div>
+                        <div className="d-flex py-4">
+                            <div className="numbering">
+                                <b>4</b>
+                            </div>
+                            <div>
+                            We thoroughly clean-up so we leave your home even better than we found it.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row pt-5">
+                    <div className="col-md-6 col-sm-12 col-lg-6">
+                        <img src={Service_bg} alt="service"/>
+                    </div>
+                    <div className="col-md-6 col-sm-12 col-lg-6">
+                        <h1><strong>Why invest in professional window cleaning?</strong></h1>
+                        <p>Part art, part science - getting a streak-free shine on your home’s windows takes know-how, the right products and tools, and maybe even a ladder. One wrong step and you could damage the glass or fall on your… backside. Trusting this important job to a novice cleaner might not be a smart move, either. All it takes is one ladder slip or misuse of tools, and you’ve got a liability on your hands. The choice, then, is clear (just like your windows will be) - you need the Men In Kilts team.
+                        </p>
+                        <br/>
+                        <p>Cleaning the interior of your windows and screens can extend the life of your windows, protect indoor air quality, and increase your home’s energy efficiency. Ditch the DIY, sit the rookies on the bench, and discover why a kilted clean means getting high-quality, long-lasting results. </p>
+                        <p class="txt-hlt v2 mt-4">Our team is ready to get to work. Reach out to us at 
+                        <strong><a href="tel:(888) 292-1176"> (888) 292-1176 </a></strong>
+                        today! </p>
+                    </div>
+                </div>
+
+                <div className="cstm-bg">
+                <div className=" row pt-5 d-flex justify-content-center">
+                    <div className="d-flex align-items-center"><AiFillStar style={{ color: '#ffa00e' }}/><span className="text-white">a clear choice</span><AiFillStar style={{ color: '#ffa00e' }}/></div>
+                </div>
+                <div className="">
+                    <h2 className="d-flex justify-content-center text-white pb-3 fw-600">The benefits of a squeaky clean window</h2>
+                </div>
+                </div>
+
+                
             </div>
         </div>
 

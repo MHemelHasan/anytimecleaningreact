@@ -7840,3 +7840,32 @@ nav.navbar.navbar-area.nav-style-01 .icon-part.nav-style-03 .pcount {
 .buy-now-wrap ul li + li {
     border-top: 1px solid rgba(0, 0, 0, .02);
 }
+
+.numbering{
+    height: 60px;
+    width: 60px;
+    color: white;
+    background-color: #A4D06A;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    flex: 0 0 60px;
+    margin-right: 20px;
+}
+
+.txt-hlt.v2 {
+    color: #464646;
+    padding: 1.667rem 2.722rem;
+    background-color: #F9F4EA;
+    border-radius: 1.667rem;
+}
+
+.cstm-bg{
+  background-color: #05464e;
+}
+
+.fw-600{
+  font-weight: 600;
+}
