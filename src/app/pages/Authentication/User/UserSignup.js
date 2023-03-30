@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { Link} from "react-router-dom";
 import "../Login.css";
 import RootURL from '../../../components/Contants'
+// import "../../../../../public/js/toastr.min";
 
 const UserSignup = () => {
     const [name, setName] = useState('');
@@ -10,6 +11,9 @@ const UserSignup = () => {
     const [phone_number, setPhoneNumber] = useState('');
     const submitHandler = async (e) => {
         e.preventDefault();
+        // if(name === ''){
+        //     toastr.info('Enter user name');
+        // }
         await fetch(RootURL + 'register', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},

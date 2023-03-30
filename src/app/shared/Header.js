@@ -1,5 +1,3 @@
-
-
 import logo from "../../assets/company-logo.png";
 import {Link} from "react-router-dom";
 
@@ -91,7 +89,6 @@ const Header = () => {
                         <div className="mobile-cart">
                             <a href="#">
                                 <i className="flaticon-shopping-cart-2"></i>
-                                {/*<span className="pcount">0</span>*/}
                             </a>
                         </div>
                         <button

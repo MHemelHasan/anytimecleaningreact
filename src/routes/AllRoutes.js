@@ -13,6 +13,7 @@ import About from "../app/pages/About/About";
 import Login from "../app/pages/Authentication/Login";
 import ProviderSignup from "../app/pages/Authentication/Provider/ProviderSignup";
 import UserSignup from "../app/pages/Authentication/User/UserSignup";
+import Service from "../app/pages/Services/Service";
 const AllRoutes = () => {
   return (
     <>
@@ -31,6 +32,7 @@ const AllRoutes = () => {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/provider-signup" element={<ProviderSignup />}></Route>
         <Route path="/user-signup" element={<UserSignup />}></Route>
+        <Route path="/service" element={<Service />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </>
