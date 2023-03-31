@@ -111,7 +111,7 @@ const Header = () => {
                                 <Link to="/about">About Us</Link>
                             </li>
                             <li className="menu-item-has-mega-menu">
-                                <a href="#">Service</a>
+                                <a >Service</a>
                                 <div className="xg_mega_menu_wrapper service_mega_menu">
                                     <div className="xg-mega-menu-container">
                                         <div className="row">

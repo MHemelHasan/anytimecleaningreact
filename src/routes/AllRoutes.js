@@ -14,6 +14,7 @@ import Login from "../app/pages/Authentication/Login";
 import ProviderSignup from "../app/pages/Authentication/Provider/ProviderSignup";
 import UserSignup from "../app/pages/Authentication/User/UserSignup";
 import Service from "../app/pages/Services/Service";
+import Booking from "../app/pages/Booking/Booking";
 const AllRoutes = () => {
   return (
     <>
@@ -33,6 +34,7 @@ const AllRoutes = () => {
         <Route path="/provider-signup" element={<ProviderSignup />}></Route>
         <Route path="/user-signup" element={<UserSignup />}></Route>
         <Route path="/service" element={<Service />}></Route>
+        <Route path="/booking" element={<Booking />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </>

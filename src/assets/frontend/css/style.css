@@ -7879,3 +7879,28 @@ nav.navbar.navbar-area.nav-style-01 .icon-part.nav-style-03 .pcount {
   padding-left: 100px;
   padding-right: 100px;
 }
+
+.bg-orenge{
+  background-color: #FFA500;
+}
+
+.fill-orenge{
+  color: #FFA500;
+}
+
+.btn-orenge{
+  background-color: #FFA500;
+  color: white;
+  padding-bottom: 10px;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 10px;
+}
+
+.bg-address{
+  background-color: #fdf2e5;
+}
+
+.bg-gray{
+  background-color: #f8faf9;
+}
