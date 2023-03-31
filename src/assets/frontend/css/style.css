@@ -7869,3 +7869,13 @@ nav.navbar.navbar-area.nav-style-01 .icon-part.nav-style-03 .pcount {
 .fw-600{
   font-weight: 600;
 }
+
+.card {
+  border: none;
+  outline: none;
+}
+
+.px-100{
+  padding-left: 100px;
+  padding-right: 100px;
+}

@@ -8,7 +8,7 @@ import Service_bg2 from "../../../assets/uploads/media-uploader/011618730370.png
 import Service_bg3 from "../../../assets/uploads/media-uploader/011618730370.png";
 import Service_bg4 from "../../../assets/uploads/media-uploader/011618730370.png";
 import Service_bg5 from "../../../assets/uploads/media-uploader/011618730370.png";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillCheckCircle, AiFillStar, AiOutlineCheckCircle, AiOutlineFileDone, AiOutlineLike, AiOutlineMobile, AiTwotoneCheckCircle } from "react-icons/ai";
 import Provider from "../Home/Provider";
 
 const Service = () => {
@@ -249,7 +249,7 @@ const Service = () => {
                     </div>
                 </div>
 
-                <div className="row pt-5">
+                <div className="row py-5">
                     <div className="col-md-6 col-sm-12 col-lg-6">
                         <img src={Service_bg} alt="service"/>
                     </div>
@@ -265,19 +265,92 @@ const Service = () => {
                     </div>
                 </div>
 
-                <div className="cstm-bg">
-                <div className=" row pt-5 d-flex justify-content-center">
-                    <div className="d-flex align-items-center"><AiFillStar style={{ color: '#ffa00e' }}/><span className="text-white">a clear choice</span><AiFillStar style={{ color: '#ffa00e' }}/></div>
-                </div>
-                <div className="">
-                    <h2 className="d-flex justify-content-center text-white pb-3 fw-600">The benefits of a squeaky clean window</h2>
-                </div>
+                <div className="cstm-bg rounded">
+                    <div className=" row pt-5 d-flex justify-content-center">
+                        <div className="d-flex align-items-center"><AiFillStar style={{ color: '#ffa00e' }}/><span className="text-white">a clear choice</span><AiFillStar style={{ color: '#ffa00e' }}/></div>
+                    </div>
+                    <div className="">
+                        <h2 className="d-flex justify-content-center text-white pb-3 fw-600">The benefits of a squeaky clean window</h2>
+                    </div>
+                    <div className="row bg-white rounded mx-5">
+                        <div className="col-sm-4">
+                            <div class="card">
+                            <div class="card-body">
+                                <div className="d-flex justify-content-center">
+                                    <AiOutlineCheckCircle size={100} style={{color:"#007bff"}} />
+                                </div>
+                                <div>
+                                    <p class="card-text text-center pt-3">Long-term protection against cracking, etching, and scratches</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div className="col-sm-4">
+                            <div class="card">
+                            <div class="card-body">
+                                <div className="d-flex justify-content-center">
+                                    <AiOutlineCheckCircle size={100} style={{color:"#007bff"}} />
+                                </div>
+                                <div>
+                                    <p class="card-text text-center pt-3">Lets more natural light into your home</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div className="col-sm-4">
+                            <div class="card">
+                            <div class="card-body">
+                                <div className="d-flex justify-content-center">
+                                    <AiOutlineCheckCircle size={100} style={{color:"#007bff"}} />
+                                </div>
+                                <div>
+                                    <p class="card-text text-center pt-3">Better-looking windows and increased curb appeal</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                
+                <div className="d-flex justify-content-center py-5 px-100">
+                    <div className="">
+                        <div className="py-5">
+                            <h1><strong>How it works when you work with us:</strong></h1>
+                        </div>
+                        <div className="d-flex">
+                            <div className="pr-5">
+                                <AiOutlineMobile size={100}/>
+                            </div>
+                            <div>
+                                <h3>Schedule your free estimate.</h3>
+                                <p>We’ll visit your home, assess the situation and come up with the best solution for your situation.</p>
+                            </div>
+                        </div>
+                        <div className="d-flex py-4">
+                            <div className="pr-5">
+                                <AiOutlineCheckCircle size={100}/>
+                            </div>
+                            <div>
+                                <h3>Book your service.</h3>
+                                <p>We’ll show up on time and be ready to work. Plus, we’ll send you updates from pre-appointment to completion so you’re always in the loop.</p>
+                            </div>
+                        </div>
+                        <div className="d-flex">
+                            <div className="pr-5">
+                                <AiOutlineLike size={100} />
+                            </div>
+                            <div>
+                                <h3>Check our work.</h3>
+                                <p>Your satisfaction is our priority. That’s why we conduct a post-service walk-through so you can make sure everything has been handled to the highest standard</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="px-100">
+                    <button className="btn btn-info">Schedule estimate</button>
+                </div>
             </div>
         </div>
-
 
     </>);
 }
