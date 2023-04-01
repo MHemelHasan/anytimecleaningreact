@@ -16,6 +16,7 @@ import UserSignup from "../app/pages/Authentication/User/UserSignup";
 import Service from "../app/pages/Services/Service";
 import Booking from "../app/pages/Booking/Booking";
 import ConfirmBooking from "../app/pages/Booking/ConfirmBooking";
+import Confirmation from "../app/pages/Booking/Confirmation";
 const AllRoutes = () => {
   return (
     <>
@@ -37,6 +38,7 @@ const AllRoutes = () => {
         <Route path="/service" element={<Service />}></Route>
         <Route path="/booking" element={<Booking />}></Route>
         <Route path="/confirmBooking" element={<ConfirmBooking />}></Route>
+        <Route path="/confirmation" element={<Confirmation />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </>

@@ -38,38 +38,54 @@ const Booking = () => {
 
         <div className="md-m-5 p-5 bg-gray">
             <div className="container">
-                <div className=" bg-white p-5 rounded">
-                <div className="d-flex">
-                    <div className="pr-5">
-                        <p>Your Address</p>
-                    </div>
-                    <div className="d-flex justify-content-between align-items-center bg-address rounded px-2">
-                        <p className="mr-2 mb-1 fill-orenge">New</p>
-                        <BiCurrentLocation size={20} style={{color:"#FFA500"}}/>
-                    </div>
-                </div>
-                <div className="d-flex py-5">
-                    <BiMap size={20}/>
-                    <p className="pl-3">6590 Hand Brooks Apt. 428 Johnathonberg, MA 60603-...</p>
-                </div>
-                </div>
-                <div className="bg-white rounded p-5 my-3">
-                    <p><strong>Hint</strong></p>
+            <div className="row">
+                <div className="col-md-6 col-sm-12 col-lg-6">
+                    <div className=" bg-white p-5 rounded">
                     <div className="d-flex">
-                        <BiFile size={35}/>
-                        <div className="input-group mb-3 pl-3">
-                        <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
+                        <div className="pr-5">
+                            <p>Your Address</p>
+                        </div>
+                        <div className="d-flex justify-content-between align-items-center bg-address rounded px-2">
+                            <p className="mr-2 mb-1 fill-orenge">New</p>
+                            <BiCurrentLocation size={20} style={{color:"#FFA500"}}/>
+                        </div>
+                    </div>
+                    <div className="d-flex py-5">
+                        <BiMap size={20}/>
+                        <p className="pl-3">6590 Hand Brooks Apt. 428 Johnathonberg, MA 60603-...</p>
+                    </div>
+                    </div>
+
+                    <div className="d-flex justify-content-center align-items-center mt-3">
+                        <div>
+                            <p className="text-center">Requested Service on</p>
+                            <h3 className="text-center">Friday, March 31,2023</h3>
                         </div>
                     </div>
                 </div>
-                <div className="bg-white rounded p-5 mb-3">
-                    <p><strong>Coupon Code</strong></p>
-                    <div className="d-flex">
-                        <BiGift size={35}/>
-                        <div className="px-2 mt-1">COUPONCODE</div>
-                        <button className="btn btn-white ml-5 px-4">Apply</button>
+                <div className="col-md-6 col-sm-12 col-lg-6">
+                    <div className="bg-white rounded p-3 mb-3">
+                        <p><strong>Hint</strong></p>
+                        <div className="d-flex">
+                            <BiFile size={35}/>
+                            <div className="input-group mb-3 px-3">
+                            <input type="text" className="form-control" placeholder="Is there anything else you would like us..." aria-label="hint" aria-describedby="basic-addon1"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-white rounded p-3 mb-3">
+                        <p><strong>Coupon Code</strong></p>
+                        <div className="d-flex">
+                            <BiGift size={35}/>
+                            <div className="px-3 mt-1">
+                            <input type="text" className="form-control" placeholder="COUPON" aria-label="hint" aria-describedby="basic-addon1"/>
+                            </div>
+                            <button className="btn btn-white px-4">Apply</button>
+                        </div>
                     </div>
                 </div>
+                </div>
+
                 <div className="d-grid gap-2 mt-5">
                     <button className="btn btn-orenge" type="button" onClick={submitHandler}>Continue</button>
                 </div>
