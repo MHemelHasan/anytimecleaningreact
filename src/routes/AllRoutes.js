@@ -17,6 +17,7 @@ import Service from "../app/pages/Services/Service";
 import Booking from "../app/pages/Booking/Booking";
 import ConfirmBooking from "../app/pages/Booking/ConfirmBooking";
 import Confirmation from "../app/pages/Booking/Confirmation";
+import ProviderProfile from "../app/pages/Provider/ProviderProfile";
 const AllRoutes = () => {
   return (
     <>
@@ -39,6 +40,7 @@ const AllRoutes = () => {
         <Route path="/booking/:id" element={<Booking />}></Route>
         <Route path="/confirmBooking" element={<ConfirmBooking />}></Route>
         <Route path="/confirmation" element={<Confirmation />}></Route>
+        <Route path="/provider/:id" element={<ProviderProfile />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </>

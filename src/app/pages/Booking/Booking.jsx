@@ -1,13 +1,16 @@
 import image1 from "../../../assets/uploads/media-uploader/breadcrumb1619334343.png";
 import {Link, redirect, useParams} from "react-router-dom";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { BiArrowFromRight, BiCaretRight, BiCurrentLocation, BiFile, BiGift, BiMap } from "react-icons/bi";
 import ConfirmBooking from "./ConfirmBooking";
 import useBooking from "../../hooks/useBooking";
+import moment from "moment/moment";
 
 const Booking = () => {
+    const [coupon,setCoupon]=useState(null);
+    console.log("coupon:",coupon);
     const { id } = useParams();
     const { booking } = useBooking(id);
     console.log("booking:",booking);
@@ -16,6 +19,11 @@ const Booking = () => {
         e.preventDefault()
         redirect('/confirmBooking')
     }
+
+    const handleCoupon = () =>{
+        
+    }
+
     return (<>
         <div
             className='breadcrumb-area'
@@ -57,14 +65,14 @@ const Booking = () => {
                     </div>
                     <div className="d-flex py-5">
                         <BiMap size={20}/>
-                        <p className="pl-3">6590 Hand Brooks Apt. 428 Johnathonberg, MA 60603-...</p>
+                        <p className="pl-3">{booking?.address?.address}</p>
                     </div>
                     </div>
 
                     <div className="d-flex justify-content-center align-items-center mt-3">
                         <div>
                             <p className="text-center">Requested Service on</p>
-                            <h3 className="text-center">Friday, March 31,2023</h3>
+                            <h3 className="text-center">{moment().format('MMMM Do YYYY, h:mm a')}</h3>
                         </div>
                     </div>
                 </div>
@@ -83,9 +91,9 @@ const Booking = () => {
                         <div className="d-flex">
                             <BiGift size={35}/>
                             <div className="px-3 mt-1">
-                            <input type="text" className="form-control" placeholder="COUPON" aria-label="hint" aria-describedby="basic-addon1"/>
+                            <input onChange={(e)=>setCoupon(e.target.value)} type="text" className="form-control" placeholder="COUPON" aria-label="hint" aria-describedby="basic-addon1"/>
                             </div>
-                            <button className="btn btn-white px-4">Apply</button>
+                            <button onClick={handleCoupon} className="btn btn-white px-4">Apply</button>
                         </div>
                     </div>
                 </div>
