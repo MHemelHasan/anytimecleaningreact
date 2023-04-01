@@ -1,7 +1,7 @@
 import image1 from "../../../assets/uploads/media-uploader/breadcrumb1619334343.png";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
-import React from "react";
+import React, { useState } from "react";
 import img1 from "../../../assets/uploads/media-uploader/011618747632.png";
 import Service_bg from "../../../assets/uploads/media-uploader/011618730370.png";
 import Service_bg2 from "../../../assets/uploads/media-uploader/011618730370.png";
@@ -10,8 +10,17 @@ import Service_bg4 from "../../../assets/uploads/media-uploader/011618730370.png
 import Service_bg5 from "../../../assets/uploads/media-uploader/011618730370.png";
 import { AiFillCheckCircle, AiFillStar, AiOutlineCheckCircle, AiOutlineFileDone, AiOutlineLike, AiOutlineMobile, AiTwotoneCheckCircle } from "react-icons/ai";
 import Provider from "../Home/Provider";
+import useProductDetails from "../../hooks/useProductDetails";
 
 const Service = () => {
+    const { id } = useParams();
+    const { productDetail } = useProductDetails(id);
+    console.log("product Details:",productDetail);
+    const [isReadMore, setIsReadMore] = useState(true);
+    const toggleReadMore = () => {
+      setIsReadMore(!isReadMore);
+    };
+
     return (<>
         <div
             className='breadcrumb-area'
@@ -166,22 +175,9 @@ const Service = () => {
                         <img src={Service_bg} alt="service"/>
                     </div>
                     <div className="col-md-6 col-sm-12 col-lg-6">
-                        <h1><strong>Home window cleaning</strong></h1>
+                        <h1><strong>{productDetail?.name?.en}</strong></h1>
                         <h3>We raise the bar so you don’t have to</h3>
-                        <p>Window cleaning may look like an art, but it’s a science. And like most scientific pursuits,
-                            the
-                            difference between amazing results and unmitigated disasters is a lot of know-how and a
-                            little
-                            elbow grease.</p>
-                        <br/>
-                        <p>Men In Kilts’s home window cleaning experts are armed with both. Not only are they equipped
-                            with
-                            top-of-the-line tools and proprietary cleaning products, but they also know how to use those
-                            tools and products in a way that will give your home the best results.</p>
-                        <br/>
-                        <p>That means sparkling windows that don’t just look good – they’ll be better protected against
-                            scratches and cracks and able to add some natural light into your home.</p>
-                        <p><strong>Our home window cleaning company also offers the following services:</strong></p>
+                        <p>{productDetail?.description?.en}</p>
                         <div>
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Deep cleaning of tracks</span></div>
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Screen cleaning</span></div>
@@ -192,7 +188,9 @@ const Service = () => {
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Glass Resurfacing (select locations only)</span></div>
                         </div>
                         <div className="py-3">
+                            <Link to={`/booking/${productDetail.id}`}>
                             <button className="btn btn-info">Book Now</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

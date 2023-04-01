@@ -27,7 +27,7 @@ const AllRoutes = () => {
         <Route path="/shop" element={<Shop />} />
         <Route path="/categories" element={<CategoriesAll />}></Route>
         <Route path="/products" element={<ProductsAll />}></Route>
-        <Route path="/service/:id" element={<ProductDetails />}></Route>
+        {/* <Route path="/service/:id" element={<ProductDetails />}></Route> */}
         <Route path="/checkout" element={<CheckoutForm />}></Route>
         <Route path="/faq" element={<FAQ />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
@@ -35,8 +35,8 @@ const AllRoutes = () => {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/provider-signup" element={<ProviderSignup />}></Route>
         <Route path="/user-signup" element={<UserSignup />}></Route>
-        <Route path="/service" element={<Service />}></Route>
-        <Route path="/booking" element={<Booking />}></Route>
+        <Route path="/service/:id" element={<Service />}></Route>
+        <Route path="/booking/:id" element={<Booking />}></Route>
         <Route path="/confirmBooking" element={<ConfirmBooking />}></Route>
         <Route path="/confirmation" element={<Confirmation />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>

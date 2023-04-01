@@ -1,12 +1,17 @@
 import image1 from "../../../assets/uploads/media-uploader/breadcrumb1619334343.png";
-import {Link, redirect} from "react-router-dom";
+import {Link, redirect, useParams} from "react-router-dom";
 
 import React from "react";
 
 import { BiArrowFromRight, BiCaretRight, BiCurrentLocation, BiFile, BiGift, BiMap } from "react-icons/bi";
 import ConfirmBooking from "./ConfirmBooking";
+import useBooking from "../../hooks/useBooking";
 
 const Booking = () => {
+    const { id } = useParams();
+    const { booking } = useBooking(id);
+    console.log("booking:",booking);
+
     const submitHandler = (e) =>{
         e.preventDefault()
         redirect('/confirmBooking')
