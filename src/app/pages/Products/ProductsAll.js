@@ -7,7 +7,8 @@ const ProductsAll = () => {
   const { products, loading } = useProducts();
 
   return (
-    <div className="px-8 md:px-20 mx-auto my-20">
+      <div className="container mt-5 pt-5 text-center">
+    <div className="mx-auto m-5 p-5">
       {loading ? (
         <Loading />
       ) : (
@@ -23,6 +24,7 @@ const ProductsAll = () => {
 
       )}
     </div>
+      </div>
   );
 };
 

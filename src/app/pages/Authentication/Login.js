@@ -1,19 +1,38 @@
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import "./Login.css";
 import RootURL from '../../components/Contants';
+
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [redirect, setRedirect] = useState(false);
+    const [token, setToken] = useState('');
+
     const submitHandler = async (e) => {
         e.preventDefault();
         await fetch(RootURL + 'login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email, password,})
-        }).then(response => console.log(response))
+        }).
+        then(res => res.json())
+            .then(info => {
+                console.log(info);
+                console.log(info.data.api_token);
+                setToken(info.data.api_token);
+            }).then(()=>{
+                if (token){
+                    setRedirect(true);
+                }
+            })
+
     }
+   if(redirect){
+       return <Navigate to="/home" replace={true}/>
+   }
     return (
         <div className="login">
             <div className="container-fluid h-100 custom">
@@ -40,7 +59,8 @@ const Login = () => {
                         <p className="text-center m-4">Don't have an account? <Link to="/user-signup"
                                                                                     style={{color: "blue"}}>Register</Link>
                         </p>
-                        <p className="text-center">Provider? <a href="https://api.anytimecleaning.net/public/login">Login here.</a></p>
+                        <p className="text-center">Provider? <a href="https://api.anytimecleaning.net/public/login">Login
+                            here.</a></p>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-
+import RootURL from '../components/Contants'
 const useProducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://api.anytimecleaning.net/public/api/e_services`)
+      fetch(RootURL + 'e_services')
+    // fetch(`https://api.anytimecleaning.net/public/api/e_services`)
       // fetch(`https://home-services.smartersvision.com/api/e_services`)
       .then((response) => response.json())
       .then((data) => {

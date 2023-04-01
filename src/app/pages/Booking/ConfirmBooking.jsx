@@ -32,7 +32,7 @@ const ConfirmBooking = () => {
                     <div>
                         <h3>Booking Summary</h3>
                     </div>
-                    <div className=" bg-white p-5 rounded">
+                    <div className="bg-white p-5 rounded">
                         <div className="d-flex">
                             <div className="pr-5">
                                 <p>Your Address</p>
