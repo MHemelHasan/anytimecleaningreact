@@ -11,11 +11,16 @@ const ProductsAll = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div class=" grid grid-cols-2 gap-x-6 gap-y-10 px-2 pb-20 sm:grid-cols-3 sm:px-8 lg:mt-16 lg:grid-cols-3 lg:gap-x-4 lg:px-0">
+      <div class="container">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-3 g-4">
           {products?.map((product) => (
-            <Product key={product?.id} {...product} />
+            <div class="col">
+              <Product key={product?.id} {...product} />
+            </div>
           ))}
         </div>
+      </div>
+
       )}
     </div>
   );

@@ -2,9 +2,10 @@ import React from "react";
 import Rating from "react-rating";
 // import { faStar } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AiOutlineStar } from "react-icons/ai";
+import { AiOutlineClear, AiOutlineStar, AiOutlineUser } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { BiBrushAlt } from "react-icons/bi";
 
 const Product = ({
   name,
@@ -24,11 +25,13 @@ const Product = ({
   };
   return (
     <div
-      className="card w-80 glass"
+      className="card w-80 glass cursor-pointer"
       onClick={() => navigateToServicesDetail(id)}
     >
       <figure className="">
-        <img src={media[0]?.url} alt="Product" />
+        {media[0]?.url ?
+        <img height={300} width={300} src={media[0]?.url} alt="Product" />:
+        <AiOutlineClear style={{color:"#2c9bf4"}} size={300}/>}
       </figure>
 
       <div className="card-body">
