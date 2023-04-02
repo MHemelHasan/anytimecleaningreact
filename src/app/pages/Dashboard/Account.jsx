@@ -5,7 +5,7 @@ const Account = () => {
   return (
     <>
     <div className="container top-margin">
-    <div className="row">
+    <div className="row mb-5">
         <div class="col-md-3 sidebar">
             <Link to={"/dashboard"}>DashBoard</Link>
             <Link to={'/dashboard/orders'}>Orders</Link>

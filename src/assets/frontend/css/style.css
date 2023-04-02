@@ -7906,7 +7906,7 @@ nav.navbar.navbar-area.nav-style-01 .icon-part.nav-style-03 .pcount {
 }
 
 .top-margin{
-  margin-top: 180px;
+  margin-top: 210px;
 }
 
 /* sidebar */
@@ -7937,8 +7937,24 @@ nav.navbar.navbar-area.nav-style-01 .icon-part.nav-style-03 .pcount {
   color: white;
 }
 
-div.content {
-  /* margin-left: 200px; */
+/* div.content {
   padding: 1px 16px;
   height: 1000px;
+} */
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
 }
