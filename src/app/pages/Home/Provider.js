@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Team1 from "../../../assets/uploads/media-uploader/group-1-min1620466547.png";
 import Team2 from "../../../assets/uploads/media-uploader/group-2-min1620466899.png";
 import Team3 from "../../../assets/uploads/media-uploader/group-3-min1620467338.png";
 import Team4 from "../../../assets/uploads/media-uploader/group-5-min1620467501.png";
 import useProviders from "../../hooks/useProviders";
+import { Link } from "react-router-dom";
 
-const Provider = () => {
+const Provider = ({slice_value}) => {
+    const [sliceLimit,setSliceLimit] = useState(false);
     const { providers } = useProviders();
-    console.log("providers:",providers);
+    const [allProviders,setAllProviders] = useState(null);
+    console.log("providers:",allProviders);
+
+    useEffect(() => {
+        if(slice_value){
+            setAllProviders(providers?.data)
+            setSliceLimit(providers?.data?.length);
+        }else{
+            const featuredProvider = providers?.data?.filter((provider) => provider.featured);
+            setAllProviders(featuredProvider);
+            setSliceLimit(4);
+        }
+        
+      }, [slice_value,providers]);
+
     return (<section className="creative-team-area padding-top-110 padding-bottom-85">
             <div className="container">
                 <div className="row justify-content-center padding-bottom-45">
@@ -25,7 +41,7 @@ const Provider = () => {
                     </div>
                 </div>
                 <div className="row">
-                {providers.data && providers?.data.map((provider,index)=>(
+                {allProviders && allProviders.slice(0,sliceLimit).map((provider,index)=>(
                     <div key={index} className="col-lg-3 col-sm-6">
                         <div className="appointment-single-item">
                             <div
@@ -54,22 +70,19 @@ const Provider = () => {
                                         </p>
                                     </div>
                                 </div>
-                                <a href="#">
+                                <Link to={`/provider/${provider?.id}`}>
                                     <h4 className="title">{provider?.name}</h4>
-                                </a>
+                                </Link>
                                 <span className="location">
-                    <i className="fas fa-map-marker-alt"></i>{provider?.custom_fields.address?.view}
-                  </span>
+                                    <i className="fas fa-map-marker-alt"></i>{provider?.custom_fields.address?.view}
+                                </span>
                                 <p>
                                     {provider?.custom_fields?.bio?.view}
                                 </p>
                                 <div className="btn-wrapper">
-                                    <a
-                                        href="#"
-                                        className="boxed-btn"
-                                    >
+                                <Link to={`/provider/${provider?.id}`} className="boxed-btn">
                                         View Profile
-                                    </a>
+                                </Link>
                                 </div>
                             </div>
                         </div>

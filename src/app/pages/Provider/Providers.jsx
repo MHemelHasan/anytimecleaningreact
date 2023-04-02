@@ -11,7 +11,7 @@ const Providers = () => {
 
 
     return (<>
-            <Provider/>
+            <Provider slice_value={true}/>
         </>
     );
 }
