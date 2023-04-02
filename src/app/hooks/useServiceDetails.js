@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
 import RootURL from '../components/Contants';
 
-const useBooking = (id) => {
-  const [booking, setBooking] = useState({});
+const useServiceDetails = (id) => {
+  const [serviceDetail, setServiceDetail] = useState({});
   const [reload, setReload] = useState(false);
   useEffect(() => {
-    fetch(RootURL+`bookings/${id}`)
+    fetch(RootURL+`e_services${id}`)
       .then((response) => response.json())
       .then((data) => {
-        setBooking(data);
+        setServiceDetail(data);
         console.log(data);
       });
   }, []);
 
   return {
-    booking,
-    setBooking,
+    serviceDetail,
+    setServiceDetail,
     reload,
     setReload,
   };
 };
 
-export default useBooking;
+export default useServiceDetails;

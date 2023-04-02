@@ -1,4 +1,4 @@
-const ProductCard = () => {
+const ServiceCard = () => {
     return <>
         <div className="max-w-sm w-full lg:max-w-full lg:flex">
             <div
@@ -25,4 +25,4 @@ const ProductCard = () => {
         </div>
     </>
 }
-export default ProductCard;
+export default ServiceCard;

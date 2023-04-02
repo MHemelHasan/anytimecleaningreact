@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Rating from "react-rating";
 import { NavLink, useParams } from "react-router-dom";
-import useProductDetails from "../../hooks/useProductDetails";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
+import useServiceDetails from "../../hooks/useServiceDetails";
 
-const ProductDetails = () => {
+const ServiceDetails = () => {
   const { id } = useParams();
-  const { productDetail } = useProductDetails(id);
+  const { serviceDetails } = useServiceDetails(id);
   const [isReadMore, setIsReadMore] = useState(true);
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
@@ -53,20 +53,20 @@ const ProductDetails = () => {
 
           <div className="sticky top-0">
             <strong className="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600">
-              {productDetail?.featured ? "Featured" : ""}
+              {serviceDetails?.featured ? "Featured" : ""}
             </strong>
 
             <div className="mt-8 flex justify-between">
               <div className="max-w-[35ch] space-y-2">
                 <h1 className="text-xl font-bold sm:text-2xl">
-                  {productDetail?.name?.en}
+                  {serviceDetails?.name?.en}
                 </h1>
 
                 <p className="text-sm">Highest Rated Product</p>
 
                 <div className="-ml-0.5 flex">
                   <Rating
-                    initialRating={productDetail?.rate}
+                    initialRating={serviceDetails?.rate}
                     emptySymbol={
                       <AiOutlineStar
                         icon={AiOutlineStar}
@@ -84,7 +84,7 @@ const ProductDetails = () => {
                 </div>
               </div>
 
-              <p className="text-lg font-bold">${productDetail?.price}</p>
+              <p className="text-lg font-bold">${serviceDetails?.price}</p>
             </div>
 
             <div className="mt-4">
@@ -93,15 +93,15 @@ const ProductDetails = () => {
                   <span className="font-semibold"> Description: </span>
                   <span>
                     {isReadMore
-                      ? productDetail?.description?.en
+                      ? serviceDetails?.description?.en
                           .slice(0, 100)
                           .replace(/(<([^>]+)>)/gi, "") + "..."
-                      : productDetail?.description?.en.replace(
+                      : serviceDetails?.description?.en.replace(
                           /(<([^>]+)>)/gi,
                           ""
                         )}
                   </span>{" "}
-                  {productDetail?.description?.en?.length > 100 && (
+                  {serviceDetails?.description?.en?.length > 100 && (
                     <>
                       {" "}
                       <button
@@ -132,7 +132,7 @@ const ProductDetails = () => {
                     className="w-12 rounded border border-gray-600 focus:ring-gray-500 py-3 text-center text-base [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
                   />
                 </div>
-                {productDetail?.enable_booking ? (
+                {serviceDetails?.enable_booking ? (
                   <NavLink to={`/checkout`}>
                     {" "}
                     <button className="block rounded bg-action-color px-5 py-3 text-base font-medium text-black transition hover:scale-105">
@@ -238,4 +238,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default ServiceDetails;

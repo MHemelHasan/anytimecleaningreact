@@ -10,12 +10,12 @@ import Service_bg4 from "../../../assets/uploads/media-uploader/011618730370.png
 import Service_bg5 from "../../../assets/uploads/media-uploader/011618730370.png";
 import { AiFillCheckCircle, AiFillStar, AiOutlineCheckCircle, AiOutlineFileDone, AiOutlineLike, AiOutlineMobile, AiTwotoneCheckCircle } from "react-icons/ai";
 import Provider from "../Home/Provider";
-import useProductDetails from "../../hooks/useProductDetails";
+import useServiceDetails from "../../hooks/useServiceDetails";
 
 const Service = () => {
     const { id } = useParams();
-    const { productDetail } = useProductDetails(id);
-    console.log("product Details:",productDetail);
+    const { serviceDetail } = useServiceDetails(id);
+    console.log("product Details:",serviceDetail);
     const [isReadMore, setIsReadMore] = useState(true);
     const toggleReadMore = () => {
       setIsReadMore(!isReadMore);
@@ -52,9 +52,9 @@ const Service = () => {
                         <img src={Service_bg} alt="service"/>
                     </div>
                     <div className="col-md-6 col-sm-12 col-lg-6">
-                        <h1><strong>{productDetail?.name?.en}</strong></h1>
+                        <h1><strong>{serviceDetail?.name?.en}</strong></h1>
                         <h3>We raise the bar so you don’t have to</h3>
-                        <p>{productDetail?.description?.en}</p>
+                        <p>{serviceDetail?.description?.en}</p>
                         <div>
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Deep cleaning of tracks</span></div>
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Screen cleaning</span></div>
@@ -65,7 +65,7 @@ const Service = () => {
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Glass Resurfacing (select locations only)</span></div>
                         </div>
                         <div className="py-3">
-                            <Link to={`/booking/${productDetail.id}`}>
+                            <Link to={`/booking/${serviceDetail.id}`}>
                             <button className="btn btn-info">Book Now</button>
                             </Link>
                         </div>

@@ -9,7 +9,7 @@ import Category from "../../components/Category";
 import useProducts from "../../hooks/useProducts";
 import Product from "../../components/Product";
 import Loading from "../../shared/Loading";
-import ProductCard from "../Products/ProductCard";
+import ProductCard from "../Services/ServiceCard";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },

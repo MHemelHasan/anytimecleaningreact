@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
-import RootURL from '../components/Contants';
+import RootURL from '../../components/Contants';
 
-const useBooking = (id) => {
-  const [booking, setBooking] = useState({});
+const useUser = ({api_token}) => {
+  const [user, setUser] = useState({});
   const [reload, setReload] = useState(false);
   useEffect(() => {
-    fetch(RootURL+`bookings/${id}`)
+    fetch(RootURL+`user?api_token=${api_token}`)
       .then((response) => response.json())
       .then((data) => {
-        setBooking(data);
+        setUser(data);
         console.log(data);
       });
   }, []);
 
   return {
-    booking,
-    setBooking,
+    user,
+    setUser,
     reload,
     setReload,
   };
 };
 
-export default useBooking;
+export default useUser;

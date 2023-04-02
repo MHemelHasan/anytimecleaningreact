@@ -6,8 +6,8 @@ import CategoriesAll from "../app/pages/Categories/CategoriesAll";
 import CheckoutForm from "../app/pages/CheckoutForm/CheckoutForm";
 import Contact from "../app/pages/Contact/Contact";
 import Home from "../app/pages/Home/Home";
-import ProductDetails from "../app/pages/ProductDetails/ProductDetails";
-import ProductsAll from "../app/pages/Products/ProductsAll";
+import ProductDetails from "../app/pages/Services/ServiceDetails";
+import ProductsAll from "../app/pages/Services/Services";
 import Shop from "../app/pages/Shop/Shop";
 import About from "../app/pages/About/About";
 import Login from "../app/pages/Authentication/Login";
@@ -32,7 +32,7 @@ const AllRoutes = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/categories" element={<CategoriesAll />}></Route>
-        <Route path="/products" element={<ProductsAll />}></Route>
+        <Route path="/services" element={<ProductsAll />}></Route>
         {/* <Route path="/service/:id" element={<ProductDetails />}></Route> */}
         <Route path="/checkout" element={<CheckoutForm />}></Route>
         <Route path="/faq" element={<FAQ />}></Route>

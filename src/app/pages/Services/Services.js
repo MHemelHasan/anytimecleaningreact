@@ -1,9 +1,9 @@
 import React from "react";
 import Product from "../../components/Product";
-import useProducts from "./../../hooks/useProducts";
-import Loading from "./../../shared/Loading";
+import useProducts from "../../hooks/useProducts";
+import Loading from "../../shared/Loading";
 
-const ProductsAll = () => {
+const Services = () => {
   const { products, loading } = useProducts();
 
   return (
@@ -28,4 +28,4 @@ const ProductsAll = () => {
   );
 };
 
-export default ProductsAll;
+export default Services;
