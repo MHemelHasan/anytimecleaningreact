@@ -7904,3 +7904,41 @@ nav.navbar.navbar-area.nav-style-01 .icon-part.nav-style-03 .pcount {
 .bg-gray{
   background-color: #f8faf9;
 }
+
+.top-margin{
+  margin-top: 180px;
+}
+
+/* sidebar */
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  /* position: fixed; */
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color:#05464e;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  /* margin-left: 200px; */
+  padding: 1px 16px;
+  height: 1000px;
+}

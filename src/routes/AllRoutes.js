@@ -19,6 +19,10 @@ import ConfirmBooking from "../app/pages/Booking/ConfirmBooking";
 import Confirmation from "../app/pages/Booking/Confirmation";
 import ProviderProfile from "../app/pages/Provider/ProviderProfile";
 import Providers from "../app/pages/Provider/Providers";
+import Dashboard from "../app/pages/Dashboard/Index";
+import Account from "../app/pages/Dashboard/Account";
+import Address from "../app/pages/Dashboard/Address";
+import Orders from "../app/pages/Dashboard/Orders";
 const AllRoutes = () => {
   return (
     <>
@@ -43,6 +47,10 @@ const AllRoutes = () => {
         <Route path="/confirmation" element={<Confirmation />}></Route>
         <Route path="/provider/:id" element={<ProviderProfile />}></Route>
         <Route path="/providers" element={<Providers />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/dashboard/account" element={<Account />}></Route>
+        <Route path="/dashboard/address" element={<Address />}></Route>
+        <Route path="/dashboard/orders" element={<Orders />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </>
