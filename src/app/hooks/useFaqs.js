@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import RootURL from '../components/Contants'
 
 const useFaqs = () => {
   const [faqs, setFaqs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://api.anytimecleaning.net/public/api/faqs`)
+    fetch(RootURL + `faqs`)
       .then((response) => response.json())
       .then((data) => {
         setLoading(false);

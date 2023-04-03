@@ -3,6 +3,7 @@ import Team1 from "../../../assets/uploads/media-uploader/group-1-min1620466547.
 import Team2 from "../../../assets/uploads/media-uploader/group-2-min1620466899.png";
 import Team3 from "../../../assets/uploads/media-uploader/group-3-min1620467338.png";
 import Team4 from "../../../assets/uploads/media-uploader/group-5-min1620467501.png";
+import provider_img from "../../../assets/uploads/media-uploader/provider.png";
 import useProviders from "../../hooks/useProviders";
 import { Link } from "react-router-dom";
 
@@ -47,7 +48,7 @@ const Provider = ({slice_value}) => {
                             <div
                                 className="thumb"
                                 style={{
-                                    backgroundImage: `url(${provider?.media[0]?.url ? provider.media[0].url : Team1})`
+                                    backgroundImage: `url(${provider?.media[0]?.url ? provider.media[0].url : provider_img})`
                                 }}
                             >
                                 <div className="cat">
@@ -62,11 +63,11 @@ const Provider = ({slice_value}) => {
                                             <span className="hide-rating"></span>
                                             <span
                                                 className="show-rating"
-                                                style={{width: "100%"}}
+                                                style={{width: `${provider?.rate*20}%`}}
                                             ></span>
                                         </div>
                                         <p>
-                                            <span className="total-ratings">(1)</span>
+                                            <span className="total-ratings">({provider?.rate})</span>
                                         </p>
                                     </div>
                                 </div>

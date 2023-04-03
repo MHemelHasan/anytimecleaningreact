@@ -6,7 +6,7 @@ import { BiFilterAlt } from "react-icons/bi";
 import { HiOutlineViewGrid } from "react-icons/hi";
 import useCategories from "../../hooks/useCategories";
 import Category from "../../components/Category";
-import useProducts from "../../hooks/useProducts";
+import useServices from "../../hooks/useServices";
 import Product from "../../components/Product";
 import Loading from "../../shared/Loading";
 import ProductCard from "../Services/ServiceCard";
@@ -27,7 +27,7 @@ export default function Shop() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const { categories, loading } = useCategories();
-  const { products } = useProducts();
+  const { products } = useServices();
 
   return (
     <div className="bg-white mb-30">

@@ -21,7 +21,7 @@ const Product = ({
 }) => {
   const navigate = useNavigate();
   const navigateToServicesDetail = (id) => {
-    navigate(`/service/${id}=${name?.en}`);
+    navigate(`/service/${id}`);
   };
   return (
     <div
@@ -37,9 +37,8 @@ const Product = ({
       <div className="card-body">
         {" "}
         {featured ? (
-          <p className="absolute top-0 bg-orange-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">
-            Featured
-          </p>
+          <button type="button" className="featured-btn">Featured</button>
+
         ) : (
           ""
         )}

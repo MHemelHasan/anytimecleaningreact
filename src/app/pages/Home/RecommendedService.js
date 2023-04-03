@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Product from "../../components/Product";
-import useProducts from "../../hooks/useProducts";
+import useServices from "../../hooks/useServices";
 import Loading from "../../shared/Loading";
 
 const RecommendedService = () => {
-  const { products, loading } = useProducts();
+  const { products, loading } = useServices();
   const navigate = useNavigate();
   return (
     <div className="container my-24 px-6 mx-auto flex flex-col gap-10">

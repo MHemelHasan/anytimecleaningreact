@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import RootURL from '../components/Contants'
 
 const useCategories = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://api.anytimecleaning.net/public/api/categories`)
+    fetch(RootURL + `categories`)
       .then((response) => response.json())
       .then((data) => {
         setLoading(false);

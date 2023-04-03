@@ -10,19 +10,19 @@ const ProviderProfile = () => {
     const img_index = provider?.media?.length ? provider.media.length-1 : null;
 
   return (
-    <div className="container mt- pt-5">
+    <div className="container top-margin">
       <div className="row mt-5">
-        <div className="col-sm-4 pt-5">
+        <div className="col-sm-4 pt-5 d-flex justify-content-center">
         {img_index!==null ?
         <img className="" height={200} width={200} src={provider.media[img_index]?.url} alt="Provider" />:
         <AiOutlineUser style={{color:"#2c9bf4"}} size={300}/>}
         </div>
-        <div className="col-sm-8 pt-5">
+        <div className="col-sm-8">
           <h2 className="pt-5">{provider?.name}</h2>
-          <p>Email: {provider?.email}</p>
-          <p>Location: {provider?.custom_fields?.address?.value}</p>
-          <p>Phone Number: {provider?.phone_number}</p>
-          <p>Availability Range: {provider?.availability_range}</p>
+          <p><strong>Email: </strong>{provider?.email}</p>
+          <p><strong>Location:</strong> {provider?.custom_fields?.address?.value}</p>
+          <p><strong>Phone Number:</strong> {provider?.phone_number}</p>
+          <p><strong>Availability Range:</strong> {provider?.availability_range}</p>
           
         </div>
       </div>
@@ -30,7 +30,7 @@ const ProviderProfile = () => {
         <div className="col-sm-12 py-5">
           <h3>About</h3>
           <p
-            dangerouslySetInnerHTML={{ __html: provider?.description }}/>
+            dangerouslySetInnerHTML={{ __html: provider?.custom_fields?.bio?.view }}/>
         </div>
       </div>
     </div>

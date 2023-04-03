@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import RootURL from '../components/Contants'
-const useProducts = () => {
+const useServices = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,4 +18,4 @@ const useProducts = () => {
   return { products, setProducts, loading };
 };
 
-export default useProducts;
+export default useServices;

@@ -15,7 +15,6 @@ import useServiceDetails from "../../hooks/useServiceDetails";
 const Service = () => {
     const { id } = useParams();
     const { serviceDetail } = useServiceDetails(id);
-    console.log("product Details:",serviceDetail);
     const [isReadMore, setIsReadMore] = useState(true);
     const toggleReadMore = () => {
       setIsReadMore(!isReadMore);
@@ -34,10 +33,10 @@ const Service = () => {
                             <h2 className='page-title'>Services</h2>
                             <ul className='page-list'>
                                 <li>
-                                    <Link to='/home'>Home</Link>
+                                    <Link to={'/home'}>Home</Link>
                                 </li>
-                                <li>Services</li>
-                                <li>Residential Service</li>
+                                <li><Link to={'/services'}>Services</Link></li>
+                                <li>{serviceDetail?.name?.en}</li>
                             </ul>
                         </div>
                     </div>
@@ -134,7 +133,7 @@ const Service = () => {
                         </p>
                         <br/>
                         <p>Cleaning the interior of your windows and screens can extend the life of your windows, protect indoor air quality, and increase your home’s energy efficiency. Ditch the DIY, sit the rookies on the bench, and discover why a kilted clean means getting high-quality, long-lasting results. </p>
-                        <p class="txt-hlt v2 mt-4">Our team is ready to get to work. Reach out to us at 
+                        <p className="txt-hlt v2 mt-4">Our team is ready to get to work. Reach out to us at 
                         <strong><a href="tel:(888) 292-1176"> (888) 292-1176 </a></strong>
                         today! </p>
                     </div>
@@ -149,37 +148,37 @@ const Service = () => {
                     </div>
                     <div className="row bg-white rounded mx-5">
                         <div className="col-sm-4">
-                            <div class="card">
-                            <div class="card-body">
+                            <div className="card">
+                            <div className="card-body">
                                 <div className="d-flex justify-content-center">
                                     <AiOutlineCheckCircle size={100} style={{color:"#007bff"}} />
                                 </div>
                                 <div>
-                                    <p class="card-text text-center pt-3">Long-term protection against cracking, etching, and scratches</p>
+                                    <p className="card-text text-center pt-3">Long-term protection against cracking, etching, and scratches</p>
                                 </div>
                             </div>
                             </div>
                         </div>
                         <div className="col-sm-4">
-                            <div class="card">
-                            <div class="card-body">
+                            <div className="card">
+                            <div className="card-body">
                                 <div className="d-flex justify-content-center">
                                     <AiOutlineCheckCircle size={100} style={{color:"#007bff"}} />
                                 </div>
                                 <div>
-                                    <p class="card-text text-center pt-3">Lets more natural light into your home</p>
+                                    <p className="card-text text-center pt-3">Lets more natural light into your home</p>
                                 </div>
                             </div>
                             </div>
                         </div>
                         <div className="col-sm-4">
-                            <div class="card">
-                            <div class="card-body">
+                            <div className="card">
+                            <div className="card-body">
                                 <div className="d-flex justify-content-center">
                                     <AiOutlineCheckCircle size={100} style={{color:"#007bff"}} />
                                 </div>
                                 <div>
-                                    <p class="card-text text-center pt-3">Better-looking windows and increased curb appeal</p>
+                                    <p className="card-text text-center pt-3">Better-looking windows and increased curb appeal</p>
                                 </div>
                             </div>
                             </div>

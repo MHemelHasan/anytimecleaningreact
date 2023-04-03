@@ -1,10 +1,10 @@
 import React from "react";
 import Product from "../../components/Product";
-import useProducts from "../../hooks/useProducts";
+import useServices from "../../hooks/useServices";
 import Loading from "../../shared/Loading";
 
 const Services = () => {
-  const { products, loading } = useProducts();
+  const { products, loading } = useServices();
 
   return (
       <div className="container mt-5 pt-5 text-center">
@@ -12,10 +12,10 @@ const Services = () => {
       {loading ? (
         <Loading />
       ) : (
-      <div class="container">
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-3 g-4">
+      <div className="container">
+        <div className="row row-cols-2 row-cols-sm-3 row-cols-lg-3 g-4">
           {products?.map((product) => (
-            <div class="col">
+            <div className="col">
               <Product key={product?.id} {...product} />
             </div>
           ))}
