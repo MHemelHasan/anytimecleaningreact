@@ -3,6 +3,7 @@ import {ComponentPreview, Previews} from '@react-buddy/ide-toolbox'
 import {PaletteTree} from './palette'
 import ConfirmBooking from "../app/pages/Booking/ConfirmBooking";
 import UserSignup from "../app/pages/Authentication/User/UserSignup";
+import AllRoutes from "../routes/AllRoutes";
 
 const ComponentPreviews = () => {
     return (
@@ -12,6 +13,9 @@ const ComponentPreviews = () => {
             </ComponentPreview>
             <ComponentPreview path="/UserSignup">
                 <UserSignup/>
+            </ComponentPreview>
+            <ComponentPreview path="/AllRoutes">
+                <AllRoutes/>
             </ComponentPreview>
         </Previews>
     )

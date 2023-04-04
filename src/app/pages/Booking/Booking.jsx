@@ -1,5 +1,5 @@
 import image1 from "../../../assets/uploads/media-uploader/breadcrumb1619334343.png";
-import {Link, redirect, useParams} from "react-router-dom";
+import {Link, Navigate, redirect, useParams} from "react-router-dom";
 
 import React, { useState } from "react";
 
@@ -16,8 +16,8 @@ const Booking = () => {
     console.log("booking:",booking);
 
     const submitHandler = (e) =>{
-        e.preventDefault()
-        redirect('/confirmBooking')
+        e.preventDefault();
+        return <Navigate to="/confirm-booking" />
     }
 
     const handleCoupon = () =>{

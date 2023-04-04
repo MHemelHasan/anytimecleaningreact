@@ -23,11 +23,11 @@ import "../src/assets/common/css/toastr.css";
 
 function App() {
   return (
-    <div className="">
+    <>
        <Header />
       <AllRoutes />
        <Footer />
-    </div>
+    </>
   );
 }
 

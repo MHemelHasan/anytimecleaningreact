@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Link, Navigate} from "react-router-dom";
 import "./Login.css";
 import RootURL from '../../components/Contants';
+import Cookies from "js-cookie";
 
 
 
@@ -23,6 +24,7 @@ const Login = () => {
                 console.log(info);
                 console.log(info.data.api_token);
                 setToken(info.data.api_token);
+                Cookies.set('api_token', info.data.api_token)
             }).then(()=>{
                 if (token){
                     setRedirect(true);
@@ -31,7 +33,7 @@ const Login = () => {
 
     }
    if(redirect){
-       return <Navigate to="/home" replace={true}/>
+       return <Navigate to="/dashboard" replace={true}/>
    }
     return (
         <div className="login">
