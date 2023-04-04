@@ -16,7 +16,8 @@ const Login = () => {
         e.preventDefault();
         await fetch(RootURL + 'login', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json',
+                    "Accept": 'application/json'},
             body: JSON.stringify({email, password,})
         }).
         then(res => res.json())
@@ -25,16 +26,9 @@ const Login = () => {
                 console.log(info.data.api_token);
                 setToken(info.data.api_token);
                 Cookies.set('api_token', info.data.api_token)
-            }).then(()=>{
-                if (token){
-                    setRedirect(true);
-                }
+                window.location.href = '/dashboard';
             })
-
     }
-   if(redirect){
-       return <Navigate to="/dashboard" replace={true}/>
-   }
     return (
         <div className="login">
             <div className="container-fluid h-100 custom">

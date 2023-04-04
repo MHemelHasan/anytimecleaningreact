@@ -6,26 +6,30 @@ import Team4 from "../../../assets/uploads/media-uploader/group-5-min1620467501.
 import provider_img from "../../../assets/uploads/media-uploader/provider.png";
 import useProviders from "../../hooks/useProviders";
 import { Link } from "react-router-dom";
+import { shortDesc } from "../../utils/short_desc";
 
-const Provider = ({slice_value}) => {
+const Provider = ({slice_value, serviceProvider}) => {
     const [sliceLimit,setSliceLimit] = useState(false);
     const { providers } = useProviders();
     const [allProviders,setAllProviders] = useState(null);
-    console.log("providers:",allProviders);
+    console.log("providers:",serviceProvider);
 
     useEffect(() => {
         if(slice_value){
             setAllProviders(providers?.data)
             setSliceLimit(providers?.data?.length);
+        }else if(serviceProvider){
+            setAllProviders([serviceProvider])
+            setSliceLimit(serviceProvider?.length);
         }else{
             const featuredProvider = providers?.data?.filter((provider) => provider.featured);
             setAllProviders(featuredProvider);
             setSliceLimit(4);
         }
         
-      }, [slice_value,providers]);
+      }, [slice_value,providers,serviceProvider]);
 
-    return (<section className="creative-team-area padding-top-110 padding-bottom-85">
+    return (<section className="creative-team-area padding-top-110">
             <div className="container">
                 <div className="row justify-content-center padding-bottom-45">
                     <div className="col-lg-8">
@@ -67,7 +71,7 @@ const Provider = ({slice_value}) => {
                                             ></span>
                                         </div>
                                         <p>
-                                            <span className="total-ratings">({provider?.rate})</span>
+                                            <span className="total-ratings">({(provider?.rate).toFixed(2)})</span>
                                         </p>
                                     </div>
                                 </div>
@@ -78,7 +82,7 @@ const Provider = ({slice_value}) => {
                                     <i className="fas fa-map-marker-alt"></i>{provider?.custom_fields.address?.view}
                                 </span>
                                 <p>
-                                    {provider?.custom_fields?.bio?.view}
+                                    {shortDesc(provider?.custom_fields?.bio?.view)}
                                 </p>
                                 <div className="btn-wrapper">
                                 <Link to={`/provider/${provider?.id}`} className="boxed-btn">

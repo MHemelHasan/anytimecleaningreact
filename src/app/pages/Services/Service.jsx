@@ -11,10 +11,12 @@ import Service_bg5 from "../../../assets/uploads/media-uploader/011618730370.png
 import { AiFillCheckCircle, AiFillStar, AiOutlineCheckCircle, AiOutlineFileDone, AiOutlineLike, AiOutlineMobile, AiTwotoneCheckCircle } from "react-icons/ai";
 import Provider from "../Home/Provider";
 import useServiceDetails from "../../hooks/useServiceDetails";
+import { shortDesc } from "../../utils/short_desc";
 
 const Service = () => {
     const { id } = useParams();
     const { serviceDetail } = useServiceDetails(id);
+    console.log("serviceProvider:",serviceDetail);
     const [isReadMore, setIsReadMore] = useState(true);
     const toggleReadMore = () => {
       setIsReadMore(!isReadMore);
@@ -53,8 +55,8 @@ const Service = () => {
                     <div className="col-md-6 col-sm-12 col-lg-6">
                         <h1><strong>{serviceDetail?.name?.en}</strong></h1>
                         <h3>We raise the bar so you don’t have to</h3>
-                        <p>{serviceDetail?.description?.en}</p>
-                        <div>
+                        <p dangerouslySetInnerHTML={{ __html: shortDesc(serviceDetail?.description?.en,200) }}/>
+                        {/* <div>
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Deep cleaning of tracks</span></div>
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Screen cleaning</span></div>
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Screen repair</span></div>
@@ -62,7 +64,7 @@ const Service = () => {
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Removal of stickers & other construction debris</span></div>
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Glass Restoration from Hard Water Stains</span></div>
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Glass Resurfacing (select locations only)</span></div>
-                        </div>
+                        </div> */}
                         <div className="py-3">
                             <Link to={`/booking/${serviceDetail.id}`}>
                             <button className="btn btn-info">Book Now</button>
@@ -71,7 +73,11 @@ const Service = () => {
                     </div>
                 </div>
                 <div>
-                    <Provider />
+                    <Provider serviceProvider={serviceDetail?.e_provider} />
+                </div>
+                <div className="pb-5">
+                    <h3 className="mb-3">Description:</h3>
+                    <p dangerouslySetInnerHTML={{ __html: serviceDetail?.description?.en }}/>
                 </div>
                 <div className="row">
                     <div className="col-md-6 col-sm-12 col-lg-5">

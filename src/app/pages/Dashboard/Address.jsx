@@ -7,9 +7,9 @@ const Address = () => {
     <div className="container top-margin">
     <div className="row mb-5">
         <div className="col-md-3 sidebar">
-            <Link to={"/dashboard"}>DashBoard</Link>
+            <Link to={"/dashboard"}>Dashboard</Link>
             <Link to={'/dashboard/orders'}>Orders</Link>
-            <Link className="active" to={'/dashboard/address'}>Address</Link>
+            {/* <Link className="active" to={'/dashboard/address'}>Address</Link> */}
             <Link to={'/dashboard/account'}>Account Details</Link>
             <Link >Logout</Link>
         </div>

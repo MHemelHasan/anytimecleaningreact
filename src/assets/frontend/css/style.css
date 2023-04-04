@@ -7979,3 +7979,13 @@ nav.navbar.navbar-area.nav-style-01 .icon-part.nav-style-03 .pcount {
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 
 }
+
+.diplay-provider {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .diplay-provider {
+    display: block !important;
+  }
+}

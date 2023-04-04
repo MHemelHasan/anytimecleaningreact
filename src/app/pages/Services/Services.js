@@ -14,8 +14,8 @@ const Services = () => {
       ) : (
       <div className="container">
         <div className="row row-cols-2 row-cols-sm-3 row-cols-lg-3 g-4">
-          {products?.map((product) => (
-            <div className="col">
+          {products?.map((product,index) => (
+            <div key={index} className="col">
               <Product key={product?.id} {...product} />
             </div>
           ))}

@@ -173,6 +173,13 @@ const Header = () => {
                             <li>
                                 <Link to="/contact">Contact Us</Link>
                             </li>
+                            <li className="diplay-provider d-none">
+                                <div className="btn-wrapper d-flex justify-content-end">
+                                    <Link to="/provider-signup" className="request-btn text-white">
+                                        Become Provider
+                                    </Link>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     <div className="nav-right-content">

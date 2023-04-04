@@ -1,16 +1,19 @@
 import moment from "moment";
 import React from "react";
 import { Link } from "react-router-dom";
+import useOrders from "../../hooks/dashboard/useOrders";
 
 const Orders = () => {
+  const { orders } = useOrders();
+  console.log("orders:",orders);
   return (
     <>
     <div className="container top-margin">
     <div className="row mb-5">
         <div className="col-md-3 sidebar">
-            <Link to={"/dashboard"}>DashBoard</Link>
+            <Link to={"/dashboard"}>Dashboard</Link>
             <Link className="active" to={'/dashboard/orders'}>Orders</Link>
-            <Link to={'/dashboard/address'}>Address</Link>
+            {/* <Link to={'/dashboard/address'}>Address</Link> */}
             <Link to={'/dashboard/account'}>Account Details</Link>
             <Link >Logout</Link>
         </div>
