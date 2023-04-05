@@ -1,7 +1,21 @@
+import Cookies from "js-cookie";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const Address = () => {
+  const cookies = Cookies.get('api_token');
+
+  const handleLogout = async () => {
+    await axios.get(RootURL + `logout?api_token=${cookies}`)
+  .then(response => {
+      Cookies.remove('api_token');
+      window.location.href = '/login';
+    })
+    .catch(error => {
+      setMessage("Failed to update!");
+    });
+  }
+
   return (
     <>
     <div className="container top-margin">
@@ -11,7 +25,7 @@ const Address = () => {
             <Link to={'/dashboard/orders'}>Orders</Link>
             {/* <Link className="active" to={'/dashboard/address'}>Address</Link> */}
             <Link to={'/dashboard/account'}>Account Details</Link>
-            <Link >Logout</Link>
+            <Link onClick={handleLogout}>Logout</Link>
         </div>
 
         <div className="col-md-9 content">

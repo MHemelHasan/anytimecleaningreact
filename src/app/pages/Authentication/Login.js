@@ -1,12 +1,13 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link, Navigate} from "react-router-dom";
 import "./Login.css";
 import RootURL from '../../components/Contants';
 import Cookies from "js-cookie";
-
-
+import { useLocation } from 'react-router-dom';
 
 const Login = () => {
+    const location = useLocation();
+    console.log("location:",localStorage.getItem('prevPath'));
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
@@ -26,7 +27,10 @@ const Login = () => {
                 console.log(info.data.api_token);
                 setToken(info.data.api_token);
                 Cookies.set('api_token', info.data.api_token)
-                window.location.href = '/dashboard';
+                // window.location.href = '/dashboard';
+                const prevPath = localStorage.getItem('prevPath') || '/';
+                console.log("prec path:",prevPath);
+                window.location.href = prevPath ? prevPath : '/dashboard';
             })
     }
     return (

@@ -12,15 +12,23 @@ import { AiFillCheckCircle, AiFillStar, AiOutlineCheckCircle, AiOutlineFileDone,
 import Provider from "../Home/Provider";
 import useServiceDetails from "../../hooks/useServiceDetails";
 import { shortDesc } from "../../utils/short_desc";
+import { useEffect } from "react";
 
 const Service = () => {
     const { id } = useParams();
     const { serviceDetail } = useServiceDetails(id);
-    console.log("serviceProvider:",serviceDetail);
     const [isReadMore, setIsReadMore] = useState(true);
     const toggleReadMore = () => {
       setIsReadMore(!isReadMore);
     };
+
+    useEffect(() => {
+        localStorage.setItem('prevPath', location.pathname);
+    }, [location.pathname]);
+
+    const handleUrl = () =>{
+        localStorage.setItem('prevPath', `service-booking/${serviceDetail?.id}`);
+    }
 
     return (<>
         <div
@@ -66,8 +74,8 @@ const Service = () => {
                             <div><AiFillStar style={{ color: '#ffa00e' }}/><span>Glass Resurfacing (select locations only)</span></div>
                         </div> */}
                         <div className="py-3">
-                            <Link to={`/booking/${serviceDetail.id}`}>
-                            <button className="btn btn-info">Book Now</button>
+                            <Link to={`/service-booking/${serviceDetail.id}`}>
+                            <button onClick={handleUrl} className="btn btn-info">Book Now</button>
                             </Link>
                         </div>
                     </div>

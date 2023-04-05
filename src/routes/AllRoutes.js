@@ -13,7 +13,7 @@ import ProviderSignup from "../app/pages/Authentication/Provider/ProviderSignup"
 import UserSignup from "../app/pages/Authentication/User/UserSignup";
 import Service from "../app/pages/Services/Service";
 import Booking from "../app/pages/Booking/Booking";
-import ConfirmBooking from "../app/pages/Booking/ConfirmBooking";
+import ConfirmBooking from "../app/components/Booking/ConfirmBooking";
 import Confirmation from "../app/pages/Booking/Confirmation";
 import ProviderProfile from "../app/pages/Provider/ProviderProfile";
 import Providers from "../app/pages/Provider/Providers";
@@ -50,8 +50,8 @@ const AllRoutes = () => {
                 <Route path="dashboard/account" element={<Account/>}/>
                 <Route path="dashboard/address" element={<Address/>}/>
                 <Route path="dashboard/orders" element={<Orders/>}/>
-                <Route path="booking/:id" element={<Booking/>}/>
-                <Route path="confirm-booking" element={<ConfirmBooking/>}/>
+                <Route path="service-booking/:id" element={<Booking/>}/>
+                {/* <Route path="confirm-booking" element={<ConfirmBooking/>}/> */}
             </Route>
         </Routes>
     );

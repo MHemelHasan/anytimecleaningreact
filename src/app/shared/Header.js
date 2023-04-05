@@ -1,7 +1,23 @@
+import Cookies from "js-cookie";
 import logo from "../../assets/company-logo.png";
 import {Link} from "react-router-dom";
+import RootURL from '../components/Contants';
+import axios from "axios";
 
 const Header = () => {
+    const cookies = Cookies.get('api_token');
+
+    const handleLogout = async () => {
+        await axios.get(RootURL + `logout?api_token=${cookies}`)
+        .then(response => {
+            Cookies.remove('api_token');
+            window.location.href = '/login';
+        })
+        .catch(error => {
+            setMessage("Failed to update!");
+        });
+    }
+
     return (<>
         <div className="header-style-01">
             <div className="topbar-area">
@@ -18,15 +34,21 @@ const Header = () => {
                                     </ul>
                                 </div>
                                 <div className="right-contnet">
-                                    <ul className="info-items">
-                                        <li>
-                                            <Link to="/login">Login</Link>
-                                        </li>
-                                        <li>/</li>
-                                        <li>
-                                            <Link to="/user-signup">Register</Link>
-                                        </li>
-                                    </ul>
+                                        {cookies===undefined ?
+                                        <ul className="info-items">
+                                            <li>
+                                                <Link to="/login">Login</Link>
+                                            </li>
+                                            <li>/</li>
+                                            <li>
+                                                <Link to="/user-signup">Register</Link>
+                                            </li>
+                                        </ul>:
+                                        <ul className="info-items">
+                                            <li>
+                                                <Link onClick={handleLogout}>Logout</Link>
+                                            </li>
+                                        </ul>}
                                 </div>
                             </div>
                         </div>

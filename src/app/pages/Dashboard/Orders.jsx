@@ -1,11 +1,45 @@
 import moment from "moment";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOrders from "../../hooks/dashboard/useOrders";
+import Cookies from "js-cookie";
+import axios from "axios";
+import RootURL from '../../components/Contants';
+
 
 const Orders = () => {
-  const { orders } = useOrders();
-  console.log("orders:",orders);
+  const cookies = Cookies.get('api_token');
+  const [orders,setOrders] = useState('');
+  console.log("orders:",orders)
+
+  useEffect( () => {
+    const getUserData = async () =>{
+      await axios.get(RootURL + `bookings`, {
+        headers: {
+          Authorization: 'Bearer ' + cookies,
+        }
+      })
+    .then(response => {
+      setOrders(response?.data?.data);
+      })
+      .catch(error => {
+        setMessage("Failed to update!");
+      });
+    }
+    getUserData();
+},[]);
+
+const handleLogout = async () => {
+  await axios.get(RootURL + `logout?api_token=${cookies}`)
+.then(response => {
+    Cookies.remove('api_token');
+    window.location.href = '/login';
+  })
+  .catch(error => {
+    setMessage("Failed to update!");
+  });
+}
+
   return (
     <>
     <div className="container top-margin">
@@ -15,7 +49,7 @@ const Orders = () => {
             <Link className="active" to={'/dashboard/orders'}>Orders</Link>
             {/* <Link to={'/dashboard/address'}>Address</Link> */}
             <Link to={'/dashboard/account'}>Account Details</Link>
-            <Link >Logout</Link>
+            <Link onClick={handleLogout}>Logout</Link>
         </div>
 
         <div className="col-md-9 content">
@@ -34,38 +68,17 @@ const Orders = () => {
                   </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Real Estate Agents</td>
-                    <td>48.76</td>
-                    <td>1</td>
-                    <td>In Progress</td>
-                    <td>20</td>
-                    <td>{moment().format("DD MMMM YY")}</td>
+                  {orders && orders.map((order,index)=>(
+                  <tr key={index}>
+                    <td>{order?.e_service?.name.en}</td>
+                    <td>{order?.e_service?.price}</td>
+                    <td>{order?.quantity}</td>
+                    <td>{order?.booking_status?.status}</td>
+                    <td>{order?.duration}</td>
+                    <td>{moment(order?.booking_at).format("DD MMMM YY")}</td>
                   </tr>
-                  <tr>
-                    <td>Real Estate Agents</td>
-                    <td>48.76</td>
-                    <td>1</td>
-                    <td>In Progress</td>
-                    <td>20</td>
-                    <td>{moment().format("DD MMMM YY")}</td>
-                  </tr>
-                  <tr>
-                    <td>Real Estate Agents</td>
-                    <td>48.76</td>
-                    <td>1</td>
-                    <td>In Progress</td>
-                    <td>20</td>
-                    <td>{moment().format("DD MMMM YY")}</td>
-                  </tr>
-                  <tr>
-                    <td>Real Estate Agents</td>
-                    <td>48.76</td>
-                    <td>1</td>
-                    <td>In Progress</td>
-                    <td>20</td>
-                    <td>{moment().format("DD MMMM YY")}</td>
-                  </tr>
+                  ))}
+
                 </tbody>
               </table>
             </div>
