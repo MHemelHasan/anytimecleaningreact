@@ -1,5 +1,7 @@
 import Cookies from "js-cookie";
 import logo from "../../assets/company-logo.png";
+import service1 from "../../assets/uploads/media-uploader/cleaning.png"
+import service2 from "../../assets/uploads/media-uploader/bucket.png"
 import {Link} from "react-router-dom";
 import RootURL from '../components/Contants';
 import axios from "axios";
@@ -37,11 +39,11 @@ const Header = () => {
                                         {cookies===undefined ?
                                         <ul className="info-items">
                                             <li>
-                                                <Link to="/login">Login  </Link>
+                                                <Link to="/login">Login</Link>
                                             </li>
-                                            <li>  |  </li>
+                                            <li>&nbsp; | &nbsp;</li>
                                             <li>
-                                                <Link to="/user-signup">  Singup</Link>
+                                                <Link to="/user-signup">Sing Up</Link>
                                             </li>
                                         </ul>:
                                         <ul className="info-items">
@@ -137,6 +139,15 @@ const Header = () => {
                                 <div className="xg_mega_menu_wrapper service_mega_menu">
                                     <div className="xg-mega-menu-container">
                                         <div className="row">
+                                            <div className="col-lg-3 col-md-6 d-flex justify-content-center align-items-center">
+                                                <div className="xg-mega-menu-single-column-wrap">
+                                                <img
+                                                    src={service2}
+                                                    alt="Residential Service"
+                                                    style={{ height: 100, width: 100 }}
+                                                />
+                                                </div>
+                                            </div>
                                             <div className="col-lg-3 col-md-6">
                                                 <div className="xg-mega-menu-single-column-wrap">
                                                     <h4 className="mega-menu-title">
@@ -158,7 +169,26 @@ const Header = () => {
                                                                 House Washing
                                                             </a>
                                                         </li>
+                                                        <li>
+                                                            <a href="#">
+                                                            Pressure Washing
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                            Snow Removal
+                                                            </a>
+                                                        </li>
                                                     </ul>
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-3 col-md-6 d-flex justify-content-center align-items-center">
+                                                <div className="xg-mega-menu-single-column-wrap">
+                                                <img
+                                                    src={service1}
+                                                    alt="Commercial Service"
+                                                    style={{ height: 100, width: 100 }}
+                                                />
                                                 </div>
                                             </div>
                                             <div className="col-lg-3 col-md-6">
@@ -169,12 +199,27 @@ const Header = () => {
                                                     <ul>
                                                         <li>
                                                             <a href="#">
+                                                                Window Cleaning
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                Gutter Cleaning
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
                                                             Exterior Building Washing
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="#">
                                                             Pressure Washing
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                            Snow Removal
                                                             </a>
                                                         </li>
                                                     </ul>
