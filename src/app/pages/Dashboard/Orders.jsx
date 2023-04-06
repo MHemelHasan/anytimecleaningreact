@@ -10,6 +10,7 @@ import RootURL from '../../components/Contants';
 const Orders = () => {
   const cookies = Cookies.get('api_token');
   const [orders,setOrders] = useState('');
+  const [message, setMessage] = useState('');
   console.log("orders:",orders)
 
   useEffect( () => {
