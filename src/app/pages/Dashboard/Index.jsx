@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 import RootURL from '../../components/Contants';
 import axios from "axios";
@@ -7,6 +7,7 @@ import axios from "axios";
 
 const Dashboard = () => {
   const cookies = Cookies.get('api_token');
+  const [message, setMessage] = useState('');
 
   const [state, setState] = useReducer((state, newState) => ({ ...state, ...newState }), {
     id: '',

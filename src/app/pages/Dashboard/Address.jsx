@@ -1,6 +1,8 @@
+import axios from "axios";
 import Cookies from "js-cookie";
 import React from "react";
 import { Link } from "react-router-dom";
+import RootURL from "../../components/Contants";
 
 const Address = () => {
   const cookies = Cookies.get('api_token');
@@ -12,7 +14,7 @@ const Address = () => {
       window.location.href = '/login';
     })
     .catch(error => {
-      setMessage("Failed to update!");
+      // setMessage("Failed to update!");
     });
   }
 

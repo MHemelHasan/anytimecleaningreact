@@ -8,6 +8,7 @@ import axios from "axios";
 
 const Header = () => {
     const cookies = Cookies.get('api_token');
+    const [message, setMessage] = useState('');
 
     const handleLogout = async () => {
         await axios.get(RootURL + `logout?api_token=${cookies}`)
