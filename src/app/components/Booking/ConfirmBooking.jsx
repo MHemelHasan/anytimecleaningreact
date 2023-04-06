@@ -4,7 +4,7 @@ import React from "react";
 import {BiCurrentLocation, BiFile, BiGift, BiMap} from "react-icons/bi";
 
 const ConfirmBooking = (props) => {
-    console.log(props)
+    console.log("confirm booking:",props)
     // const { service } = props.location.state;
     // console.log("service:",service);
 

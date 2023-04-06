@@ -19,6 +19,7 @@ const Booking = () => {
     const [user,setUser]=useState('');
     const [showConfirm,setShowConfirm] = useState(false);
     const [messageCoupon, setMessageCoupon] = useState('');
+    const [errorCoupon, setErrorCoupon] = useState('');
 
     const [bookingData, setBookingData] = useState({
         address: {
@@ -73,11 +74,15 @@ const Booking = () => {
             }
           })
         .then(response => {
-            const valid_coupon = response?.data?.data.find((value, i) => {
+            const valid_coupon = response?.data?.data.find((value) => {
                 return value.code === coupon
               })
-              setMessageCoupon(response?.data?.message);
-              setBookingData({coupon_id:valid_coupon?.id})
+              if(valid_coupon){
+                  setMessageCoupon("Coupon added Successfully!");
+                  setBookingData({...bookingData,coupon_id:valid_coupon?.id})
+              }else{
+                setErrorCoupon("Invalid Coupon!")
+              }
           })
           .catch(error => {
 
@@ -96,6 +101,15 @@ const Booking = () => {
     const handleCoupon = () =>{
         getCoupons();
     }
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+          setMessageCoupon('');
+          setErrorCoupon('');
+        }, 5000);
+      
+        return () => clearTimeout(timer);
+      }, [messageCoupon,errorCoupon]);
 
     return (<>
         <div
@@ -161,6 +175,7 @@ const Booking = () => {
                     </div>
                     <div>
                     {messageCoupon && <div className="p-3 m-3 text-white bg-success">{messageCoupon}</div>}
+                    {errorCoupon && <div className="p-3 m-3 text-white bg-danger">{errorCoupon}</div>}
                     </div>
                     <div className="bg-white rounded p-3 mb-3">
                         <p><strong>Coupon Code</strong></p>
@@ -180,7 +195,7 @@ const Booking = () => {
                 </div>
                 {showConfirm?
                 <div>
-                    <ConfirmBooking service={service} user={user} coupon={coupon} hint={hint} />
+                    <ConfirmBooking service={service} user={user} coupon={coupon} hint={bookingData.hint} />
                 </div>:""}
             </div>
         </div>
