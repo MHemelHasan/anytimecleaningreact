@@ -4,6 +4,7 @@ import bg1 from "../../assets/uploads/media-uploader/bg-011618830463.jpg";
 import bg2 from "../../assets/uploads/media-uploader/bg-021618830463.jpg";
 import bg3 from "../../assets/uploads/media-uploader/bg-011618830463.jpg";
 import bg4 from "../../assets/uploads/media-uploader/bg-041618830464.jpg";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -19,18 +20,18 @@ const Banner = () => {
             <div className="row">
               <div className="col-lg-7">
                 <div className="header-inner">
-                  <span className="subtitle">We provide cleaning service</span>
-                  <h1 className="title">We are certified cleaning Company</h1>
+                  <span className="subtitle">Best Cleaning Service Platform</span>
+                  <h1 className="title">Quality Cleaning Service In BC, Canada</h1>
                   <div className="header-bottom">
                     <div className="btn-wrapper desktop-left">
-                      <a href="#" className="boxed-btn">
-                        Request a quote
-                      </a>
+                      <Link to={'/contact'} className="boxed-btn">
+                        Contact us
+                      </Link>
                     </div>
                     <span className="or">OR</span>
                     <div className="header-buttom-content style-01">
                       <p>Need Help Now? Call Us!</p>
-                      <span>+91 458 654 528</span>
+                      <span>+1 (236) 880-1980</span>
                     </div>
                   </div>
                 </div>
@@ -48,8 +49,8 @@ const Banner = () => {
             <div className="row">
               <div className="col-lg-7">
                 <div className="header-inner">
-                  <span className="subtitle">We provide cleaning service</span>
-                  <h1 className="title">We are certified cleaning Company</h1>
+                  <span className="subtitle">Best Cleaning Service Platform</span>
+                  <h1 className="title">Quality Cleaning Service In BC, Canada</h1>
                   <div className="header-bottom">
                     <div className="btn-wrapper desktop-left">
                       <a href="#" className="boxed-btn">
@@ -77,8 +78,8 @@ const Banner = () => {
             <div className="row">
               <div className="col-lg-7">
                 <div className="header-inner">
-                  <span className="subtitle">We provide cleaning service</span>
-                  <h1 className="title">We are certified cleaning Company</h1>
+                  <span className="subtitle">Best Cleaning Service Platform</span>
+                  <h1 className="title">Quality Cleaning Service In BC, Canada</h1>
                   <div className="header-bottom">
                     <div className="btn-wrapper desktop-left">
                       <a href="#" className="boxed-btn">

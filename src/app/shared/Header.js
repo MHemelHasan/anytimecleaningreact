@@ -37,11 +37,11 @@ const Header = () => {
                                         {cookies===undefined ?
                                         <ul className="info-items">
                                             <li>
-                                                <Link to="/login">Login</Link>
+                                                <Link to="/login">Login  </Link>
                                             </li>
-                                            <li>/</li>
+                                            <li>  |  </li>
                                             <li>
-                                                <Link to="/user-signup">Register</Link>
+                                                <Link to="/user-signup">  Singup</Link>
                                             </li>
                                         </ul>:
                                         <ul className="info-items">
@@ -145,12 +145,17 @@ const Header = () => {
                                                     <ul>
                                                         <li>
                                                             <a href="#">
-                                                                We Are Experience Cleaner
+                                                                Window Cleaning
                                                             </a>
                                                         </li>
                                                         <li>
                                                             <a href="#">
-                                                                Over 200+ Complete Task
+                                                                Gutter Cleaning
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                House Washing
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -159,18 +164,23 @@ const Header = () => {
                                             <div className="col-lg-3 col-md-6">
                                                 <div className="xg-mega-menu-single-column-wrap">
                                                     <h4 className="mega-menu-title">
-                                                        Institutional Service
+                                                    Commercial Service
                                                     </h4>
                                                     <ul>
                                                         <li>
                                                             <a href="#">
-                                                                100% Clients Satisfaction
+                                                            Exterior Building Washing
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                            Pressure Washing
                                                             </a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <div className="col-lg-3 col-md-6">
+                                            {/* <div className="col-lg-3 col-md-6">
                                                 <div className="xg-mega-menu-single-column-wrap">
                                                     <h4 className="mega-menu-title">Others Service</h4>
                                                     <ul>
@@ -186,7 +196,7 @@ const Header = () => {
                                                         </li>
                                                     </ul>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -198,7 +208,7 @@ const Header = () => {
                             <li className="diplay-provider d-none">
                                 <div className="btn-wrapper d-flex justify-content-end">
                                     <Link to="/provider-signup" className="request-btn text-white">
-                                        Become Provider
+                                        Become Cleaner
                                     </Link>
                                 </div>
                             </li>
@@ -217,7 +227,7 @@ const Header = () => {
                         </div>
                         <div className="btn-wrapper">
                             <Link to="/provider-signup" className="request-btn">
-                                Become Provider<i className="fas fa-long-arrow-alt-right"></i>
+                                Become Cleaner<i className="fas fa-long-arrow-alt-right"></i>
                             </Link>
                         </div>
                     </div>

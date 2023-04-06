@@ -73,7 +73,7 @@ const About = () => {
                       </div>
                       <div className='content'>
                         <span>We are 24/7 available</span>
-                        <p>8-800-10-500</p>
+                        <p>+1 (236) 880-1980</p>
                       </div>
                     </div>
                   </div>
@@ -146,7 +146,7 @@ const About = () => {
                   <div className='content'>
                     <a href='#'>
                       <h4 className='title'>
-                        <p>We Are Experience Cleaner</p>
+                        <p>We Provide Experienced Cleaners</p>
                       </h4>
                       <span className='subtitle'>Residential Service</span>
                     </a>
@@ -192,7 +192,7 @@ const About = () => {
                       <h4 className='title'>
                         <p>100% Clients Satisfaction</p>
                       </h4>
-                      <span className='subtitle'>Institutional Service</span>
+                      <span className='subtitle'>Commercial Service</span>
                     </a>
                     <p>
                       Maecenas tempus, tellus eget condimentum rhoncus, sem quam

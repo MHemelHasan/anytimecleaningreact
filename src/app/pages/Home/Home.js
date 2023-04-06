@@ -54,7 +54,7 @@ const Home = () => {
                             <i className="flaticon-vacuum"></i>
                           </div>
                           <div className="service-title">
-                            <h4 className="title">Residential Service</h4>
+                            <h4 className="title">Window Cleaning</h4>
                           </div>
                         </a>
                       </li>
@@ -72,7 +72,7 @@ const Home = () => {
                             <i className="flaticon-liquid-soap"></i>
                           </div>
                           <div className="service-title">
-                            <h4 className="title">Commercial Service</h4>
+                            <h4 className="title">Gutter Cleaning</h4>
                           </div>
                         </a>
                       </li>
@@ -90,7 +90,7 @@ const Home = () => {
                             <i className="flaticon-lawn-mower"></i>
                           </div>
                           <div className="service-title">
-                            <h4 className="title">Vehicle Service</h4>
+                            <h4 className="title">House Washing</h4>
                           </div>
                         </a>
                       </li>
@@ -108,7 +108,7 @@ const Home = () => {
                             <i className="flaticon-wash-1"></i>
                           </div>
                           <div className="service-title">
-                            <h4 className="title">Institutional Service</h4>
+                            <h4 className="title">Exterior Building Washing</h4>
                           </div>
                         </a>
                       </li>
@@ -126,7 +126,7 @@ const Home = () => {
                             <i className="flaticon-washing-hands"></i>
                           </div>
                           <div className="service-title">
-                            <h4 className="title">Others Service</h4>
+                            <h4 className="title">Pressure Washing</h4>
                           </div>
                         </a>
                       </li>
@@ -340,7 +340,7 @@ const Home = () => {
                           <div className="text-content-tab">
                             <div className="section-title">
                               <span className="subtitle">
-                                Institutional Service
+                              Commercial Service
                               </span>
                               <h3 className="title">
                                 We provide best residential cleaning service
@@ -503,7 +503,7 @@ const Home = () => {
                 <div className="content">
                   <h4 className="title">
                     <a href="service/cyber-security/1.html">
-                      We Are Experience Cleaner
+                    We Provide Experienced Cleaners
                     </a>
                   </h4>
                   <p>
@@ -647,7 +647,7 @@ const Home = () => {
                   </div>
                   <div className="content">
                     <span>We are 24/7 available</span>
-                    <p>8-800-10-500</p>
+                    <p>+1 (236) 880-1980</p>
                   </div>
                 </div>
               </div>
@@ -666,7 +666,7 @@ const Home = () => {
                   </div>
                   <div className="content">
                     <div className="count-wrap">
-                      <span className="count-num">20</span>k+
+                      <span className="count-num">5</span>k+
                     </div>
                     <h4 className="title">Worldwide Clients</h4>
                   </div>
@@ -692,7 +692,7 @@ const Home = () => {
                   </div>
                   <div className="content">
                     <div className="count-wrap">
-                      <span className="count-num">1043</span>+
+                      <span className="count-num">500</span>+
                     </div>
                     <h4 className="title">Total Km Reach So Far</h4>
                   </div>
@@ -734,9 +734,7 @@ const Home = () => {
                         <i className="flaticon-quote-left"></i>
                       </div>
                       <p className="description">
-                        I found myself working in a true partnership that
-                        results in an incredible experience, and a product that
-                        is the best services.
+                      Top quality, on time and best in class cleaning service in canada. We have already recommended them to many of our known ones and everyone is in love with them.
                       </p>
                       <div className="author-details">
                         <div className="author-meta">
@@ -764,9 +762,8 @@ const Home = () => {
                         <i className="flaticon-quote-left"></i>
                       </div>
                       <p className="description">
-                        I found myself working in a true partnership that
-                        results in an incredible experience, and a product that
-                        is the best services.
+                      They did a great job. Everywhere is clean and shiny again. Their price was reasonable too They won't leave unless you are satisfied with the job.
+I certainly recommend their service for cleaning.
                       </p>
                       <div className="author-details">
                         <div className="author-meta">
@@ -794,9 +791,8 @@ const Home = () => {
                         <i className="flaticon-quote-left"></i>
                       </div>
                       <p className="description">
-                        I found myself working in a true partnership that
-                        results in an incredible experience, and a product that
-                        is the best services.
+                      I am delighted with the service, super immediately for any emergency I will definitely request them again!!!
+
                       </p>
                       <div className="author-details">
                         <div className="author-meta">

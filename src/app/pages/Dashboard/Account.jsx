@@ -59,7 +59,7 @@ const Account = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
           setMessage('');
-        }, 5000000000);
+        }, 5000);
       
         return () => clearTimeout(timer);
       }, [message]);

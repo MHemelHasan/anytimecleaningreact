@@ -88,6 +88,7 @@ import FooterImage from "../../assets/uploads/media-uploader/footer-bg-min161997
 import FooterLogo from "../../assets/company-logo.png";
 import PostImage4 from "../../assets/uploads/media-uploader/thumb-pexels-karolina-grabowska-4239146-min1620223752.jpg";
 import PostImage5 from "../../assets/uploads/media-uploader/thumb-pexels-karolina-grabowska-4239032-min1620225734.jpg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -110,8 +111,7 @@ const Footer = () => {
                           alt="site_white_logo"
                       />
                       <p>
-                        Sed do eiusmod tempor incididunt ut labore et dolore
-                        eiusmod tempor incididunt
+                      Quality Cleaning Service In BC, Canada
                       </p>
                     </div>
                   </div>
@@ -130,7 +130,7 @@ const Footer = () => {
                           {/*<a href="blog/healthy-life-is-clean-life/5.html">*/}
                           {/*  A healthy life is a clean life for everyone*/}
                           {/*</a>*/}
-                          <a>Residential Service</a>
+                          <a>Residential Cleaning</a>
                         </h4>
 
                       </div>
@@ -144,7 +144,7 @@ const Footer = () => {
                           {/*<a href="blog/cleaning-are-best-business-for-future/4.html">*/}
                           {/*  Cleaning are best business for future*/}
                           {/*</a>*/}
-                          <a>Commercial Service</a>
+                          <a>Commercial Cleaning</a>
                         </h4>
 
                       </div>
@@ -158,16 +158,16 @@ const Footer = () => {
                     <h4 className="widget-title">Useful Links</h4>
                     <ul>
                       <li>
-                        <a href="how-it-works.html">How It Works</a>
+                        <a href="#">How It Works</a>
                       </li>
                       <li>
-                        <a href="faq.html">Faq</a>
+                        <Link to={'/faq'}>Faq</Link>
                       </li>
                       <li>
-                        <a href="about-us.html">About Us</a>
+                        <Link to={'#'}>About Us</Link>
                       </li>
                       <li>
-                        <a href="contact-us.html">Contact Us</a>
+                        <Link to={'/contact'}>Contact Us</Link>
                       </li>
                     </ul>
                   </div>
@@ -182,26 +182,22 @@ const Footer = () => {
                         <i className="fa fa-home"></i>
                       </div>
                       <div className="details">
-                        66 Brooklyn street, New York
+                      1771 Robson Street -1579 Vancouver, BC V6G 3B7 Canada
                       </div>
                     </li>
                     <li className="single-info-item">
                       <div className="icon">
                         <i className="fa fa-phone"></i>
                       </div>
-                      <div className="details">+458 123 657</div>
+                      <div className="details">+1 (236) 880-1980</div>
                     </li>
                     <li className="single-info-item">
                       <div className="icon">
                         <i className="fas fa-envelope-open"></i>
                       </div>
                       <div className="details">
-                        <a
-                            href="https://xgenious.com/cdn-cgi/l/email-protection"
-                            className="__cf_email__"
-                            data-cfemail="b3d0dcddc7d2d0c7f3cbd4d6dddadcc6c09dd0dcde"
-                        >
-                          [email&#160;protected]
+                        <a href="mailto:info@anytimecleaning.com">
+                          info@anytimecleaning.com
                         </a>
                       </div>
                     </li>
