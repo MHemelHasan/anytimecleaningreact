@@ -53,9 +53,9 @@ const Banner = () => {
                   <h1 className="title">Quality Cleaning Service In BC, Canada</h1>
                   <div className="header-bottom">
                     <div className="btn-wrapper desktop-left">
-                      <a href="#" className="boxed-btn">
-                        Request a quote
-                      </a>
+                    <Link to={'/contact'} className="boxed-btn">
+                        Contact us
+                      </Link>
                     </div>
                     <span className="or">OR</span>
                     <div className="header-buttom-content style-01">
@@ -82,9 +82,9 @@ const Banner = () => {
                   <h1 className="title">Quality Cleaning Service In BC, Canada</h1>
                   <div className="header-bottom">
                     <div className="btn-wrapper desktop-left">
-                      <a href="#" className="boxed-btn">
-                        Request a quote
-                      </a>
+                    <Link to={'/contact'} className="boxed-btn">
+                        Contact us
+                      </Link>
                     </div>
                     <span className="or">OR</span>
                     <div className="header-buttom-content style-01">
@@ -108,12 +108,12 @@ const Banner = () => {
               <div className="col-lg-7">
                 <div className="header-inner">
                   <span className="subtitle">We provide cleaning service</span>
-                  <h1 className="title">We are certified cleaning Company</h1>
+                  <h1 className="title">Quality Cleaning Service In BC, Canada</h1>
                   <div className="header-bottom">
                     <div className="btn-wrapper desktop-left">
-                      <a href="#" className="boxed-btn">
-                        Request a quote
-                      </a>
+                    <Link to={'/contact'} className="boxed-btn">
+                        Contact us
+                      </Link>
                     </div>
                     <span className="or">OR</span>
                     <div className="header-buttom-content style-01">
