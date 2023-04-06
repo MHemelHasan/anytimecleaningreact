@@ -61,7 +61,7 @@ const Booking = () => {
             setService(response.data);
           })
           .catch(error => {
-            setMessage("Failed to update!");
+            // setMessage("Failed to update!");
           });
         }
         getService();

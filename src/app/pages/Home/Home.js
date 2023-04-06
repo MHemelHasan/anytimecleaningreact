@@ -1,10 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import img1 from "../../../assets/uploads/media-uploader/011618747632.png";
 import Service_bg from "../../../assets/uploads/media-uploader/011618730370.png";
-import Service_bg2 from "../../../assets/uploads/media-uploader/011618730370.png";
-import Service_bg3 from "../../../assets/uploads/media-uploader/011618730370.png";
-import Service_bg4 from "../../../assets/uploads/media-uploader/011618730370.png";
-import Service_bg5 from "../../../assets/uploads/media-uploader/011618730370.png";
 import Icon_bg1 from "../../../assets/frontend/important/choose/01.png";
 import Icon_bg2 from "../../../assets/frontend/important/choose/01.png";
 import Image1 from "../../../assets/uploads/media-uploader/bg-min-service1618907068.png";
@@ -18,11 +14,11 @@ import ContactImage from "../../../assets/uploads/media-uploader/011618994172.pn
 import PostImage1 from "../../../assets/uploads/media-uploader/pexels-karolina-grabowska-4239146-min1620223752.jpg";
 import PostImage2 from "../../../assets/uploads/media-uploader/pexels-karolina-grabowska-4239032-min1620225734.jpg";
 import PostImage3 from "../../../assets/uploads/media-uploader/pexels-karolina-grabowska-4239113-min1620225894.jpg";
-import service1 from "../../../assets/uploads/media-uploader/service1.png";
-import service2 from "../../../assets/uploads/media-uploader/service2.jpg";
-import service3 from "../../../assets/uploads/media-uploader/service3.jpg";
-import service4 from "../../../assets/uploads/media-uploader/service2.jpg";
-import service5 from "../../../assets/uploads/media-uploader/bg-right1618906912.jpg";
+// import service1 from "../../../assets/uploads/media-uploader/service1.png";
+// import service2 from "../../../assets/uploads/media-uploader/service2.jpg";
+// import service3 from "../../../assets/uploads/media-uploader/service3.jpg";
+// import service4 from "../../../assets/uploads/media-uploader/service2.jpg";
+// import service5 from "../../../assets/uploads/media-uploader/bg-right1618906912.jpg";
 
 
 import Banner from "../../components/Banner";
@@ -202,7 +198,7 @@ const Home = () => {
                           <div
                             className="serivce-bg"
                             style={{
-                              backgroundImage: `url(${service1})`
+                              backgroundImage: `url(${Service_bg})`
                             }}
                           ></div>
                         </div>
@@ -332,7 +328,7 @@ const Home = () => {
                           <div
                             className="serivce-bg"
                             style={{
-                              backgroundImage: `url(${service3})`
+                              backgroundImage: `url(${Service_bg})`
                             }}
                           ></div>
                         </div>
@@ -398,7 +394,7 @@ const Home = () => {
                           <div
                             className="serivce-bg"
                             style={{
-                              backgroundImage: `url(${service4})`
+                              backgroundImage: `url(${Service_bg})`
                             }}
                           ></div>
                         </div>
@@ -462,7 +458,7 @@ const Home = () => {
                           <div
                             className="serivce-bg"
                             style={{
-                              backgroundImage: `url(${service5})`
+                              backgroundImage: `url(${Service_bg})`
                             }}
                           ></div>
                         </div>
