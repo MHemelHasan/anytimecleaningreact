@@ -30,8 +30,8 @@ const Product = ({
     >
       <figure className="">
         {media[0]?.url ?
-        <img height={300} width={300} src={media[0]?.url} alt="Product" />:
-        <AiOutlineClear style={{color:"#2c9bf4"}} size={300}/>}
+        <img height={250} width={250} src={media[0]?.url} alt="Product" />:
+        <AiOutlineClear style={{color:"#2c9bf4"}} size={250}/>}
       </figure>
 
       <div className="card-body">

@@ -14,6 +14,9 @@ import ContactImage from "../../../assets/uploads/media-uploader/011618994172.pn
 import PostImage1 from "../../../assets/uploads/media-uploader/pexels-karolina-grabowska-4239146-min1620223752.jpg";
 import PostImage2 from "../../../assets/uploads/media-uploader/pexels-karolina-grabowska-4239032-min1620225734.jpg";
 import PostImage3 from "../../../assets/uploads/media-uploader/pexels-karolina-grabowska-4239113-min1620225894.jpg";
+import Rating from "react-rating";
+import { AiOutlineClear, AiOutlineStar, AiOutlineUser } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 // import service1 from "../../../assets/uploads/media-uploader/service1.png";
 // import service2 from "../../../assets/uploads/media-uploader/service2.jpg";
 // import service3 from "../../../assets/uploads/media-uploader/service3.jpg";
@@ -23,8 +26,22 @@ import PostImage3 from "../../../assets/uploads/media-uploader/pexels-karolina-g
 
 import Banner from "../../components/Banner";
 import Provider from "./Provider";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import RootURL from "../../components/Contants";
 
 const Home = () => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+      fetch(RootURL + 'e_services')
+      .then((response) => response.json())
+      .then((data) => {
+        const featuredServices = data?.data?.filter((service) => service.featured);
+        setServices(featuredServices);
+      });
+  }, []);
+
   return (
     <>
       <Banner />
@@ -684,7 +701,7 @@ const Home = () => {
                     <div className="count-wrap">
                       <span className="count-num">7,079</span>+
                     </div>
-                    <h4 className="title">Store Clients Products</h4>
+                    <h4 className="title">Service Reviews</h4>
                   </div>
                 </div>
               </div>
@@ -901,7 +918,7 @@ I certainly recommend their service for cleaning.
         </div>
       </div>
       <Provider />
-      <section className="blog-area padding-top-110 padding-bottom-100 bg-liteblue">
+      <section className="blog-area padding-top-110 padding-bottom-100 bg-white">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -912,107 +929,71 @@ I certainly recommend their service for cleaning.
                     <span className="line-three"></span>
                     <span className="line-four"></span>
                   </div>
-                  <h3 className="title">Latest News &amp; Tips</h3>
+                  <h3 className="title">Services</h3>
                 </div>
                 <div className="btn-wrapper">
-                  <a href="blog.html" className="boxed-btn">
-                    See All News
-                  </a>
+                  <Link to={'/services'} className="boxed-btn">
+                    See All Services
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-md-6 col-lg-4">
-              <div className="single-blog-grid-01 margin-bottom-30">
-                <div className="thumb">
-                  <img src={PostImage1} alt="post1" />
-                  <div className="news-date">
-                    <h5 className="title">24</h5>
-                    <span>Apr</span>
-                  </div>
-                </div>
-                <div className="content">
-                  <ul className="post-meta">
-                    <li>
-                      <i className="far fa-user"></i> Shawon
-                    </li>
-                    <li>
-                      <i className="far fa-calendar-alt"></i> 1 year ago
-                    </li>
-                  </ul>
-                  <h4 className="title">
-                    <a href="blog/healthy-life-is-clean-life/5.html">
-                      A healthy life is a clean life for everyone
-                    </a>
-                  </h4>
-                  <p>
-                    What the world would be like if food processors didn't
-                    exist. 13 uses for chef uniforms. What the Beatles could
-                  </p>
-                </div>
+          <div className="row d-flex justify-content-between">
+          {services?.slice(0,3).map((service,index)=> ( 
+          <div key={index}
+            className="card w-80 glass cursor-pointer"
+            onClick={() => navigateToServicesDetail(id)}
+          >
+            <figure className="d-flex justify-content-center">
+              {service?.media[0]?.url ?
+              <img height={250} width={250} src={media[0]?.url} alt="Product" />:
+              <AiOutlineClear style={{color:"#2c9bf4"}} size={250}/>}
+            </figure>
+
+            <div className="card-body ">
+              <div className="d-flex justify-content-center">
+                <button type="button" className="featured-btn">Featured</button>
+              </div>
+              <h2 className="card-title">{service?.name?.en}</h2>
+              <p className="font-semibold text-center">
+                <Rating
+                  initialRating={service?.rate}
+                  emptySymbol={
+                    <AiOutlineStar icon={AiOutlineStar} style={{ color: "orange" }} />
+                  }
+                  fullSymbol={
+                    <AiFillStar style={{ color: "orange" }} icon={AiFillStar} />
+                  }
+                  readonly
+                ></Rating>
+              </p>
+              <div className="mt-8">
+                <span className="text-base text-gray-600 font-semibold d-flex justify-content-center">
+                  Start from
+                </span>
+                <div className="d-flex justify-content-center">
+                  {service?.discount_price ? (
+                    <>
+                      <del className="text-xs font-semibold text-gray-600 sm:text-sm">
+                        {" "}
+                        ${service?.price}{" "}
+                      </del>
+                      <p className="pl-2 text-xs font-normal text-orange-600 sm:text-sm md:text-base">
+                        ${service?.discount_price}
+                      </p>
+                    </>
+                  ) : (
+                    <p className="text-xs font-normal text-orange-600 sm:text-sm md:text-base">
+                      ${service?.price}{" "}
+                    </p>
+                  )}
+                </div>{" "}
               </div>
             </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="single-blog-grid-01 margin-bottom-30">
-                <div className="thumb">
-                  <img src={PostImage2} alt="post2" />
-                  <div className="news-date">
-                    <h5 className="title">24</h5>
-                    <span>Apr</span>
-                  </div>
-                </div>
-                <div className="content">
-                  <ul className="post-meta">
-                    <li>
-                      <i className="far fa-user"></i> Shawon
-                    </li>
-                    <li>
-                      <i className="far fa-calendar-alt"></i> 1 year ago
-                    </li>
-                  </ul>
-                  <h4 className="title">
-                    <a href="blog/cleaning-are-best-business-for-future/4.html">
-                      Cleaning are best business for future
-                    </a>
-                  </h4>
-                  <p>
-                    What the world would be like if food processors didn't
-                    exist. 13 uses for chef uniforms. What the Beatles could
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4">
-              <div className="single-blog-grid-01 margin-bottom-30">
-                <div className="thumb">
-                  <img src={PostImage3} alt="post3" />
-                  <div className="news-date">
-                    <h5 className="title">22</h5>
-                    <span>Apr</span>
-                  </div>
-                </div>
-                <div className="content">
-                  <ul className="post-meta">
-                    <li>
-                      <i className="far fa-user"></i> Shawon
-                    </li>
-                    <li>
-                      <i className="far fa-calendar-alt"></i> 1 year ago
-                    </li>
-                  </ul>
-                  <h4 className="title">
-                    <a href="blog/how-to-make-your-life-so-clean222/3.html">
-                      How to make your life so clean
-                    </a>
-                  </h4>
-                  <p>
-                    What the world would be like if food processors didn't
-                    exist. 13 uses for chef uniforms. What the Beatles could
-                  </p>
-                </div>
-              </div>
-            </div>
+          </div>
+          ))}
+
           </div>
         </div>
       </section>
