@@ -4,27 +4,27 @@ import axios from 'axios';
 import RootURL from '../../components/Contants';
 import React, { useState } from 'react';
 import { BiCurrentLocation, BiFile, BiGift, BiMap } from 'react-icons/bi';
-import ConfirmBooking from '../../components/Booking/ConfirmBooking';
+// import ConfirmBooking from '../../components/Booking/ConfirmBooking';
 // import useBooking from "../../hooks/useBooking";
 import moment from 'moment/moment';
 import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 
 const Booking = () => {
-    const { id } = useParams();
-    const cookies = Cookies.get('api_token');
-    const [coupon,setCoupon]=useState(null);
-    // const [hint,setHint]=useState(null);
-    const [service,setService]=useState('');
-    console.log("service:",service);
-    const [user,setUser]=useState('');
-    const [showConfirm,setShowConfirm] = useState(false);
-    const [messageCoupon, setMessageCoupon] = useState('');
-    const [errorCoupon, setErrorCoupon] = useState('');
-    const [options,setOptions] = useState(null);
-    console.log("options:",options);
-    const [bookingStatuses,setBookingStatuses] = useState(null);
-    console.log("booking status:",bookingStatuses);
+  const { id } = useParams();
+  const cookies = Cookies.get('api_token');
+  const [coupon, setCoupon] = useState(null);
+  // const [hint,setHint]=useState(null);
+  const [service, setService] = useState('');
+  console.log('service:', service);
+  const [user, setUser] = useState('');
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [messageCoupon, setMessageCoupon] = useState('');
+  const [errorCoupon, setErrorCoupon] = useState('');
+  const [options, setOptions] = useState(null);
+  console.log('options:', options);
+  const [bookingStatuses, setBookingStatuses] = useState(null);
+  console.log('booking status:', bookingStatuses);
 
   const [bookingData, setBookingData] = useState({
     address: {
@@ -53,74 +53,72 @@ const Booking = () => {
         });
     };
     getUserData();
+    const getService = async () => {
+      await axios
+        .get(RootURL + `e_services${id}`, {
+          headers: {
+            Authorization: 'Bearer ' + cookies,
+          },
+        })
+        .then((response) => {
+          setService(response.data);
+        })
+        .catch((error) => {
+          // setMessage("Failed to update!");
+        });
+    };
+    getService();
+    getOptions();
+    getBookingStatuses();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [coupon, cookies, id]);
 
-        const getService = async () =>{
-        await axios.get(RootURL + `e_services${id}`, {
-            headers: {
-              Authorization: 'Bearer ' + cookies,
-            }
-          })
-        .then(response => {
-            setService(response.data);
-          })
-          .catch(error => {
-            // setMessage("Failed to update!");
-          });
+  const getCoupons = async () => {
+    await axios
+      .get(RootURL + `coupons`, {
+        headers: {
+          Authorization: 'Bearer ' + cookies,
+        },
+      })
+      .then((response) => {
+        const valid_coupon = response?.data?.data.find((value) => {
+          return value.code === coupon;
+        });
+        if (valid_coupon) {
+          setMessageCoupon('Coupon added Successfully!');
+          setBookingData({ ...bookingData, coupon_id: valid_coupon?.id });
+        } else {
+          setErrorCoupon('Invalid Coupon!');
         }
-        getService();
-        getOptions();
-        getBookingStatuses();
-    },[coupon,cookies,id]);
+      })
+      .catch((error) => {});
+  };
 
-    const getCoupons = async () =>{
-        await axios.get(RootURL + `coupons`, {
-            headers: {
-              Authorization: 'Bearer ' + cookies,
-            }
-          })
-        .then(response => {
-            const valid_coupon = response?.data?.data.find((value) => {
-                return value.code === coupon
-              })
-              if(valid_coupon){
-                  setMessageCoupon("Coupon added Successfully!");
-                  setBookingData({...bookingData,coupon_id:valid_coupon?.id})
-              }else{
-                setErrorCoupon("Invalid Coupon!")
-              }
-          })
-          .catch(error => {
+  const getOptions = async () => {
+    await axios
+      .get(RootURL + `options`, {
+        headers: {
+          Authorization: 'Bearer ' + cookies,
+        },
+      })
+      .then((response) => {
+        setOptions(response?.data?.data);
+      })
+      .catch((error) => {});
+  };
 
-          });
-    }
-
-    const getOptions= async () =>{
-        await axios.get(RootURL + `options`, {
-            headers: {
-              Authorization: 'Bearer ' + cookies,
-            }
-          })
-        .then(response => {
-            setOptions(response?.data?.data);
-          })
-          .catch(error => {
-
-          });
-    }
-
-    const getBookingStatuses= async () =>{
-        await axios.get(RootURL + `booking_statuses`, {
-            headers: {
-              Authorization: 'Bearer ' + cookies,
-            }
-          })
-        .then(response => {
-            setBookingStatuses(response?.data?.data);
-          })
-          .catch(error => {
-
-          });
-    }
+  const getBookingStatuses = async () => {
+    await axios
+      .get(RootURL + `booking_statuses`, {
+        headers: {
+          Authorization: 'Bearer ' + cookies,
+        },
+      })
+      .then((response) => {
+        setBookingStatuses(response?.data?.data);
+      })
+      .catch((error) => {});
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -144,29 +142,30 @@ const Booking = () => {
     return () => clearTimeout(timer);
   }, [messageCoupon, errorCoupon]);
 
-    return (<>
-        <div
-            className='breadcrumb-area'
-            style={{backgroundImage: `url(${image1})`}}
-        >
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-lg-12'>
-                        <div className='breadcrumb-inner'>
-                            <p>Services</p>
-                            <h2 className='page-title'>Services</h2>
-                            <ul className='page-list'>
-                                <li>
-                                    <Link to='/home'>Home</Link>
-                                </li>
-                                <li>Services</li>
-                                <li>{service?.name?.en}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <>
+      <div
+        className='breadcrumb-area'
+        style={{ backgroundImage: `url(${image1})` }}
+      >
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-12'>
+              <div className='breadcrumb-inner'>
+                <p>Services</p>
+                <h2 className='page-title'>Services</h2>
+                <ul className='page-list'>
+                  <li>
+                    <Link to='/home'>Home</Link>
+                  </li>
+                  <li>Services</li>
+                  <li>{service?.name?.en}</li>
+                </ul>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
       <div className='md-m-5 p-5 bg-gray'>
         <div className='container'>
@@ -253,59 +252,67 @@ const Booking = () => {
             </div>
           </div>
 
-                <div className="d-grid gap-2 mt-5">
-                    <button className="btn btn-orenge" type="button" onClick={submitHandler}>Continue</button>
-                </div>
+          <div className='d-grid gap-2 mt-5'>
+            <button
+              className='btn btn-orenge'
+              type='button'
+              onClick={submitHandler}
+            >
+              Continue
+            </button>
+          </div>
 
-
-                {showConfirm?
-                <div>
-                    <div className="md-m-5 p-5 bg-gray text-center">
-                        <div className="text-center">
-                            <div>
-                                <h3>Booking Summary</h3>
-                            </div>
-                            <div className="row">
-                                    <div className="col-md-2 col-lg-2">Cost of service</div>
-                                    <div className="col-md-2 col-lg-2">{service?.price}</div>
-                            </div>
-                            <div className="row">
-                                    <div className="col-md-2 col-lg-2">Discount Price</div>
-                                    <div className="col-md-2 col-lg-2">{service?.discount_price}</div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-2 col-lg-2">Quantity</div>
-                                <div className="col-md-2 col-lg-2">x1</div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-2 col-lg-2">Maintenance</div>
-                                <div className="col-md-2 col-lg-2">$2.0</div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-2 col-lg-2">Tax Amount</div>
-                                <div className="col-md-2 col-lg-2">$2.0</div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col-md-2 col-lg-2">Sub Amount</div>
-                                <div className="col-md-2 col-lg-2">$32.43</div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-2 col-lg-2">Total Amount</div>
-                                <div className="col-md-2 col-lg-2">$32.43</div>
-                            </div>
-                            <div className="d-grid gap-2 mt-5">
-                                <button className="btn btn-orenge" type="button">Confirm & Book Service</button>
-                            </div>
-                        </div>
+          {showConfirm ? (
+            <div>
+              <div className='md-m-5 p-5 bg-gray text-center'>
+                <div className='text-center'>
+                  <div>
+                    <h3>Booking Summary</h3>
+                  </div>
+                  <div className='row'>
+                    <div className='col-md-2 col-lg-2'>Cost of service</div>
+                    <div className='col-md-2 col-lg-2'>{service?.price}</div>
+                  </div>
+                  <div className='row'>
+                    <div className='col-md-2 col-lg-2'>Discount Price</div>
+                    <div className='col-md-2 col-lg-2'>
+                      {service?.discount_price}
                     </div>
-                </div>:""}
+                  </div>
+                  <div className='row'>
+                    <div className='col-md-2 col-lg-2'>Quantity</div>
+                    <div className='col-md-2 col-lg-2'>x1</div>
+                  </div>
+                  <div className='row'>
+                    <div className='col-md-2 col-lg-2'>Maintenance</div>
+                    <div className='col-md-2 col-lg-2'>$2.0</div>
+                  </div>
+                  <div className='row'>
+                    <div className='col-md-2 col-lg-2'>Tax Amount</div>
+                    <div className='col-md-2 col-lg-2'>$2.0</div>
+                  </div>
 
+                  <div className='row'>
+                    <div className='col-md-2 col-lg-2'>Sub Amount</div>
+                    <div className='col-md-2 col-lg-2'>$32.43</div>
+                  </div>
+                  <div className='row'>
+                    <div className='col-md-2 col-lg-2'>Total Amount</div>
+                    <div className='col-md-2 col-lg-2'>$32.43</div>
+                  </div>
+                  <div className='d-grid gap-2 mt-5'>
+                    <button className='btn btn-orenge' type='button'>
+                      Confirm & Book Service
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           ) : (
             ''
           )}
         </div>
+        : ( )
       </div>
     </>
   );
