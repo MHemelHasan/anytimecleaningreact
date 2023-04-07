@@ -102,32 +102,60 @@ const About = () => {
                 </h3>
               </div>
             </div>
-            <div className='col-lg-6'>
-              <input type='number' id='count' value='3' hidden />
-              <div className='progress-item-wrapper'>
-                <input type='number' id='progress-val-0' value='80' hidden />
-                <div className='progress-item'>
-                  <div className='single-progressbar'>
-                    <h4 className='subtitle'>Service</h4>
-                    <div className='progress-0'></div>
-                  </div>
-                </div>
-                <input type='number' id='progress-val-1' value='70' hidden />
-                <div className='progress-item'>
-                  <div className='single-progressbar'>
-                    <h4 className='subtitle'>Behaviour</h4>
-                    <div className='progress-1'></div>
-                  </div>
-                </div>
-                <input type='number' id='progress-val-2' value='90' hidden />
-                <div className='progress-item'>
-                  <div className='single-progressbar'>
-                    <h4 className='subtitle'>Support</h4>
-                    <div className='progress-2'></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="col-lg-6">
+  <input type="number" id="count" value="3" hidden />
+  <div className="progress-item-wrapper">
+    <input type="number" id="progress-val-0" value="80" hidden />
+    <div className="progress-item">
+      <div className="single-progressbar">
+        <h4 className="subtitle">Service</h4>
+        <div className="progress">
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={{ width: "80%" }}
+            aria-valuenow="80"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <input type="number" id="progress-val-1" value="70" hidden />
+    <div className="progress-item">
+      <div className="single-progressbar">
+        <h4 className="subtitle">Behaviour</h4>
+        <div className="progress">
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={{ width: "70%" }}
+            aria-valuenow="70"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <input type="number" id="progress-val-2" value="90" hidden />
+    <div className="progress-item">
+      <div className="single-progressbar">
+        <h4 className="subtitle">Support</h4>
+        <div className="progress">
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={{ width: "90%" }}
+            aria-valuenow="90"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
           </div>
         </div>
       </div>
@@ -239,7 +267,7 @@ const About = () => {
                   </div>
                   <div className='content'>
                     <div className='count-wrap'>
-                      <span className='count-num'>20</span>k+
+                      <span className='count-num'>10</span>k+
                     </div>
                     <h4 className='title'>Worldwide Clients</h4>
                   </div>
@@ -254,7 +282,7 @@ const About = () => {
                     <div className='count-wrap'>
                       <span className='count-num'>7,079</span>+
                     </div>
-                    <h4 className='title'>Store Clients Products</h4>
+                    <h4 className='title'>Service Reviews</h4>
                   </div>
                 </div>
               </div>
@@ -265,7 +293,7 @@ const About = () => {
                   </div>
                   <div className='content'>
                     <div className='count-wrap'>
-                      <span className='count-num'>1043</span>+
+                      <span className='count-num'>500</span>+
                     </div>
                     <h4 className='title'>Total Km Reach So Far</h4>
                   </div>

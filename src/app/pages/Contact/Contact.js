@@ -45,9 +45,7 @@ const Contact = () => {
                                     <div className="content">
                                         <span className="title">Phone</span>
                                         <p className="details">
-                                            +458 123 657
-                                            <br/>
-                                            +415 103 557<br/>
+                                            +1 (236) 880-1980
                                         </p>
                                     </div>
                                 </div>
@@ -59,18 +57,10 @@ const Contact = () => {
                                         <span className="title">Mail US</span>
                                         <p className="details">
                                             <a
-                                                href="#"
-                                                className="__cf_email__"
-                                                data-cfemail="72111d1c06131106320a15171c1b1d07015c111d1f"
-                                            >[email&#160;protected]</a
-                                            >
-                                            <br/>
-                                            <a
-                                                href="#"
+                                                href="mailto:info@anytimecleaning.com"
                                                 className="__cf_email__"
                                                 data-cfemail="e78e898188a7948f86908889c99f8082898e889294c984888a"
-                                            >[email&#160;protected]</a
-                                            ><br/>
+                                            >info@anytimecleaning.com</a><br/>
                                         </p>
                                     </div>
                                 </div>
@@ -81,8 +71,8 @@ const Contact = () => {
                                     <div className="content">
                                         <span className="title">Address </span>
                                         <p className="details">
-                                            475/W 13th Street, Cooper New York, <br/>
-                                            United States<br/>
+                                        1771 Robson Street -1579 Vancouver, BC V6G 3B7<br/>
+                                        Canada<br/>
                                         </p>
                                     </div>
                                 </div>
@@ -179,7 +169,7 @@ const Contact = () => {
                                         scrolling="no"
                                         marginHeight="0"
                                         marginWidth="0"
-                                        src="https://maps.google.com/maps?q=2626%20Angie%20Drive%20Santa%20Ana%2C%20CA%2092701&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2602.2142105147095!2d-123.13744442420723!3d49.29128517014592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548671881412d8f5%3A0xe0df6a5e3561990d!2sRobson%20St%2C%20Vancouver%2C%20BC%20V6G%201C9%2C%20Canada!5e0!3m2!1sen!2sbd!4v1680864573460!5m2!1sen!2sbd&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near"
                                         aria-label="2626 Angie Drive Santa Ana, CA 92701"
                                     ></iframe>
                                 </div>

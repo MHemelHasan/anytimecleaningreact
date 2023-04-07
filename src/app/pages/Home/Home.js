@@ -29,14 +29,18 @@ import Provider from "./Provider";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import RootURL from "../../components/Contants";
+import { shortDesc } from "../../utils/short_desc";
 
 const Home = () => {
   const [services, setServices] = useState([]);
+  const [allServices, setAllServices] = useState([]);
+
 
   useEffect(() => {
       fetch(RootURL + 'e_services')
       .then((response) => response.json())
       .then((data) => {
+        setAllServices(data?.data);
         const featuredServices = data?.data?.filter((service) => service.featured);
         setServices(featuredServices);
       });
@@ -57,8 +61,8 @@ const Home = () => {
           <div className="header-bottom-wrapper m-top bg-white">
             <div className="row">
               <div className="col-lg-12">
-                <div className="content-wrapper">
-                  <div className="left-content bg-blue">
+                <div className="content-wrapper row">
+                  <div className="left-content bg-blue col-md-3">
                     <ul className="nav nav-tabs" id="myTab" role="tablist">
                       <li className="nav-item">
                         <a
@@ -74,7 +78,7 @@ const Home = () => {
                             <i className="flaticon-vacuum"></i>
                           </div>
                           <div className="service-title">
-                            <h4 className="title">Window Cleaning</h4>
+                            <h4 className="title">{allServices[0]?.name?.en}</h4>
                           </div>
                         </a>
                       </li>
@@ -92,7 +96,7 @@ const Home = () => {
                             <i className="flaticon-liquid-soap"></i>
                           </div>
                           <div className="service-title">
-                            <h4 className="title">Gutter Cleaning</h4>
+                            <h4 className="title">{allServices[1]?.name?.en}</h4>
                           </div>
                         </a>
                       </li>
@@ -110,7 +114,7 @@ const Home = () => {
                             <i className="flaticon-lawn-mower"></i>
                           </div>
                           <div className="service-title">
-                            <h4 className="title">House Washing</h4>
+                            <h4 className="title">{allServices[2]?.name?.en}</h4>
                           </div>
                         </a>
                       </li>
@@ -128,7 +132,7 @@ const Home = () => {
                             <i className="flaticon-wash-1"></i>
                           </div>
                           <div className="service-title">
-                            <h4 className="title">Exterior Building Washing</h4>
+                            <h4 className="title">{allServices[3]?.name?.en}</h4>
                           </div>
                         </a>
                       </li>
@@ -146,13 +150,13 @@ const Home = () => {
                             <i className="flaticon-washing-hands"></i>
                           </div>
                           <div className="service-title">
-                            <h4 className="title">Pressure Washing</h4>
+                            <h4 className="title">{allServices[4]?.name?.en}</h4>
                           </div>
                         </a>
                       </li>
                     </ul>
                   </div>
-                  <div className="right-content">
+                  <div className="right-content col-md-9">
                     <div className="tab-content" id="myTabContent">
                       <div
                         className="tab-pane fade active show"
@@ -160,18 +164,16 @@ const Home = () => {
                         role="tabpanel"
                         aria-labelledby="residential-service-tab"
                       >
-                        <div className="description-tab-content">
-                          <div className="text-content-tab">
+                        <div className="description-tab-content row">
+                          <div className="text-content-tab col-md-8">
                             <div className="section-title">
                               <span className="subtitle">
-                              Window Cleaning Service
+                              {allServices[0]?.name?.en}
                               </span>
                               <h3 className="title">
-                                We provide best Window Cleaning service
+                                We provide best {allServices[0]?.name?.en} service
                               </h3>
-                              <p>We're known for one thing everywhere we go: excellent customer experiences. With our industry leading guarantees and our unwavering.
-
-                                </p>
+                              <p>{shortDesc(allServices[0]?.description,250)}</p>
                             </div>
                             <div className="content">
                               <ul>
@@ -211,7 +213,7 @@ const Home = () => {
                             </div>
                           </div>
                           <div
-                            className="serivce-bg"
+                            className="serivce-bg col-md-4"
                             style={{
                               backgroundImage: `url(${Service_bg})`
                             }}
@@ -228,15 +230,12 @@ const Home = () => {
                           <div className="text-content-tab">
                             <div className="section-title">
                               <span className="subtitle">
-                              Gutter Cleaning Service
+                              {allServices[1]?.name?.en} Service
                               </span>
                               <h3 className="title">
-                                We provide best Gutter Cleaning service
+                                We provide best {allServices[1]?.name?.en} service
                               </h3>
-                              <p>
-                                We're known for one thing everywhere we go:
-                                excellent customer experiences. With our
-                                industry leading guarantees and our unwavering.
+                              <p>{shortDesc(allServices[1]?.description,250)}
                               </p>
                             </div>
                             <div className="content">
@@ -293,14 +292,11 @@ const Home = () => {
                         <div className="description-tab-content">
                           <div className="text-content-tab">
                             <div className="section-title">
-                              <span className="subtitle">House Washing Service</span>
+                              <span className="subtitle">{allServices[2]?.name?.en} Service</span>
                               <h3 className="title">
-                                We provide best House Washing service
+                                We provide best {allServices[2]?.name?.en} service
                               </h3>
-                              <p>
-                                We're known for one thing everywhere we go:
-                                excellent customer experiences. With our
-                                industry leading guarantees and our unwavering.
+                              <p>{shortDesc(allServices[2]?.description,250)}
                               </p>
                             </div>
                             <div className="content">
@@ -358,16 +354,12 @@ const Home = () => {
                           <div className="text-content-tab">
                             <div className="section-title">
                               <span className="subtitle">
-                              Exterior Building Washing
+                              {allServices[3]?.name?.en}
                               </span>
                               <h3 className="title">
-                                We provide best Exterior Building Washing service
+                                We provide best {allServices[3]?.name?.en} service
                               </h3>
-                              <p>
-                                We're known for one thing everywhere we go:
-                                excellent customer experiences. With our
-                                industry leading guarantees and our unwavering.
-                              </p>
+                              <p>{shortDesc(allServices[3]?.description,250)}</p>
                             </div>
                             <div className="content">
                               <ul>
@@ -423,15 +415,11 @@ const Home = () => {
                         <div className="description-tab-content">
                           <div className="text-content-tab">
                             <div className="section-title">
-                              <span className="subtitle">Pressure Washing Service</span>
+                              <span className="subtitle">{allServices[4]?.name?.en} Service</span>
                               <h3 className="title">
-                                We provide best Pressure Washing service
+                                We provide best {allServices[4]?.name?.en} service
                               </h3>
-                              <p>
-                                We're known for one thing everywhere we go
-                                excellent customer experiences. With our
-                                industry-leading guarantees and our unwavering.
-                              </p>
+                              <p>{shortDesc(allServices[4]?.description,250)}</p>
                             </div>
                             <div className="content">
                               <ul>

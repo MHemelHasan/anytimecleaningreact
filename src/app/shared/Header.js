@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Cookies from 'js-cookie';
-import logo from '../../assets/company-logo.png';
+import logo from '../../assets/anytimelogo.png';
 import service1 from '../../assets/uploads/media-uploader/cleaning.png';
 import service2 from '../../assets/uploads/media-uploader/bucket.png';
 import { Link } from 'react-router-dom';
@@ -48,7 +48,7 @@ const Header = () => {
                         </li>
                         <li>&nbsp; | &nbsp;</li>
                         <li>
-                          <Link to='/user-signup'>Sing Up</Link>
+                          <Link to='/user-signup'>Sign Up</Link>
                         </li>
                       </ul>
                     ) : (
@@ -139,7 +139,7 @@ const Header = () => {
                   <Link to='/about'>About Us</Link>
                 </li>
                 <li className='menu-item-has-mega-menu'>
-                  <a>Service</a>
+                  <a>Services</a>
                   <div className='xg_mega_menu_wrapper service_mega_menu'>
                     <div className='xg-mega-menu-container'>
                       <div className='row'>
@@ -148,7 +148,7 @@ const Header = () => {
                             <img
                               src={service2}
                               alt='Residential Service'
-                              style={{ height: 100, width: 100 }}
+                              style={{ height: 200, width: 200 }}
                             />
                           </div>
                         </div>
@@ -181,7 +181,7 @@ const Header = () => {
                             <img
                               src={service1}
                               alt='Commercial Service'
-                              style={{ height: 100, width: 100 }}
+                              style={{ height: 200, width: 200 }}
                             />
                           </div>
                         </div>
@@ -240,7 +240,7 @@ const Header = () => {
                       to='/provider-signup'
                       className='request-btn text-white'
                     >
-                      Become Cleaner
+                      Become A Cleaner
                     </Link>
                   </div>
                 </li>
@@ -259,7 +259,7 @@ const Header = () => {
               </div>
               <div className='btn-wrapper'>
                 <Link to='/provider-signup' className='request-btn'>
-                  Become Cleaner<i className='fas fa-long-arrow-alt-right'></i>
+                Become A Cleaner<i className='fas fa-long-arrow-alt-right'></i>
                 </Link>
               </div>
             </div>

@@ -107,7 +107,7 @@ const Banner = () => {
             <div className="row">
               <div className="col-lg-7">
                 <div className="header-inner">
-                  <span className="subtitle">We provide cleaning service</span>
+                  <span className="subtitle">Best Cleaning Service Platform</span>
                   <h1 className="title">Quality Cleaning Service In BC, Canada</h1>
                   <div className="header-bottom">
                     <div className="btn-wrapper desktop-left">

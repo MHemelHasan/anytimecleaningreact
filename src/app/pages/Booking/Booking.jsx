@@ -16,10 +16,15 @@ const Booking = () => {
     const [coupon,setCoupon]=useState(null);
     // const [hint,setHint]=useState(null);
     const [service,setService]=useState('');
+    console.log("service:",service);
     const [user,setUser]=useState('');
     const [showConfirm,setShowConfirm] = useState(false);
     const [messageCoupon, setMessageCoupon] = useState('');
     const [errorCoupon, setErrorCoupon] = useState('');
+    const [options,setOptions] = useState(null);
+    console.log("options:",options);
+    const [bookingStatuses,setBookingStatuses] = useState(null);
+    console.log("booking status:",bookingStatuses);
 
     const [bookingData, setBookingData] = useState({
         address: {
@@ -65,7 +70,9 @@ const Booking = () => {
           });
         }
         getService();
-    },[coupon]);
+        getOptions();
+        getBookingStatuses();
+    },[coupon,cookies,id]);
 
     const getCoupons = async () =>{
         await axios.get(RootURL + `coupons`, {
@@ -83,6 +90,34 @@ const Booking = () => {
               }else{
                 setErrorCoupon("Invalid Coupon!")
               }
+          })
+          .catch(error => {
+
+          });
+    }
+
+    const getOptions= async () =>{
+        await axios.get(RootURL + `options`, {
+            headers: {
+              Authorization: 'Bearer ' + cookies,
+            }
+          })
+        .then(response => {
+            setOptions(response?.data?.data);
+          })
+          .catch(error => {
+
+          });
+    }
+
+    const getBookingStatuses= async () =>{
+        await axios.get(RootURL + `booking_statuses`, {
+            headers: {
+              Authorization: 'Bearer ' + cookies,
+            }
+          })
+        .then(response => {
+            setBookingStatuses(response?.data?.data);
           })
           .catch(error => {
 
@@ -127,7 +162,7 @@ const Booking = () => {
                                     <Link to='/home'>Home</Link>
                                 </li>
                                 <li>Services</li>
-                                <li>Residential Service</li>
+                                <li>{service?.name?.en}</li>
                             </ul>
                         </div>
                     </div>
@@ -193,10 +228,51 @@ const Booking = () => {
                 <div className="d-grid gap-2 mt-5">
                     <button className="btn btn-orenge" type="button" onClick={submitHandler}>Continue</button>
                 </div>
+
+
                 {showConfirm?
                 <div>
-                    <ConfirmBooking service={service} user={user} coupon={coupon} hint={bookingData.hint} />
+                    <div className="md-m-5 p-5 bg-gray text-center">
+                        <div className="text-center">
+                            <div>
+                                <h3>Booking Summary</h3>
+                            </div>
+                            <div className="row">
+                                    <div className="col-md-2 col-lg-2">Cost of service</div>
+                                    <div className="col-md-2 col-lg-2">{service?.price}</div>
+                            </div>
+                            <div className="row">
+                                    <div className="col-md-2 col-lg-2">Discount Price</div>
+                                    <div className="col-md-2 col-lg-2">{service?.discount_price}</div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-2 col-lg-2">Quantity</div>
+                                <div className="col-md-2 col-lg-2">x1</div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-2 col-lg-2">Maintenance</div>
+                                <div className="col-md-2 col-lg-2">$2.0</div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-2 col-lg-2">Tax Amount</div>
+                                <div className="col-md-2 col-lg-2">$2.0</div>
+                            </div>
+
+                            <div className="row">
+                                <div className="col-md-2 col-lg-2">Sub Amount</div>
+                                <div className="col-md-2 col-lg-2">$32.43</div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-2 col-lg-2">Total Amount</div>
+                                <div className="col-md-2 col-lg-2">$32.43</div>
+                            </div>
+                            <div className="d-grid gap-2 mt-5">
+                                <button className="btn btn-orenge" type="button">Confirm & Book Service</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>:""}
+
             </div>
         </div>
 
