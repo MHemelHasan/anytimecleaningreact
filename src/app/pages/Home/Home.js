@@ -164,16 +164,14 @@ const Home = () => {
                           <div className="text-content-tab">
                             <div className="section-title">
                               <span className="subtitle">
-                                Residential Service
+                              Window Cleaning Service
                               </span>
                               <h3 className="title">
-                                We provide best residential cleaning service
+                                We provide best Window Cleaning service
                               </h3>
-                              <p>
-                                We're known for one thing everywhere we go:
-                                excellent customer experiences. With our
-                                industry leading guarantees and our unwavering.
-                              </p>
+                              <p>We're known for one thing everywhere we go: excellent customer experiences. With our industry leading guarantees and our unwavering.
+
+                                </p>
                             </div>
                             <div className="content">
                               <ul>
@@ -230,10 +228,10 @@ const Home = () => {
                           <div className="text-content-tab">
                             <div className="section-title">
                               <span className="subtitle">
-                                Commercial Service
+                              Gutter Cleaning Service
                               </span>
                               <h3 className="title">
-                                We provide best residential cleaning service
+                                We provide best Gutter Cleaning service
                               </h3>
                               <p>
                                 We're known for one thing everywhere we go:
@@ -295,9 +293,9 @@ const Home = () => {
                         <div className="description-tab-content">
                           <div className="text-content-tab">
                             <div className="section-title">
-                              <span className="subtitle">Vehicle Service</span>
+                              <span className="subtitle">House Washing Service</span>
                               <h3 className="title">
-                                We provide best residential cleaning service
+                                We provide best House Washing service
                               </h3>
                               <p>
                                 We're known for one thing everywhere we go:
@@ -360,10 +358,10 @@ const Home = () => {
                           <div className="text-content-tab">
                             <div className="section-title">
                               <span className="subtitle">
-                              Commercial Service
+                              Exterior Building Washing
                               </span>
                               <h3 className="title">
-                                We provide best residential cleaning service
+                                We provide best Exterior Building Washing service
                               </h3>
                               <p>
                                 We're known for one thing everywhere we go:
@@ -425,9 +423,9 @@ const Home = () => {
                         <div className="description-tab-content">
                           <div className="text-content-tab">
                             <div className="section-title">
-                              <span className="subtitle">Others Service</span>
+                              <span className="subtitle">Pressure Washing Service</span>
                               <h3 className="title">
-                                We provide best residential cleaning service
+                                We provide best Pressure Washing service
                               </h3>
                               <p>
                                 We're known for one thing everywhere we go

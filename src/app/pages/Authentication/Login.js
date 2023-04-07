@@ -21,8 +21,7 @@ const Login = () => {
             headers: {'Content-Type': 'application/json',
                     "Accept": 'application/json'},
             body: JSON.stringify({email, password,})
-        }).
-        then(res => res.json())
+        }).then(res => res.json())
             .then(info => {
                 // console.log(info);
                 // console.log(info.data.api_token);
