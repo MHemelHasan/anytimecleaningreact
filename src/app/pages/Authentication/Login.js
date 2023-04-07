@@ -12,6 +12,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
     const [token, setToken] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -23,14 +24,18 @@ const Login = () => {
         }).
         then(res => res.json())
             .then(info => {
-                console.log(info);
-                console.log(info.data.api_token);
+                // console.log(info);
+                // console.log(info.data.api_token);
+                if(info?.data?.api_token){
                 setToken(info.data.api_token);
                 Cookies.set('api_token', info.data.api_token)
                 // window.location.href = '/dashboard';
                 const prevPath = localStorage.getItem('prevPath') || '/';
                 console.log("prec path:",prevPath);
                 window.location.href = prevPath ? prevPath : '/dashboard';
+                }else{
+                    setErrorMessage("Incorrect email or password!");
+                }
             })
     }
     return (
@@ -39,6 +44,7 @@ const Login = () => {
                 <div className="row justify-content-center align-items-center h-100">
                     <div className="col-md-4 login-form">
                         <h2 className="text-center">Login</h2>
+                        {errorMessage && <div className="p-3 m-3 text-white bg-danger">{errorMessage}</div>}
                         <form>
                             <div className="form-group">
                                 <label htmlFor="Email">Email:</label>
