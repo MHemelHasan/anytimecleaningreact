@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const useProvider = (id) => {
   const [provider, setProvider] = useState({});
@@ -11,7 +11,7 @@ const useProvider = (id) => {
         setProvider(data);
         console.log(data);
       });
-  }, []);
+  }, [id]);
 
   return {
     provider,

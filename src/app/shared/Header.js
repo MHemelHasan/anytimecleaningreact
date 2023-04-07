@@ -10,6 +10,7 @@ import { useState } from 'react';
 
 const Header = () => {
   const cookies = Cookies.get('api_token');
+  // eslint-disable-next-line no-unused-vars
   const [message, setMessage] = useState('');
 
   const handleLogout = async () => {
