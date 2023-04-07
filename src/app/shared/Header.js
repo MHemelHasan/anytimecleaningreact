@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import Cookies from 'js-cookie';
 import logo from '../../assets/company-logo.png';
 import service1 from '../../assets/uploads/media-uploader/cleaning.png';

@@ -1,26 +1,27 @@
-import { Fragment, useState } from "react";
-import { Dialog, Menu, Tab, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { RxCross2 } from "react-icons/rx";
-import { BiFilterAlt } from "react-icons/bi";
-import { HiOutlineViewGrid } from "react-icons/hi";
-import useCategories from "../../hooks/useCategories";
-import Category from "../../components/Category";
-import useServices from "../../hooks/useServices";
-import Product from "../../components/Product";
-import Loading from "../../shared/Loading";
-import ProductCard from "../Services/ServiceCard";
+/* eslint-disable jsx-a11y/no-redundant-roles */
+import { Fragment, useState } from 'react';
+import { Dialog, Menu, Tab, Transition } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { RxCross2 } from 'react-icons/rx';
+import { BiFilterAlt } from 'react-icons/bi';
+import { HiOutlineViewGrid } from 'react-icons/hi';
+import useCategories from '../../hooks/useCategories';
+import Category from '../../components/Category';
+import useServices from '../../hooks/useServices';
+import Product from '../../components/Product';
+import Loading from '../../shared/Loading';
+// import ProductCard from "../Services/ServiceCard";
 
 const sortOptions = [
-  { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Newest", href: "#", current: false },
-  { name: "Price: Low to High", href: "#", current: false },
-  { name: "Price: High to Low", href: "#", current: false },
+  { name: 'Most Popular', href: '#', current: true },
+  { name: 'Best Rating', href: '#', current: false },
+  { name: 'Newest', href: '#', current: false },
+  { name: 'Price: Low to High', href: '#', current: false },
+  { name: 'Price: High to Low', href: '#', current: false },
 ];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function Shop() {
@@ -30,7 +31,7 @@ export default function Shop() {
   const { products } = useServices();
 
   return (
-    <div className="bg-white mb-30">
+    <div className='bg-white mb-30'>
       {loading ? (
         <Loading />
       ) : (
@@ -39,56 +40,56 @@ export default function Shop() {
             {/* Mobile menu */}
             <Transition.Root show={mobileMenuOpen} as={Fragment}>
               <Dialog
-                as="div"
-                className="fixed inset-0 flex z-40 lg:hidden"
+                as='div'
+                className='fixed inset-0 flex z-40 lg:hidden'
                 onClose={setMobileMenuOpen}
               >
                 <Transition.Child
                   as={Fragment}
-                  enter="transition-opacity ease-linear duration-300"
-                  enterFrom="opacity-0"
-                  enterTo="opacity-100"
-                  leave="transition-opacity ease-linear duration-300"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
+                  enter='transition-opacity ease-linear duration-300'
+                  enterFrom='opacity-0'
+                  enterTo='opacity-100'
+                  leave='transition-opacity ease-linear duration-300'
+                  leaveFrom='opacity-100'
+                  leaveTo='opacity-0'
                 >
-                  <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-25" />
+                  <Dialog.Overlay className='fixed inset-0 bg-black bg-opacity-25' />
                 </Transition.Child>
 
                 <Transition.Child
                   as={Fragment}
-                  enter="transition ease-in-out duration-300 transform"
-                  enterFrom="-translate-x-full"
-                  enterTo="translate-x-0"
-                  leave="transition ease-in-out duration-300 transform"
-                  leaveFrom="translate-x-0"
-                  leaveTo="-translate-x-full"
+                  enter='transition ease-in-out duration-300 transform'
+                  enterFrom='-translate-x-full'
+                  enterTo='translate-x-0'
+                  leave='transition ease-in-out duration-300 transform'
+                  leaveFrom='translate-x-0'
+                  leaveTo='-translate-x-full'
                 >
-                  <div className="relative max-w-xs w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto">
-                    <div className="px-4 pt-5 pb-2 flex">
+                  <div className='relative max-w-xs w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto'>
+                    <div className='px-4 pt-5 pb-2 flex'>
                       <button
-                        type="button"
-                        className="-m-2 p-2 rounded-md inline-flex items-center justify-center text-gray-400"
+                        type='button'
+                        className='-m-2 p-2 rounded-md inline-flex items-center justify-center text-gray-400'
                         onClick={() => setMobileMenuOpen(false)}
                       >
-                        <span className="sr-only">Close menu</span>
-                        <RxCross2 className="h-6 w-6" aria-hidden="true" />
+                        <span className='sr-only'>Close menu</span>
+                        <RxCross2 className='h-6 w-6' aria-hidden='true' />
                       </button>
                     </div>
 
                     {/* Links */}
-                    <Tab.Group as="div" className="mt-2">
-                      <div className="border-b border-gray-200">
-                        <Tab.List className="-mb-px flex px-4 space-x-8">
+                    <Tab.Group as='div' className='mt-2'>
+                      <div className='border-b border-gray-200'>
+                        <Tab.List className='-mb-px flex px-4 space-x-8'>
                           {categories.map((category) => (
                             <Tab
                               key={category?.name}
                               className={({ selected }) =>
                                 classNames(
                                   selected
-                                    ? "text-indigo-600 border-indigo-600"
-                                    : "text-gray-900 border-transparent",
-                                  "flex-1 whitespace-nowrap py-4 px-1 border-b-2 text-base font-medium"
+                                    ? 'text-indigo-600 border-indigo-600'
+                                    : 'text-gray-900 border-transparent',
+                                  'flex-1 whitespace-nowrap py-4 px-1 border-b-2 text-base font-medium'
                                 )
                               }
                             >
@@ -108,52 +109,52 @@ export default function Shop() {
             {/* Mobile filter dialog */}
             <Transition.Root show={mobileFiltersOpen} as={Fragment}>
               <Dialog
-                as="div"
-                className="fixed inset-0 flex z-40 lg:hidden"
+                as='div'
+                className='fixed inset-0 flex z-40 lg:hidden'
                 onClose={setMobileFiltersOpen}
               >
                 <Transition.Child
                   as={Fragment}
-                  enter="transition-opacity ease-linear duration-300"
-                  enterFrom="opacity-0"
-                  enterTo="opacity-100"
-                  leave="transition-opacity ease-linear duration-300"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
+                  enter='transition-opacity ease-linear duration-300'
+                  enterFrom='opacity-0'
+                  enterTo='opacity-100'
+                  leave='transition-opacity ease-linear duration-300'
+                  leaveFrom='opacity-100'
+                  leaveTo='opacity-0'
                 >
-                  <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-25" />
+                  <Dialog.Overlay className='fixed inset-0 bg-black bg-opacity-25' />
                 </Transition.Child>
 
                 <Transition.Child
                   as={Fragment}
-                  enter="transition ease-in-out duration-300 transform"
-                  enterFrom="translate-x-full"
-                  enterTo="translate-x-0"
-                  leave="transition ease-in-out duration-300 transform"
-                  leaveFrom="translate-x-0"
-                  leaveTo="translate-x-full"
+                  enter='transition ease-in-out duration-300 transform'
+                  enterFrom='translate-x-full'
+                  enterTo='translate-x-0'
+                  leave='transition ease-in-out duration-300 transform'
+                  leaveFrom='translate-x-0'
+                  leaveTo='translate-x-full'
                 >
-                  <div className="ml-auto relative max-w-xs w-full h-full bg-white shadow-xl py-4 pb-12 flex flex-col overflow-y-auto">
-                    <div className="px-4 flex items-center justify-between">
-                      <h2 className="text-lg font-medium text-gray-900">
+                  <div className='ml-auto relative max-w-xs w-full h-full bg-white shadow-xl py-4 pb-12 flex flex-col overflow-y-auto'>
+                    <div className='px-4 flex items-center justify-between'>
+                      <h2 className='text-lg font-medium text-gray-900'>
                         Filters
                       </h2>
                       <button
-                        type="button"
-                        className="-mr-2 w-10 h-10 bg-white p-2 rounded-md flex items-center justify-center text-gray-400"
+                        type='button'
+                        className='-mr-2 w-10 h-10 bg-white p-2 rounded-md flex items-center justify-center text-gray-400'
                         onClick={() => setMobileFiltersOpen(false)}
                       >
-                        <span className="sr-only">Close menu</span>
-                        <RxCross2 className="h-6 w-6" aria-hidden="true" />
+                        <span className='sr-only'>Close menu</span>
+                        <RxCross2 className='h-6 w-6' aria-hidden='true' />
                       </button>
                     </div>
 
                     {/* Filters */}
-                    <form className="mt-4 border-t border-gray-200">
-                      <h6 className="sr-only">Categories</h6>
+                    <form className='mt-4 border-t border-gray-200'>
+                      <h6 className='sr-only'>Categories</h6>
                       <ul
-                        role="list"
-                        className="font-medium text-gray-900 px-2 py-3"
+                        role='list'
+                        className='font-medium text-gray-900 px-2 py-3'
                       >
                         {categories?.map((category) => (
                           <Category key={category?.id} {...category} />
@@ -165,35 +166,35 @@ export default function Shop() {
               </Dialog>
             </Transition.Root>
 
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
-                <h1 className="text-4xl font-semibold tracking-tight text-gray-900">
+            <main className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+              <div className='relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200'>
+                <h1 className='text-4xl font-semibold tracking-tight text-gray-900'>
                   Categories
                 </h1>
 
-                <div className="flex items-center">
-                  <Menu as="div" className="relative inline-block text-left">
+                <div className='flex items-center'>
+                  <Menu as='div' className='relative inline-block text-left'>
                     <div>
-                      <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+                      <Menu.Button className='group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900'>
                         Sort
                         <ChevronDownIcon
-                          className="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500"
-                          aria-hidden="true"
+                          className='flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500'
+                          aria-hidden='true'
                         />
                       </Menu.Button>
                     </div>
 
                     <Transition
                       as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
+                      enter='transition ease-out duration-100'
+                      enterFrom='transform opacity-0 scale-95'
+                      enterTo='transform opacity-100 scale-100'
+                      leave='transition ease-in duration-75'
+                      leaveFrom='transform opacity-100 scale-100'
+                      leaveTo='transform opacity-0 scale-95'
                     >
-                      <Menu.Items className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="py-1">
+                      <Menu.Items className='origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                        <div className='py-1'>
                           {sortOptions.map((option) => (
                             <Menu.Item key={option.name}>
                               {({ active }) => (
@@ -201,10 +202,10 @@ export default function Shop() {
                                   href={option.href}
                                   className={classNames(
                                     option.current
-                                      ? "font-medium text-gray-900"
-                                      : "text-gray-500",
-                                    active ? "bg-gray-100" : "",
-                                    "block px-4 py-2 text-sm"
+                                      ? 'font-medium text-gray-900'
+                                      : 'text-gray-500',
+                                    active ? 'bg-gray-100' : '',
+                                    'block px-4 py-2 text-sm'
                                   )}
                                 >
                                   {option.name}
@@ -218,38 +219,38 @@ export default function Shop() {
                   </Menu>
 
                   <button
-                    type="button"
-                    className="p-2 -m-2 ml-5 sm:ml-7 text-gray-400 hover:text-gray-500"
+                    type='button'
+                    className='p-2 -m-2 ml-5 sm:ml-7 text-gray-400 hover:text-gray-500'
                   >
-                    <span className="sr-only">View grid</span>
-                    <HiOutlineViewGrid className="w-5 h-5" aria-hidden="true" />
+                    <span className='sr-only'>View grid</span>
+                    <HiOutlineViewGrid className='w-5 h-5' aria-hidden='true' />
                   </button>
                   <button
-                    type="button"
-                    className="p-2 -m-2 ml-4 sm:ml-6 text-gray-400 hover:text-gray-500 lg:hidden"
+                    type='button'
+                    className='p-2 -m-2 ml-4 sm:ml-6 text-gray-400 hover:text-gray-500 lg:hidden'
                     onClick={() => setMobileFiltersOpen(true)}
                   >
-                    <span className="sr-only">Filters</span>
-                    <BiFilterAlt className="w-5 h-5" aria-hidden="true" />
+                    <span className='sr-only'>Filters</span>
+                    <BiFilterAlt className='w-5 h-5' aria-hidden='true' />
                   </button>
                 </div>
               </div>
 
               <section
-                aria-labelledby="products-heading"
-                className="pt-6 pb-24"
+                aria-labelledby='products-heading'
+                className='pt-6 pb-24'
               >
-                <h2 id="products-heading" className="sr-only">
+                <h2 id='products-heading' className='sr-only'>
                   Products
                 </h2>
 
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
+                <div className='grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10'>
                   {/* Filters */}
-                  <form className="hidden lg:block">
-                    <h3 className="sr-only">Categories</h3>
+                  <form className='hidden lg:block'>
+                    <h3 className='sr-only'>Categories</h3>
                     <ul
-                      role="list"
-                      className="text-sm font-medium text-gray-900 space-y-4 pb-6"
+                      role='list'
+                      className='text-sm font-medium text-gray-900 space-y-4 pb-6'
                     >
                       {categories?.map((category) => (
                         <Category key={category?.id} {...category} />
@@ -315,20 +316,18 @@ export default function Shop() {
         ))} */}
                   </form>
 
-
-                   {/*Product grid */}
-                  <div className="mx-auto">
-                  <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:col-span-3 lg:gap-x-8">
-                    {products?.map((product) => (
-                      <Product key={product?.id} {...product} />
-                    ))}
-                  </div>
+                  {/*Product grid */}
+                  <div className='mx-auto'>
+                    <div className='grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:col-span-3 lg:gap-x-8'>
+                      {products?.map((product) => (
+                        <Product key={product?.id} {...product} />
+                      ))}
+                    </div>
                   </div>
                   {/*<div>*/}
                   {/*  <ProductCard />*/}
                   {/*</div>*/}
                 </div>
-
               </section>
             </main>
           </div>
