@@ -17,6 +17,7 @@ const Service = () => {
   const { id } = useParams();
   const { serviceDetail } = useServiceDetails(id);
   const [isReadMore, setIsReadMore] = useState(true);
+  // eslint-disable-next-line no-unused-vars
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
