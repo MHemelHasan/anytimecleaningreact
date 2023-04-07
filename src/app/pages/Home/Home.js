@@ -18,9 +18,9 @@ import Rating from "react-rating";
 import { AiOutlineClear, AiOutlineStar, AiOutlineUser } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 // import service1 from "../../../assets/uploads/media-uploader/service1.png";
-// import service2 from "../../../assets/uploads/media-uploader/service2.jpg";
-// import service3 from "../../../assets/uploads/media-uploader/service3.jpg";
-// import service4 from "../../../assets/uploads/media-uploader/service2.jpg";
+import service2 from "../../../assets/uploads/media-uploader/service2.png";
+import service3 from "../../../assets/uploads/media-uploader/service3.png";
+import service4 from "../../../assets/uploads/media-uploader/service4.png";
 // import service5 from "../../../assets/uploads/media-uploader/bg-right1618906912.jpg";
 
 
@@ -281,7 +281,7 @@ const Home = () => {
                           <div
                             className="serivce-bg"
                             style={{
-                              backgroundImage: `url(${Service_bg})`
+                              backgroundImage: `url(${service2})`
                             }}
                           ></div>
                         </div>
@@ -345,7 +345,7 @@ const Home = () => {
                           <div
                             className="serivce-bg"
                             style={{
-                              backgroundImage: `url(${Service_bg})`
+                              backgroundImage: `url(${service3})`
                             }}
                           ></div>
                         </div>
@@ -411,7 +411,7 @@ const Home = () => {
                           <div
                             className="serivce-bg"
                             style={{
-                              backgroundImage: `url(${Service_bg})`
+                              backgroundImage: `url(${service4})`
                             }}
                           ></div>
                         </div>
@@ -943,19 +943,23 @@ I certainly recommend their service for cleaning.
           {services?.slice(0,3).map((service,index)=> ( 
           <div key={index}
             className="card w-80 glass cursor-pointer"
-            onClick={() => navigateToServicesDetail(id)}
           >
             <figure className="d-flex justify-content-center">
+              <Link to={`service/${service.id}`}>
               {service?.media[0]?.url ?
               <img height={250} width={250} src={media[0]?.url} alt="Product" />:
               <AiOutlineClear style={{color:"#2c9bf4"}} size={250}/>}
+                </Link>
             </figure>
 
             <div className="card-body ">
               <div className="d-flex justify-content-center">
                 <button type="button" className="featured-btn">Featured</button>
               </div>
+              <Link to={`service/${service.id}`}>
               <h2 className="card-title">{service?.name?.en}</h2>
+              </Link>
+
               <p className="font-semibold text-center">
                 <Rating
                   initialRating={service?.rate}
