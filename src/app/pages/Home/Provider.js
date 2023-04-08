@@ -13,7 +13,7 @@ const Provider = ({ slice_value, serviceProvider }) => {
   const [sliceLimit, setSliceLimit] = useState(false);
   const { providers } = useProviders();
   const [allProviders, setAllProviders] = useState(null);
-  console.log('providers:', serviceProvider);
+  // console.log('providers:', serviceProvider);
 
   useEffect(() => {
     if (slice_value) {

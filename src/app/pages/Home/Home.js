@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import logo from '../../../assets/company-logo.png';
 import img1 from '../../../assets/uploads/media-uploader/011618747632.png';
 import Service_bg from '../../../assets/uploads/media-uploader/011618730370.png';
 import Icon_bg1 from '../../../assets/frontend/important/choose/01.png';
@@ -85,13 +86,20 @@ const Home = () => {
                         >
                           <div className='service-icon style-01'>
                             {/* <i className='flaticon-vacuum'></i> */}
-                            {services[0]?.media && services[0].media.length > 0 && (
+                            {services[0]?.media && services[0].media.length > 0 ? (
                             <img
                             height={50}
                             width={50}
                             src={services[0].media[services[0].media.length - 1].url}
-                            alt='Product'
-                          />)}
+                            alt='service'
+                          />):
+                          <img
+                          height={50}
+                          width={50}
+                          src={logo}
+                          alt='service'
+                        />
+                          }
                           </div>
                           <div className="service-title">
                             <h4 className="title">{services[0]?.name?.en}</h4>
@@ -110,13 +118,19 @@ const Home = () => {
                         >
                           <div className='service-icon style-01'>
                             {/* <i className='flaticon-liquid-soap'></i> */}
-                            {services[1]?.media && services[1].media.length > 0 && (
+                            {services[1]?.media && services[1].media.length > 0 ? (
                             <img
                             height={50}
                             width={50}
                             src={services[1].media[services[1].media.length - 1].url}
-                            alt='Product'
-                          />)}
+                            alt='service'
+                          />):
+                          <img
+                          height={50}
+                          width={50}
+                          src={logo}
+                          alt='serivice'
+                        />}
                           </div>
                           <div className="service-title">
                             <h4 className="title">{services[1]?.name?.en}</h4>
@@ -135,13 +149,19 @@ const Home = () => {
                         >
                           <div className='service-icon style-01'>
                             {/* <i className='flaticon-lawn-mower'></i> */}
-                            {services[2]?.media && services[2].media.length > 0 && (
+                            {services[2]?.media && services[2].media.length > 0 ? (
                             <img
                             height={50}
                             width={50}
                             src={services[2].media[services[2].media.length - 1].url}
                             alt='Product'
-                          />)}
+                          />):
+                          <img
+                          height={50}
+                          width={50}
+                          src={logo}
+                          alt='serivice'
+                        />}
                           </div>
                           <div className="service-title">
                             <h4 className="title">{services[2]?.name?.en}</h4>
@@ -160,13 +180,19 @@ const Home = () => {
                         >
                           <div className='service-icon style-01'>
                             {/* <i className='flaticon-wash-1'></i> */}
-                            {services[3]?.media && services[3].media.length > 0 && (
+                            {services[3]?.media && services[3].media.length > 0 ? (
                             <img
                             height={50}
                             width={50}
                             src={services[3].media[services[3].media.length - 1].url}
                             alt='Product'
-                          />)}
+                          />):
+                          <img
+                          height={50}
+                          width={50}
+                          src={logo}
+                          alt='serivice'
+                        />}
                           </div>
                           <div className="service-title">
                             <h4 className="title">{services[3]?.name?.en}</h4>
@@ -185,13 +211,19 @@ const Home = () => {
                         >
                           <div className='service-icon style-01'>
                             {/* <i className='flaticon-washing-hands'></i> */}
-                            {services[4]?.media && services[4].media.length > 0 && (
+                            {services[4]?.media && services[4].media.length > 0 ? (
                             <img
                             height={50}
                             width={50}
                             src={services[4].media[services[4].media.length - 1].url}
                             alt='Product'
-                          />)}
+                          />):
+                          <img
+                          height={50}
+                          width={50}
+                          src={logo}
+                          alt='serivice'
+                        />}
                           </div>
                           <div className="service-title">
                             <h4 className="title">{services[4]?.name?.en}</h4>
