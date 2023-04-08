@@ -167,7 +167,7 @@ const Booking = () => {
         </div>
       </div>
 
-      <div className='md-m-5 p-5 bg-gray'>
+      <div className='md-m-5 md-p-5 bg-gray'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-6 col-sm-12 col-lg-6'>
@@ -250,17 +250,20 @@ const Booking = () => {
                 </div>
               </div>
             </div>
+            <div className='container'>
+            <div className='d-flex justify-content-center my-5'>
+              <button
+                className='btn btn-orenge'
+                type='button'
+                onClick={submitHandler}
+              >
+                Continue
+              </button>
+            </div>
           </div>
 
-          <div className='d-grid gap-2 mt-5'>
-            <button
-              className='btn btn-orenge'
-              type='button'
-              onClick={submitHandler}
-            >
-              Continue
-            </button>
           </div>
+
 
           {showConfirm ? (
             <div>
@@ -300,10 +303,12 @@ const Booking = () => {
                     <div className='col-md-2 col-lg-2'>Total Amount</div>
                     <div className='col-md-2 col-lg-2'>$32.43</div>
                   </div>
-                  <div className='d-grid gap-2 mt-5'>
-                    <button className='btn btn-orenge' type='button'>
-                      Confirm & Book Service
-                    </button>
+                  <div className='container'>
+                    <div className='d-flex justify-content-center my-5'>
+                      <button className='btn btn-orenge' type='button'>
+                        Confirm & Book Service
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
