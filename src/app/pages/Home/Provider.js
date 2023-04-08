@@ -71,7 +71,7 @@ const Provider = ({ slice_value, serviceProvider }) => {
                     <div className='top-part'>
                       {provider?.featured ? 
                       <span className='designation'>Featured</span>:
-                      "<span> </span>"}
+                      <span> </span>}
 
                       <div className='rating-wrap'>
                         <div className='ratings'>
@@ -91,10 +91,12 @@ const Provider = ({ slice_value, serviceProvider }) => {
                     <Link to={`/provider/${provider?.id}`}>
                       <h4 className='title'>{provider?.name}</h4>
                     </Link>
+                    {provider?.custom_fields.address?.view ? 
                     <span className='location'>
                       <i className='fas fa-map-marker-alt'></i>
                       {provider?.custom_fields.address?.view}
-                    </span>
+                    </span>:""}
+
                     <p>{shortDesc(provider?.custom_fields?.bio?.view)}</p>
                     <div className='btn-wrapper'>
                       <Link

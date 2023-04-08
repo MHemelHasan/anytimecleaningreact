@@ -2,12 +2,12 @@
 // import {Link} from "react-router-dom";
 import React from 'react';
 // import {BiCurrentLocation, BiFile, BiGift, BiMap} from "react-icons/bi";
-import useProviders from '../../hooks/useProviders';
+// import useProviders from '../../hooks/useProviders';
 import Provider from '../Home/Provider';
 
 const Providers = () => {
-  const { providers } = useProviders();
-  console.log('providers:', providers);
+  // const { providers } = useProviders();
+  // console.log('providers:', providers);
 
   return (
     <>
