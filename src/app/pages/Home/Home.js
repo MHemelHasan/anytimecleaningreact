@@ -18,10 +18,20 @@ import Rating from 'react-rating';
 import { AiOutlineClear, AiOutlineStar } from 'react-icons/ai';
 import { AiFillStar } from 'react-icons/ai';
 // import service1 from "../../../assets/uploads/media-uploader/service1.png";
-import service2 from '../../../assets/uploads/media-uploader/service2.png';
-import service3 from '../../../assets/uploads/media-uploader/service3.png';
-import service4 from '../../../assets/uploads/media-uploader/service4.png';
+// import service2 from '../../../assets/uploads/media-uploader/service2.png';
+import service3 from '../../../assets/uploads/media-uploader/service5.png';
+// import service4 from '../../../assets/uploads/media-uploader/service4.png';
+import service2 from '../../../assets/uploads/media-uploader/service6.png';
+import service5 from '../../../assets/uploads/media-uploader/service7.png';
+import service4 from '../../../assets/uploads/media-uploader/service8.png';
+
+
 // import service5 from "../../../assets/uploads/media-uploader/bg-right1618906912.jpg";
+// import window_icon from "../../../assets/homeicons/windows.png";
+// import garbage from "../../../assets/homeicons/garbage.png";
+// import home from "../../../assets/homeicons/home.png";
+// import pressure_washer from "../../../assets/homeicons/pressure-washer.png";
+// import snow from "../../../assets/homeicons/snow.png";
 
 
 import Banner from "../../components/Banner";
@@ -33,14 +43,11 @@ import { shortDesc } from "../../utils/short_desc";
 
 const Home = () => {
   const [services, setServices] = useState([]);
-  const [allServices, setAllServices] = useState([]);
-
 
   useEffect(() => {
     fetch(RootURL + 'e_services')
       .then((response) => response.json())
       .then((data) => {
-        setAllServices(data?.data);
         const featuredServices = data?.data?.filter((service) => service.featured);
         setServices(featuredServices);
       });
@@ -75,10 +82,17 @@ const Home = () => {
                           aria-selected='true'
                         >
                           <div className='service-icon style-01'>
-                            <i className='flaticon-vacuum'></i>
+                            {/* <i className='flaticon-vacuum'></i> */}
+                            {services[0]?.media && services[0].media.length > 0 && (
+                            <img
+                            height={50}
+                            width={50}
+                            src={services[0].media[services[0].media.length - 1].url}
+                            alt='Product'
+                          />)}
                           </div>
                           <div className="service-title">
-                            <h4 className="title">{allServices[0]?.name?.en}</h4>
+                            <h4 className="title">{services[0]?.name?.en}</h4>
                           </div>
                         </a>
                       </li>
@@ -93,10 +107,17 @@ const Home = () => {
                           aria-selected='true'
                         >
                           <div className='service-icon style-01'>
-                            <i className='flaticon-liquid-soap'></i>
+                            {/* <i className='flaticon-liquid-soap'></i> */}
+                            {services[1]?.media && services[1].media.length > 0 && (
+                            <img
+                            height={50}
+                            width={50}
+                            src={services[1].media[services[1].media.length - 1].url}
+                            alt='Product'
+                          />)}
                           </div>
                           <div className="service-title">
-                            <h4 className="title">{allServices[1]?.name?.en}</h4>
+                            <h4 className="title">{services[1]?.name?.en}</h4>
                           </div>
                         </a>
                       </li>
@@ -111,10 +132,17 @@ const Home = () => {
                           aria-selected='true'
                         >
                           <div className='service-icon style-01'>
-                            <i className='flaticon-lawn-mower'></i>
+                            {/* <i className='flaticon-lawn-mower'></i> */}
+                            {services[2]?.media && services[2].media.length > 0 && (
+                            <img
+                            height={50}
+                            width={50}
+                            src={services[2].media[services[2].media.length - 1].url}
+                            alt='Product'
+                          />)}
                           </div>
                           <div className="service-title">
-                            <h4 className="title">{allServices[2]?.name?.en}</h4>
+                            <h4 className="title">{services[2]?.name?.en}</h4>
                           </div>
                         </a>
                       </li>
@@ -129,10 +157,17 @@ const Home = () => {
                           aria-selected='true'
                         >
                           <div className='service-icon style-01'>
-                            <i className='flaticon-wash-1'></i>
+                            {/* <i className='flaticon-wash-1'></i> */}
+                            {services[3]?.media && services[3].media.length > 0 && (
+                            <img
+                            height={50}
+                            width={50}
+                            src={services[3].media[services[3].media.length - 1].url}
+                            alt='Product'
+                          />)}
                           </div>
                           <div className="service-title">
-                            <h4 className="title">{allServices[3]?.name?.en}</h4>
+                            <h4 className="title">{services[3]?.name?.en}</h4>
                           </div>
                         </a>
                       </li>
@@ -147,10 +182,17 @@ const Home = () => {
                           aria-selected='true'
                         >
                           <div className='service-icon style-01'>
-                            <i className='flaticon-washing-hands'></i>
+                            {/* <i className='flaticon-washing-hands'></i> */}
+                            {services[4]?.media && services[4].media.length > 0 && (
+                            <img
+                            height={50}
+                            width={50}
+                            src={services[4].media[services[4].media.length - 1].url}
+                            alt='Product'
+                          />)}
                           </div>
                           <div className="service-title">
-                            <h4 className="title">{allServices[4]?.name?.en}</h4>
+                            <h4 className="title">{services[4]?.name?.en}</h4>
                           </div>
                         </a>
                       </li>
@@ -168,47 +210,18 @@ const Home = () => {
                           <div className="text-content-tab col-md-8">
                             <div className="section-title">
                               <span className="subtitle">
-                              {allServices[0]?.name?.en}
+                              {services[0]?.name?.en}
                               </span>
                               <h3 className="title">
-                                We provide best {allServices[0]?.name?.en} service
+                                We provide best {services[0]?.name?.en} service
                               </h3>
-                              <p>{shortDesc(allServices[0]?.description,250)}</p>
+                              <p>{shortDesc(services[0]?.description?.en,250)}</p>
                             </div>
-                            <div className='content'>
+                            <div className='content mt-4'>
                               <ul>
-                                <div className='row'>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Kitchen
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bathrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bedrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Kitchen
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bathrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bedrooms
-                                    </li>
-                                  </div>
-                                </div>
+                              <Link to={`service/${services[0]?.id}`}>
+                              <div className="btn btn-info">Call Now</div>
+                              </Link>
                               </ul>
                             </div>
                           </div>
@@ -230,48 +243,19 @@ const Home = () => {
                           <div className="text-content-tab">
                             <div className="section-title">
                               <span className="subtitle">
-                              {allServices[1]?.name?.en} Service
+                              {services[1]?.name?.en} Service
                               </span>
                               <h3 className="title">
-                                We provide best {allServices[1]?.name?.en} service
+                                We provide best {services[1]?.name?.en} service
                               </h3>
-                              <p>{shortDesc(allServices[1]?.description,250)}
+                              <p>{shortDesc(services[1]?.description?.en,250)}
                               </p>
                             </div>
-                            <div className='content'>
+                            <div className='content mt-4'>
                               <ul>
-                                <div className='row'>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Kitchen
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bathrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bedrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Kitchen
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bathrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bedrooms
-                                    </li>
-                                  </div>
-                                </div>
+                              <Link to={`service/${services[1]?.id}`}>
+                              <div className="btn btn-info">Call Now</div>
+                              </Link>
                               </ul>
                             </div>
                           </div>
@@ -292,47 +276,18 @@ const Home = () => {
                         <div className="description-tab-content">
                           <div className="text-content-tab">
                             <div className="section-title">
-                              <span className="subtitle">{allServices[2]?.name?.en} Service</span>
+                              <span className="subtitle">{services[2]?.name?.en} Service</span>
                               <h3 className="title">
-                                We provide best {allServices[2]?.name?.en} service
+                                We provide best {services[2]?.name?.en} service
                               </h3>
-                              <p>{shortDesc(allServices[2]?.description,250)}
+                              <p>{shortDesc(services[2]?.description?.en,250)}
                               </p>
                             </div>
-                            <div className='content'>
+                            <div className='content mt-4'>
                               <ul>
-                                <div className='row'>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Kitchen
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bathrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bedrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Kitchen
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bathrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bedrooms
-                                    </li>
-                                  </div>
-                                </div>
+                              <Link to={`service/${services[2]?.id}`}>
+                              <div className="btn btn-info">Call Now</div>
+                              </Link>
                               </ul>
                             </div>
                           </div>
@@ -354,47 +309,18 @@ const Home = () => {
                           <div className="text-content-tab">
                             <div className="section-title">
                               <span className="subtitle">
-                              {allServices[3]?.name?.en}
+                              {services[3]?.name?.en}
                               </span>
                               <h3 className="title">
-                                We provide best {allServices[3]?.name?.en} service
+                                We provide best {services[3]?.name?.en} service
                               </h3>
-                              <p>{shortDesc(allServices[3]?.description,250)}</p>
+                              <p>{shortDesc(services[3]?.description?.en,250)}</p>
                             </div>
-                            <div className='content'>
+                            <div className='content mt-4'>
                               <ul>
-                                <div className='row'>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Kitchen
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bathrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bedrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Kitchen
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bathrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bedrooms
-                                    </li>
-                                  </div>
-                                </div>
+                              <Link to={`service/${services[3]?.id}`}>
+                              <div className="btn btn-info">Call Now</div>
+                              </Link>
                               </ul>
                             </div>
                           </div>
@@ -415,53 +341,24 @@ const Home = () => {
                         <div className="description-tab-content">
                           <div className="text-content-tab">
                             <div className="section-title">
-                              <span className="subtitle">{allServices[4]?.name?.en} Service</span>
+                              <span className="subtitle">{services[4]?.name?.en} Service</span>
                               <h3 className="title">
-                                We provide best {allServices[4]?.name?.en} service
+                                We provide best {services[4]?.name?.en} service
                               </h3>
-                              <p>{shortDesc(allServices[4]?.description,250)}</p>
+                              <p>{shortDesc(services[4]?.description?.en,250)}</p>
                             </div>
-                            <div className='content'>
+                            <div className='content mt-4'>
                               <ul>
-                                <div className='row'>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Kitchen
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bathrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bedrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Kitchen
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bathrooms
-                                    </li>
-                                  </div>
-                                  <div className='col-md-6'>
-                                    <li>
-                                      <i className='fas fa-check'></i> Bedrooms
-                                    </li>
-                                  </div>
-                                </div>
+                              <Link to={`service/${services[4]?.id}`}>
+                              <div className="btn btn-info">Call Now</div>
+                              </Link>
                               </ul>
                             </div>
                           </div>
                           <div
                             className='serivce-bg'
                             style={{
-                              backgroundImage: `url(${Service_bg})`,
+                              backgroundImage: `url(${service5})`,
                             }}
                           ></div>
                         </div>
@@ -474,6 +371,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Provider />
       <section className='why-choose-use-area padding-top-110 padding-bottom-90'>
         <div className='container'>
           <div className='row justify-content-center'>
@@ -685,7 +583,7 @@ const Home = () => {
                   </div>
                   <div className='content'>
                     <div className='count-wrap'>
-                      <span className='count-num'>7,079</span>+
+                      <span className='count-num'>5</span>k+
                     </div>
                     <h4 className='title'>Service Reviews</h4>
                   </div>
@@ -907,7 +805,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Provider />
       <section className='blog-area padding-top-110 padding-bottom-100 bg-white'>
         <div className='container'>
           <div className='row'>
@@ -934,14 +831,13 @@ const Home = () => {
               <div key={index} className='card w-80 glass cursor-pointer'>
                 <figure className='d-flex justify-content-center'>
                   <Link to={`service/${service.id}`}>
-                    {service?.media[0]?.url ? (
-                      <img
-                        height={250}
-                        width={250}
-                        // eslint-disable-next-line no-undef
-                        src={media[0]?.url}
-                        alt='Product'
-                      />
+                    {service?.media && service.media.length > 0 ? (
+                    <img
+                    height={250}
+                    width={250}
+                    src={service.media[service.media.length - 1].url}
+                    alt='Product'
+                  />
                     ) : (
                       <AiOutlineClear style={{ color: '#2c9bf4' }} size={250} />
                     )}

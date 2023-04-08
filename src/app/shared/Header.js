@@ -156,7 +156,7 @@ const Header = () => {
                         <div className='col-lg-3 col-md-6'>
                           <div className='xg-mega-menu-single-column-wrap'>
                             <h4 className='mega-menu-title'>
-                              Residential Service
+                              Residential Cleaning
                             </h4>
                             <ul>
                               <li>
@@ -189,7 +189,7 @@ const Header = () => {
                         <div className='col-lg-3 col-md-6'>
                           <div className='xg-mega-menu-single-column-wrap'>
                             <h4 className='mega-menu-title'>
-                              Commercial Service
+                              Commercial Cleaning
                             </h4>
                             <ul>
                               <li>

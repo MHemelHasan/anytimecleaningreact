@@ -280,7 +280,7 @@ const About = () => {
                   </div>
                   <div className='content'>
                     <div className='count-wrap'>
-                      <span className='count-num'>7,079</span>+
+                      <span className='count-num'>5</span>k+
                     </div>
                     <h4 className='title'>Service Reviews</h4>
                   </div>

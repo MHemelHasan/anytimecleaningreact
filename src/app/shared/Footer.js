@@ -106,11 +106,13 @@ const Footer = () => {
               <div className='footer-widget widget'>
                 <div className='footer-widget widget'>
                   <div className='about_us_widget style-01'>
+                    <div className='d-flex justify-content-start'>
                     <img
                       src={FooterLogo}
                       className='footer-logo'
                       alt='site_white_logo'
                     />
+                    </div>
                     <p>Quality Cleaning Service In BC, Canada</p>
                   </div>
                 </div>

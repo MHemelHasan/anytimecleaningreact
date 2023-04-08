@@ -72,7 +72,7 @@ const Service = () => {
               <h3>We raise the bar so you don’t have to</h3>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: shortDesc(serviceDetail?.description, 200),
+                  __html: shortDesc(serviceDetail?.description?.en, 200),
                 }}
               />
               {/* <div>
@@ -100,7 +100,7 @@ const Service = () => {
             <h3 className='mb-3'>Description:</h3>
             <p
               dangerouslySetInnerHTML={{
-                __html: serviceDetail?.description,
+                __html: serviceDetail?.description?.en,
               }}
             />
           </div>

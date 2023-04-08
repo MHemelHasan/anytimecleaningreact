@@ -69,7 +69,10 @@ const Provider = ({ slice_value, serviceProvider }) => {
                   </div>
                   <div className='content'>
                     <div className='top-part'>
-                      <span className='designation'>Specialist</span>
+                      {provider?.featured ? 
+                      <span className='designation'>Featured</span>:
+                      "<span> </span>"}
+
                       <div className='rating-wrap'>
                         <div className='ratings'>
                           <span className='hide-rating'></span>
