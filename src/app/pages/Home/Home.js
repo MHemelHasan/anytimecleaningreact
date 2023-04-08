@@ -56,6 +56,7 @@ const Home = () => {
   return (
     <>
       <Banner />
+      {services.length >0 ? 
       <div
         className='header-bottom-area bg-blue-03 bg-image padding-bottom-80'
         style={{
@@ -64,6 +65,7 @@ const Home = () => {
           )`,
         }}
       >
+
         <div className="container">
           <div className="header-bottom-wrapper m-top bg-white">
             <div className="row">
@@ -369,8 +371,8 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div> 
+      </div>: ""}
       <Provider />
       <section className='why-choose-use-area padding-top-110 padding-bottom-90'>
         <div className='container'>
