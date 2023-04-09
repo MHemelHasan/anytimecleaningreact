@@ -2,6 +2,7 @@ import React from "react";
 import useProvider from "../../hooks/useProvider";
 import { useParams } from "react-router";
 import { AiOutlineUser } from "react-icons/ai";
+import provider_img from '../../../assets/uploads/media-uploader/provider.png';
 
 const ProviderProfile = () => {
     const { id } = useParams();
@@ -15,7 +16,8 @@ const ProviderProfile = () => {
         <div className="col-sm-4 pt-5 d-flex justify-content-center">
         {img_index!==null ?
         <img className="" height={200} width={200} src={provider.media[img_index]?.url} alt="Provider" />:
-        <AiOutlineUser style={{color:"#2c9bf4"}} size={300}/>}
+        <img className="" height={200} width={200} src={provider_img} alt="Provider" />
+        }
         </div>
         <div className="col-sm-8">
           <h2 className="pt-5">{provider?.name}</h2>

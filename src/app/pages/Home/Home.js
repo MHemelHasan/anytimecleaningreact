@@ -860,7 +860,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className='row d-flex justify-content-between'>
+          <div className='row d-flex justify-content-center justify-content-md-between'>
             {services?.slice(0, 3).map((service, index) => (
               <div key={index} className='card w-80 glass cursor-pointer'>
                 <figure className='d-flex justify-content-center'>

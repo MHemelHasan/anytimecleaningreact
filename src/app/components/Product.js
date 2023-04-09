@@ -30,7 +30,7 @@ const Product = ({
     >
       <figure className=''>
         {media[0]?.url ? (
-          <img height={250} width={250} src={media[0]?.url} alt='Product' />
+          <img height={200} width={200} src={media[0]?.url} alt='Product' />
         ) : (
           <AiOutlineClear style={{ color: '#2c9bf4' }} size={250} />
         )}

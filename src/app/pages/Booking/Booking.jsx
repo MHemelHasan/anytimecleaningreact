@@ -14,10 +14,13 @@ const Booking = () => {
   const { id } = useParams();
   const cookies = Cookies.get('api_token');
   const [coupon, setCoupon] = useState(null);
+  const [addressForm, setAddressForm] = useState(false);
+  const [message, setMessage] = useState('');
   // const [hint,setHint]=useState(null);
   const [service, setService] = useState('');
   console.log('service:', service);
-  const [user, setUser] = useState('');
+  // const [user, setUser] = useState('');
+  // console.log("user:",user)
   const [showConfirm, setShowConfirm] = useState(false);
   const [messageCoupon, setMessageCoupon] = useState('');
   const [errorCoupon, setErrorCoupon] = useState('');
@@ -26,9 +29,18 @@ const Booking = () => {
   const [bookingStatuses, setBookingStatuses] = useState(null);
   console.log('booking status:', bookingStatuses);
 
+  const [user, setUser] = useState({
+    id: '',
+    name: '',
+    email: '',
+    phone_number: '',
+    address: '',
+    bio: '',
+  });
+
   const [bookingData, setBookingData] = useState({
     address: {
-      address: user?.custom_fields?.address.value,
+      address: user?.address,
       longitude: '0',
       latitude: '0',
       user_id: user?.id,
@@ -36,20 +48,31 @@ const Booking = () => {
     e_service: id,
     options: [],
     coupon_id: 0,
-    booking_status_id: 0,
-    taxes: 0,
-    payment_id: 0,
-    booking_at: moment(),
+    booking_status_id: 2,
+    taxes: 1,
+    payment_id: 1,
+    booking_at: new Date().toISOString(),
     hint: '',
   });
   console.log('bookingData', bookingData);
 
   useEffect(() => {
+    if(cookies){
+      localStorage.removeItem('prevPath');
+    }
+
     const getUserData = async () => {
       await fetch(RootURL + `user?api_token=${cookies}`)
         .then((res) => res.json())
         .then((data) => {
-          setUser(data?.data);
+          setUser({
+            id: data?.data?.id,
+            name: data?.data?.name,
+            email: data?.data?.email,
+            phone_number: data?.data?.phone_number,
+            address: data?.data?.custom_fields?.address.value,
+            bio: data?.data?.custom_fields?.bio.value,
+          });
         });
     };
     getUserData();
@@ -72,6 +95,10 @@ const Booking = () => {
     getBookingStatuses();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coupon, cookies, id]);
+
+  useEffect(() => {
+    setBookingData({ ...bookingData, address: {...bookingData.address,address:user.address, user_id:user.id} });
+  }, [user]);
 
   const getCoupons = async () => {
     await axios
@@ -122,7 +149,12 @@ const Booking = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setBookingData({ ...bookingData, [name]: value });
+    if(name==="address"){
+      setUser({...user, address:value});
+      setBookingData({ ...bookingData, address:{...bookingData.address,address:value} });
+    }else{
+      setBookingData({ ...bookingData, [name]: value });
+    }
   };
 
   const submitHandler = (e) => {
@@ -131,6 +163,40 @@ const Booking = () => {
 
   const handleCoupon = () => {
     getCoupons();
+  };
+
+  const submitBook = async() => {
+    await axios
+    .post(RootURL + `bookings`, bookingData, {
+      headers: {
+        Authorization: 'Bearer ' + cookies,
+      },
+    })
+    .then((response) => {
+      console.log("submit booking res:",response)
+      setMessage(response?.data?.message);
+      setAddressForm(false);
+    })
+    .catch((error) => {
+      setMessage('Failed to update!');
+    });
+  };
+
+
+  const handleAddress = async() => {
+    await axios
+    .post(RootURL + `users/${user?.id}`, user, {
+      headers: {
+        Authorization: 'Bearer ' + cookies,
+      },
+    })
+    .then((response) => {
+      setMessage(response?.data?.message);
+      setAddressForm(false);
+    })
+    .catch((error) => {
+      setMessage('Failed to update!');
+    });
   };
 
   useEffect(() => {
@@ -171,20 +237,39 @@ const Booking = () => {
         <div className='container'>
           <div className='row'>
             <div className='col-md-6 col-sm-12 col-lg-6'>
-              <div className=' bg-white p-5 rounded'>
-                <div className='d-flex'>
+              <div className='bg-white pt-5 px-5 rounded'>
+                <div className='d-flex mb-3'>
                   <div className='pr-5'>
                     <p>Your Address</p>
                   </div>
-                  <div className='d-flex justify-content-between align-items-center bg-address rounded px-2'>
+
+                  <div className='d-flex justify-content-between align-items-center bg-address rounded px-2 cursor-pointer' onClick={()=>setAddressForm(!addressForm)}>
                     <p className='mr-2 mb-1 fill-orenge'>New</p>
                     <BiCurrentLocation size={20} style={{ color: '#FFA500' }} />
                   </div>
                 </div>
+                  {addressForm ? 
+                  <div className='input-group mb-3'>
+                    <input
+                      name='address'
+                      onChange={handleInputChange}
+                      type='text'
+                      className='form-control'
+                      placeholder='Enter your address'
+                      aria-label='hint'
+                      aria-describedby='basic-addon1'
+                    />
+                    <button onClick={handleAddress} className='btn btn-white px-4'>
+                    Add
+                  </button>
+                  </div>:""}
+
+                {bookingData?.address?.address ? 
                 <div className='d-flex py-5'>
                   <BiMap size={20} />
-                  <p className='pl-3'>{user?.custom_fields?.address.value}</p>
-                </div>
+                  <p className='pl-3'>{bookingData?.address?.address}</p>
+                </div>:""}
+
               </div>
 
               <div className='d-flex justify-content-center align-items-center mt-3'>
@@ -267,44 +352,44 @@ const Booking = () => {
 
           {showConfirm ? (
             <div>
-              <div className='md-m-5 p-5 bg-gray text-center'>
+              <div className='md-m-5 p-5 bg-gray d-flex justify-content-center'>
                 <div className='text-center'>
-                  <div>
+                  <div className='mb-5'>
                     <h3>Booking Summary</h3>
                   </div>
-                  <div className='row'>
-                    <div className='col-md-2 col-lg-2'>Cost of service</div>
-                    <div className='col-md-2 col-lg-2'>{service?.price}</div>
+                  <div className='row d-flex justify-content-center mb-1'>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Cost of service</strong></div>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>{service?.price}</div>
                   </div>
-                  <div className='row'>
-                    <div className='col-md-2 col-lg-2'>Discount Price</div>
-                    <div className='col-md-2 col-lg-2'>
+                  <div className='row d-flex justify-content-center mb-1'>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Discount Price</strong> </div>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>
                       {service?.discount_price}
                     </div>
                   </div>
-                  <div className='row'>
-                    <div className='col-md-2 col-lg-2'>Quantity</div>
-                    <div className='col-md-2 col-lg-2'>x1</div>
+                  <div className='row d-flex justify-content-center mb-1'>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Quantity</strong> </div>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>x1</div>
                   </div>
-                  <div className='row'>
-                    <div className='col-md-2 col-lg-2'>Maintenance</div>
-                    <div className='col-md-2 col-lg-2'>$2.0</div>
+                  <div className='row d-flex justify-content-center mb-1'>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Maintenance</strong> </div>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>$2.0</div>
                   </div>
-                  <div className='row'>
-                    <div className='col-md-2 col-lg-2'>Tax Amount</div>
-                    <div className='col-md-2 col-lg-2'>$2.0</div>
+                  <div className='row d-flex justify-content-center mb-1'>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Tax Amount</strong> </div>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>$2.0</div>
                   </div>
 
-                  <div className='row'>
-                    <div className='col-md-2 col-lg-2'>Sub Amount</div>
-                    <div className='col-md-2 col-lg-2'>$32.43</div>
+                  <div className='row d-flex justify-content-center mb-1'>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Sub Amount</strong> </div>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>$32.43</div>
                   </div>
-                  <div className='row'>
-                    <div className='col-md-2 col-lg-2'>Total Amount</div>
-                    <div className='col-md-2 col-lg-2'>$32.43</div>
+                  <div className='row d-flex justify-content-center mb-1'>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Total Amount</strong> </div>
+                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>$32.43</div>
                   </div>
                   <div className='container'>
-                    <div className='d-flex justify-content-center my-5'>
+                    <div className='d-flex justify-content-center my-5' onClick={submitBook} >
                       <button className='btn btn-orenge' type='button'>
                         Confirm & Book Service
                       </button>

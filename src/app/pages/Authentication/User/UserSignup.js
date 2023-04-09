@@ -10,6 +10,8 @@ const UserSignup = () => {
     const [password, setPassword] = useState('');
     const [phone_number, setPhoneNumber] = useState('');
     const [redirect, setRedirect] = useState(false)
+    const [message, setMessage] = useState('');
+    console.log("message:",message);
     const submitHandler = async (e) => {
         e.preventDefault();
         await fetch(RootURL + 'register', {
@@ -20,9 +22,17 @@ const UserSignup = () => {
                 email,
                 password,
                 phone_number})
-        }).then(response => console.log(response.json()));
-        setRedirect(true);
+        }).then(response => response.json())
+        .then(data => {
+            if(data.success){
+                setRedirect(true);
+            }else{
+                setMessage(data.message)
+            }
+        })
+      .catch(error => console.error(error));
     }
+    
     if (redirect) {
         return <Navigate to="/login" replace={true}/>
     }
@@ -32,6 +42,9 @@ const UserSignup = () => {
             <div className="row justify-content-center align-items-center h-100">
                 <div className="col-sm-12 col-md-6 login-form">
                     <h2 className="text-center">Register as a Customer</h2>
+                    {message && (
+                    <div className='p-3 m-3 text-white bg-danger'>{message}</div>
+                    )}
                     <form>
                         <div className="form-group">
                             <label htmlFor="name">Full Name</label>

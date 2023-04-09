@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import RootURL from '../../components/Contants';
@@ -6,14 +6,26 @@ import Cookies from 'js-cookie';
 // import { useLocation } from 'react-router-dom';
 
 const Login = () => {
+  const cookies = Cookies.get("api_token");
+
   // const location = useLocation();
-  console.log('location:', localStorage.getItem('prevPath'));
+  // console.log('location:', localStorage.getItem('prevPath'));
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   //   const [redirect, setRedirect] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+      if(cookies ){
+        if(localStorage.getItem('prevPath')){
+          window.location.href = localStorage.getItem('prevPath');
+        }else{
+          window.location.href ='/dashboard';
+        }
+      }
+  }, [cookies]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -33,8 +45,8 @@ const Login = () => {
           setToken(info.data.api_token);
           Cookies.set('api_token', info.data.api_token);
           // window.location.href = '/dashboard';
+          // console.log('prec path:', prevPath);
           const prevPath = localStorage.getItem('prevPath') || '/';
-          console.log('prec path:', prevPath);
           window.location.href = prevPath ? prevPath : '/dashboard';
         } else {
           setErrorMessage('Incorrect email or password!');

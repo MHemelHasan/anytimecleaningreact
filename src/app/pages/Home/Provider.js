@@ -97,7 +97,10 @@ const Provider = ({ slice_value, serviceProvider }) => {
                       {provider?.custom_fields.address?.view}
                     </span>:""}
 
-                    <p>{shortDesc(provider?.custom_fields?.bio?.view)}</p>
+                    <p
+                      dangerouslySetInnerHTML={{
+                      __html:shortDesc(provider?.custom_fields?.bio?.view)
+                    }} />
                     <div className='btn-wrapper'>
                       <Link
                         to={`/provider/${provider?.id}`}
