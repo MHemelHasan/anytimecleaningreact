@@ -1,9 +1,9 @@
 import React from "react";
 
-import bg1 from "../../assets/uploads/media-uploader/bg-011618830463.jpg";
-import bg2 from "../../assets/uploads/media-uploader/bg-021618830463.jpg";
-import bg3 from "../../assets/uploads/media-uploader/bg-011618830463.jpg";
-import bg4 from "../../assets/uploads/media-uploader/bg-041618830464.jpg";
+import bg1 from "../../assets/uploads/media-uploader/slider1.jpeg";
+import bg2 from "../../assets/uploads/media-uploader/slider2.jpeg";
+import bg3 from "../../assets/uploads/media-uploader/slider3.jpeg";
+import bg4 from "../../assets/uploads/media-uploader/slider1.jpeg";
 import { Link } from "react-router-dom";
 
 const Banner = () => {
