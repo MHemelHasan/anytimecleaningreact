@@ -25,7 +25,7 @@ const Banner = () => {
                   <div className="header-bottom">
                     <div className="btn-wrapper desktop-left">
                       <Link to={'/contact'} className="boxed-btn">
-                        Contact us
+                        Get The App
                       </Link>
                     </div>
                     <span className="or">OR</span>
@@ -54,7 +54,7 @@ const Banner = () => {
                   <div className="header-bottom">
                     <div className="btn-wrapper desktop-left">
                     <Link to={'/contact'} className="boxed-btn">
-                        Contact us
+                        Get The App
                       </Link>
                     </div>
                     <span className="or">OR</span>
@@ -83,7 +83,7 @@ const Banner = () => {
                   <div className="header-bottom">
                     <div className="btn-wrapper desktop-left">
                     <Link to={'/contact'} className="boxed-btn">
-                        Contact us
+                        Get The App
                       </Link>
                     </div>
                     <span className="or">OR</span>
@@ -112,7 +112,7 @@ const Banner = () => {
                   <div className="header-bottom">
                     <div className="btn-wrapper desktop-left">
                     <Link to={'/contact'} className="boxed-btn">
-                        Contact us
+                        Get The App
                       </Link>
                     </div>
                     <span className="or">OR</span>
