@@ -41,9 +41,41 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import RootURL from "../../components/Contants";
 import { shortDesc } from "../../utils/short_desc";
+import axios from 'axios';
 
 const Home = () => {
   const [services, setServices] = useState([]);
+  const [message, setMessage] = useState('');
+  const [quote, setQuote] = useState({
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+      setQuote({ ...quote, [name]: value });
+  };
+
+  const handleSubmit = async(event) =>{
+    event.preventDefault();
+    await axios
+    .post(RootURL + `quotes`, quote,)
+    .then((response) => {
+      setMessage(response?.data?.message);
+    })
+    .catch((error) => {
+      setMessage('Failed to add!');
+    });
+  }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMessage('');
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [message]);
 
   useEffect(() => {
     fetch(RootURL + 'e_services')
@@ -779,10 +811,13 @@ const Home = () => {
                 >
                   <h4 className='title'>Get a Quote</h4>
                   <p>Fill the form now</p>
+                  {message && (
+                    <div className='p-3 m-3 text-white bg-success'>{message}</div>
+                  )}
                 </div>
                 <form
-                  action=''
-                  method='POST'
+                  // action=''
+                  // method='POST'
                   className='request-page-form'
                   encType='multipart/form-data'
                   id='quote_form'
@@ -799,6 +834,7 @@ const Home = () => {
                       name='email'
                       className='form-control'
                       placeholder='Email'
+                      onChange={handleInputChange}
                     />
                   </div>
                   <div className='form-group'>
@@ -808,6 +844,7 @@ const Home = () => {
                       name='subject'
                       className='form-control'
                       placeholder='Subject'
+                      onChange={handleInputChange}
                     />
                   </div>
                   <div className='form-group textarea'>
@@ -818,6 +855,7 @@ const Home = () => {
                       rows='10'
                       className='form-control'
                       placeholder='Message'
+                      onChange={handleInputChange}
                     ></textarea>
                   </div>
                   <input
@@ -825,7 +863,7 @@ const Home = () => {
                     name='captcha_token'
                     id='gcaptcha_token'
                   />
-                  <div className='form-group'>
+                  <div className='form-group' onClick={handleSubmit}>
                     <input
                       type='submit'
                       id='quote_submit_btn'

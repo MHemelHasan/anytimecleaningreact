@@ -2,23 +2,38 @@ import image1 from '../../../assets/uploads/media-uploader/breadcrumb1619334343.
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import RootURL from '../../components/Contants';
-import React, { useState } from 'react';
+import React,{ Fragment, useEffect, useState }from 'react';
 import { BiCurrentLocation, BiFile, BiGift, BiMap } from 'react-icons/bi';
 // import ConfirmBooking from '../../components/Booking/ConfirmBooking';
 // import useBooking from "../../hooks/useBooking";
 import moment from 'moment/moment';
 import Cookies from 'js-cookie';
-import { useEffect } from 'react';
+import { Dialog, Transition } from '@headlessui/react'
+import {loadStripe} from '@stripe/stripe-js';
+import {
+  CardElement,
+  Elements,
+  useStripe,
+  useElements,
+} from '@stripe/react-stripe-js';
+import AddPayment from '../../components/Payment/AddPayment';
 
 const Booking = () => {
   const { id } = useParams();
   const cookies = Cookies.get('api_token');
+  // const stripe = new Stripe('sk_test_51LPIPWB1kF8HAmvfcoEXCOj06Jw35GdKW2uUpSsgZaGT2cZwNnjvevB4MDlzv2FqrYkdzZMena6fotQBqc2wdkmo00pvj6s2Bl');
+  const stripePromise = loadStripe('pk_test_51LPIPWB1kF8HAmvf0qMGYdXYGd2jJ4t0fUYqPMBSzc5myAUjcZb957bbcewISXEa5jk5XI8yX0MaxRvTnUdWIyc100Xzmg4NFZ');
+  // const stripe = useStripe()
   const [coupon, setCoupon] = useState(null);
   const [addressForm, setAddressForm] = useState(false);
   const [message, setMessage] = useState('');
-  // const [hint,setHint]=useState(null);
+  const [clientSecret,setClientSecret]=useState('');
   const [service, setService] = useState('');
-  console.log('service:', service);
+  let [paymentForm, setPaymentForm] = useState(false);
+  const [selectedMethod, setSelectedMethod] = useState('');
+  const [methods, setMethods] = useState('');
+
+
   // const [user, setUser] = useState('');
   // console.log("user:",user)
   const [showConfirm, setShowConfirm] = useState(false);
@@ -45,12 +60,13 @@ const Booking = () => {
       latitude: '0',
       user_id: user?.id,
     },
+    user_id: user?.id,
     e_service: id,
     options: [],
-    coupon_id: 0,
+    coupon_id: '',
     booking_status_id: 2,
-    taxes: 1,
-    payment_id: 1,
+    taxes: '',
+    payment_id: '',
     booking_at: new Date().toISOString(),
     hint: '',
   });
@@ -92,6 +108,7 @@ const Booking = () => {
     };
     getService();
     getOptions();
+    getMethods();
     getBookingStatuses();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coupon, cookies, id]);
@@ -134,6 +151,19 @@ const Booking = () => {
       .catch((error) => {});
   };
 
+  const getMethods = async () => {
+    await axios
+      .get(RootURL + `payment_methods`, {
+        headers: {
+          Authorization: 'Bearer ' + cookies,
+        },
+      })
+      .then((response) => {
+        setMethods(response?.data?.data);
+      })
+      .catch((error) => {});
+  };
+
   const getBookingStatuses = async () => {
     await axios
       .get(RootURL + `booking_statuses`, {
@@ -143,6 +173,20 @@ const Booking = () => {
       })
       .then((response) => {
         setBookingStatuses(response?.data?.data);
+      })
+      .catch((error) => {});
+  };
+
+  const getPaymentIntent = async () => {
+    await axios
+      .post(RootURL + `create-payment-intent`,{amount: Math.round((service?.price) * 100),currency:"CAD"}, {
+        headers: {
+          Authorization: 'Bearer ' + cookies,
+        },
+      })
+      .then((response) => {
+        // console.log("payment-intent:",response?.data?.data);
+        setClientSecret(response?.data?.data);
       })
       .catch((error) => {});
   };
@@ -165,7 +209,19 @@ const Booking = () => {
     getCoupons();
   };
 
-  const submitBook = async() => {
+  const submitBook = async(event) => {
+    event.preventDefault();
+    // getPaymentIntent();
+    // const { paymentMethod, error } = await stripe.confirmCardPayment(clientSecret, {
+    //   payment_method: {
+    //     card: elements.getElement(CardElement),
+    //     billing_details: {
+    //       name: 'Jenny Rosen',
+    //     },
+    //   }
+    // });
+
+    // create booking
     await axios
     .post(RootURL + `bookings`, bookingData, {
       headers: {
@@ -176,11 +232,45 @@ const Booking = () => {
       console.log("submit booking res:",response)
       setMessage(response?.data?.message);
       setAddressForm(false);
+      setPaymentForm(true);
+    })
+    .catch((error) => {
+      setMessage('Failed to update!');
+    });
+
+    // create payment
+    await axios
+    .post(RootURL + `payments/cash`, {id:38}, {
+      headers: {
+        Authorization: 'Bearer ' + cookies,
+      },
+    })
+    .then((response) => {
+      setMessage(response?.data?.message);
+      setAddressForm(false);
+      setPaymentForm(true);
+    })
+    .catch((error) => {
+      setMessage('Failed to update!');
+    });
+    
+    // create wallets
+    await axios
+    .post(RootURL + `wallets`, {name: "My USD Wallet for booking", user: user?.id}, {
+      headers: {
+        Authorization: 'Bearer ' + cookies,
+      },
+    })
+    .then((response) => {
+      setMessage(response?.data?.message);
+      setAddressForm(false);
+      setPaymentForm(true);
     })
     .catch((error) => {
       setMessage('Failed to update!');
     });
   };
+  
 
 
   const handleAddress = async() => {
@@ -282,7 +372,7 @@ const Booking = () => {
               </div>
             </div>
             <div className='col-md-6 col-sm-12 col-lg-6'>
-              <div className='bg-white rounded p-3 mb-3'>
+              <div className='bg-white rounded pt-5 px-3 mb-3'>
                 <p>
                   <strong>Hint</strong>
                 </p>
@@ -334,6 +424,40 @@ const Booking = () => {
                   </button>
                 </div>
               </div>
+              {methods?
+              <div className='bg-white rounded p-3 mb-3'>
+                <p className='px-3'>
+                  <strong>Payment Method</strong>
+                </p>
+                <div className='d-flex'>
+                  <div className='px-3 mt-1 '>
+                  {/* <select className='' value={selectedMethod} onChange={(e)=>setSelectedMethod(e.target.value)}> */}
+                    {methods &&  methods?.map((method,index)=>(
+                    <div key={index}>
+                    <input
+                    className=''
+                      type="radio"
+                      id={method?.id}
+                      value={method?.name?.en}
+                      checked={selectedMethod === method?.name?.en}
+                      onChange={(e)=>setSelectedMethod(e.target.value)}
+                    />
+                    <label className='ml-3' htmlFor={method?.name?.en}>{method?.name?.en}</label>
+                    <br />
+                  </div>
+                    ))}
+
+                  {/* </select> */}
+                  {selectedMethod?
+                  <p><strong>Selected Method: </strong> {selectedMethod}</p>:""}
+
+                  </div>
+                  {/* <button onClick={handleCoupon} className='btn btn-white px-4'>
+                    Apply
+                  </button> */}
+                </div>
+              </div>:""
+              }
             </div>
             <div className='container'>
             <div className='d-flex justify-content-center my-5'>
@@ -348,11 +472,9 @@ const Booking = () => {
           </div>
 
           </div>
-
-
           {showConfirm ? (
             <div>
-              <div className='md-m-5 p-5 bg-gray d-flex justify-content-center'>
+              <div className='md-m-5 bg-gray d-flex justify-content-center'>
                 <div className='text-center'>
                   <div className='mb-5'>
                     <h3>Booking Summary</h3>
@@ -401,6 +523,12 @@ const Booking = () => {
           ) : (
             ''
           )}
+
+          {/* payment form */}
+          {paymentForm ?
+          <Elements stripe={stripePromise}>
+            <AddPayment user={user} service={service} bookingData={bookingData} />
+          </Elements>:""}
         </div>
       </div>
     </>
