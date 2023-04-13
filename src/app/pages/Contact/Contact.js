@@ -1,10 +1,46 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BreadcrumbImage from '../../../assets/uploads/media-uploader/breadcrumb1619334343.png';
+import axios from 'axios';
+import RootURL from "../../components/Contants";
 
 const Contact = () => {
+  const [message, setMessage] = useState('');
+  const [contact, setContact] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    phone_number: '',
+    message: '',
+  });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+      setContact({ ...contact, [name]: value });
+  };
+
+  const handleSubmit = async(event) =>{
+    event.preventDefault();
+    await axios
+    .post(RootURL + `contacts`, contact,)
+    .then((response) => {
+      setMessage(response?.data?.message);
+    })
+    .catch((error) => {
+      setMessage('Failed to add!');
+    });
+  }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMessage('');
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [message]);
+
   return (
     <>
       <div
@@ -84,6 +120,9 @@ const Contact = () => {
             </div>
             <div className='col-lg-6 offset-lg-1'>
               <div className='contact-form style-01'>
+              {message && (
+                    <div className='p-3 m-3 text-white bg-success'>{message}</div>
+                  )}
                 <form
                   action='#'
                   method='POST'
@@ -109,6 +148,7 @@ const Contact = () => {
                       className='form-control'
                       placeholder='Name'
                       required='required'
+                      onChange={handleInputChange}
                     />
                   </div>
                   <div className='form-group'>
@@ -119,6 +159,7 @@ const Contact = () => {
                       className='form-control'
                       placeholder='Subject'
                       required='required'
+                      onChange={handleInputChange}
                     />
                   </div>
                   <div className='form-group'>
@@ -129,15 +170,17 @@ const Contact = () => {
                       className='form-control'
                       placeholder='Email'
                       required='required'
+                      onChange={handleInputChange}
                     />
                   </div>
                   <div className='form-group'>
                     <input
                       type='tel'
                       id='phone'
-                      name='phone'
+                      name='phone_number'
                       className='form-control'
                       placeholder='Phone'
+                      onChange={handleInputChange}
                     />
                   </div>
                   <div className='form-group textarea'>
@@ -149,9 +192,10 @@ const Contact = () => {
                       className='form-control'
                       placeholder='Your Message'
                       required='required'
+                      onChange={handleInputChange}
                     ></textarea>
                   </div>
-                  <div className='btn-wrapper'>
+                  <div className='btn-wrapper' onClick={handleSubmit}>
                     <a
                       href='#'
                       className='boxed-btn btn-block'
