@@ -6,12 +6,13 @@ import service2 from '../../assets/uploads/media-uploader/bucket.png';
 import { Link } from 'react-router-dom';
 import RootURL from '../components/Contants';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Header = () => {
   const cookies = Cookies.get('api_token');
   // eslint-disable-next-line no-unused-vars
-  const [message, setMessage] = useState('');
+  const [categories, setCategories] = useState('');
+  console.log("categories:",categories);
 
   const handleLogout = async () => {
     await axios
@@ -19,11 +20,21 @@ const Header = () => {
       .then((response) => {
         Cookies.remove('api_token');
         window.location.href = '/login';
-      })
-      .catch((error) => {
-        setMessage('Failed to update!');
       });
   };
+
+  const getCategories = async () => {
+    await axios
+      .get(RootURL + `categories`)
+      .then((response) => {
+        setCategories(response?.data?.data);
+      })
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
 
   return (
     <>
@@ -140,7 +151,7 @@ const Header = () => {
                   <Link to='/about'>About Us</Link>
                 </li>
                 <li className='menu-item-has-mega-menu'>
-                  <a>Services</a>
+                  <Link to={'/services'}>Services</Link>
                   <div className='xg_mega_menu_wrapper service_mega_menu'>
                     <div className='xg-mega-menu-container'>
                       <div className='row'>
@@ -156,24 +167,14 @@ const Header = () => {
                         <div className='col-lg-3 col-md-6'>
                           <div className='xg-mega-menu-single-column-wrap'>
                             <h4 className='mega-menu-title'>
-                              Residential Cleaning
+                              {categories[0]?.name}
                             </h4>
                             <ul>
-                              <li>
-                                <a href='#'>Window Cleaning</a>
+                            {categories[0]?.e_services.map((service,index)=>( 
+                              <li key={index}>
+                                <Link to={`/service/${service?.id}`}>{service?.name?.en}</Link>
                               </li>
-                              <li>
-                                <a href='#'>Gutter Cleaning</a>
-                              </li>
-                              <li>
-                                <a href='#'>House Washing</a>
-                              </li>
-                              <li>
-                                <a href='#'>Pressure Washing</a>
-                              </li>
-                              <li>
-                                <a href='#'>Snow Removal</a>
-                              </li>
+                            ))}
                             </ul>
                           </div>
                         </div>
@@ -188,25 +189,15 @@ const Header = () => {
                         </div>
                         <div className='col-lg-3 col-md-6'>
                           <div className='xg-mega-menu-single-column-wrap'>
-                            <h4 className='mega-menu-title'>
-                              Commercial Cleaning
+                          <h4 className='mega-menu-title'>
+                              {categories[1]?.name}
                             </h4>
                             <ul>
-                              <li>
-                                <a href='#'>Window Cleaning</a>
+                            {categories[1]?.e_services.map((service,index)=>( 
+                              <li key={index}>
+                                <Link to={`/service/${service?.id}`}>{service?.name?.en}</Link>
                               </li>
-                              <li>
-                                <a href='#'>Gutter Cleaning</a>
-                              </li>
-                              <li>
-                                <a href='#'>Exterior Building Washing</a>
-                              </li>
-                              <li>
-                                <a href='#'>Pressure Washing</a>
-                              </li>
-                              <li>
-                                <a href='#'>Snow Removal</a>
-                              </li>
+                            ))}
                             </ul>
                           </div>
                         </div>

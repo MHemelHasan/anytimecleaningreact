@@ -49,6 +49,7 @@ const Home = () => {
   const [quote, setQuote] = useState({
     email: '',
     subject: '',
+    phone_number: '',
     message: '',
   });
 
@@ -834,6 +835,16 @@ const Home = () => {
                       name='email'
                       className='form-control'
                       placeholder='Email'
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  <div className='form-group'>
+                    <input
+                      type='text'
+                      id='phone_number'
+                      name='phone_number'
+                      className='form-control'
+                      placeholder='Phone number'
                       onChange={handleInputChange}
                     />
                   </div>

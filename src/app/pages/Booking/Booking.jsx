@@ -32,7 +32,7 @@ const Booking = () => {
   let [paymentForm, setPaymentForm] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState('');
   const [methods, setMethods] = useState('');
-
+  console.log("methods:",methods);
 
   // const [user, setUser] = useState('');
   // console.log("user:",user)
@@ -159,7 +159,10 @@ const Booking = () => {
         },
       })
       .then((response) => {
-        setMethods(response?.data?.data);
+        const enable_method = response?.data?.data.find((value) => {
+          return value.enabled === true;
+        });
+        setMethods(enable_method);
       })
       .catch((error) => {});
   };
@@ -432,20 +435,20 @@ const Booking = () => {
                 <div className='d-flex'>
                   <div className='px-3 mt-1 '>
                   {/* <select className='' value={selectedMethod} onChange={(e)=>setSelectedMethod(e.target.value)}> */}
-                    {methods &&  methods?.map((method,index)=>(
-                    <div key={index}>
+                    {/* {methods &&  methods?.map((method,index)=>( */}
+                    <div>
                     <input
                     className=''
                       type="radio"
-                      id={method?.id}
-                      value={method?.name?.en}
-                      checked={selectedMethod === method?.name?.en}
+                      id={methods?.id}
+                      value={methods?.name?.en}
+                      checked={selectedMethod === methods?.name?.en}
                       onChange={(e)=>setSelectedMethod(e.target.value)}
                     />
-                    <label className='ml-3' htmlFor={method?.name?.en}>{method?.name?.en}</label>
+                    <label className='ml-3' htmlFor={methods?.name?.en}>{methods?.name?.en}</label>
                     <br />
                   </div>
-                    ))}
+                    {/* ))} */}
 
                   {/* </select> */}
                   {selectedMethod?

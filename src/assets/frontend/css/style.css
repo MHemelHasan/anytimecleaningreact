@@ -7881,7 +7881,7 @@ nav.navbar.navbar-area.nav-style-01 .icon-part.nav-style-03 .pcount {
 }
 
 .bg-orenge{
-  background-color: #FFA500;
+  background-color: #FFA500 !important;
 }
 
 @media (max-width: 900px) {
@@ -8001,4 +8001,20 @@ nav.navbar.navbar-area.nav-style-01 .icon-part.nav-style-03 .pcount {
   .diplay-provider {
     display: block !important;
   }
+}
+
+.bg-section{
+  background: aliceblue !important;
+}
+
+.b-shadow{
+  box-shadow: inset 0 0em 0em rgba(0, 0, 0, 0.1), 0 0 0 0px rgb(255, 255, 255), 0em 0em 1em rgba(0, 0, 0, 0.3);
+}
+
+.mw-500{
+  max-width: 500px;
+}
+
+.top-z-index{
+  z-index: 9999999999999999 !important;
 }
