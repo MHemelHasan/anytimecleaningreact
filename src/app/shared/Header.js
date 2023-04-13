@@ -170,7 +170,7 @@ const Header = () => {
                               {categories[0]?.name}
                             </h4>
                             <ul>
-                            {categories[0]?.e_services.map((service,index)=>( 
+                            {categories[0]?.e_services?.map((service,index)=>( 
                               <li key={index}>
                                 <Link to={`/service/${service?.id}`}>{service?.name?.en}</Link>
                               </li>
