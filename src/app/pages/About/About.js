@@ -30,6 +30,8 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      <section>
       <div className='eco-friendly-area margin-top-120 margin-bottom-120'>
         <div className='container'>
           <div className='eco-friendly-area-wrapper padding-top-60 padding-bottom-60'>
@@ -83,6 +85,9 @@ const About = () => {
           </div>
         </div>
       </div>
+      </section>
+
+      <section>
       <div
         className='progress-bar-area bg-image padding-bottom-295 padding-top-120'
         style={{ backgroundImage: `url(${image3})` }}
@@ -103,62 +108,64 @@ const About = () => {
               </div>
             </div>
             <div className="col-lg-6">
-  <input type="number" id="count" value="3" hidden />
-  <div className="progress-item-wrapper">
-    <input type="number" id="progress-val-0" value="80" hidden />
-    <div className="progress-item">
-      <div className="single-progressbar">
-        <h4 className="subtitle">Service</h4>
-        <div className="progress">
-          <div
-            className="progress-bar"
-            role="progressbar"
-            style={{ width: "80%" }}
-            aria-valuenow="80"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
-      </div>
-    </div>
-    <input type="number" id="progress-val-1" value="70" hidden />
-    <div className="progress-item">
-      <div className="single-progressbar">
-        <h4 className="subtitle">Behaviour</h4>
-        <div className="progress">
-          <div
-            className="progress-bar"
-            role="progressbar"
-            style={{ width: "70%" }}
-            aria-valuenow="70"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
-      </div>
-    </div>
-    <input type="number" id="progress-val-2" value="90" hidden />
-    <div className="progress-item">
-      <div className="single-progressbar">
-        <h4 className="subtitle">Support</h4>
-        <div className="progress">
-          <div
-            className="progress-bar"
-            role="progressbar"
-            style={{ width: "90%" }}
-            aria-valuenow="90"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+              <input type="number" id="count" value="3" hidden />
+              <div className="progress-item-wrapper">
+                <input type="number" id="progress-val-0" value="80" hidden />
+                <div className="progress-item">
+                  <div className="single-progressbar">
+                    <h4 className="subtitle">Service</h4>
+                    <div className="progress">
+                      <div
+                        className="progress-bar"
+                        role="progressbar"
+                        style={{ width: "80%" }}
+                        aria-valuenow="80"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <input type="number" id="progress-val-1" value="70" hidden />
+                <div className="progress-item">
+                  <div className="single-progressbar">
+                    <h4 className="subtitle">Behaviour</h4>
+                    <div className="progress">
+                      <div
+                        className="progress-bar"
+                        role="progressbar"
+                        style={{ width: "70%" }}
+                        aria-valuenow="70"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <input type="number" id="progress-val-2" value="90" hidden />
+                <div className="progress-item">
+                  <div className="single-progressbar">
+                    <h4 className="subtitle">Support</h4>
+                    <div className="progress">
+                      <div
+                        className="progress-bar"
+                        role="progressbar"
+                        style={{ width: "90%" }}
+                        aria-valuenow="90"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>
       </div>
+      </section>
+
       <section className='why-choose-use-area padding-bottom-80'>
         <div className='container'>
           <div className='why-choose-use-area-wrapper m-top'>
@@ -256,6 +263,7 @@ const About = () => {
         </div>
       </section>
 
+      <section>
       <div className='counterup-area bg-liteblue'>
         <div className='container'>
           <div className='counterup-wrapper'>
@@ -303,6 +311,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      </section>
     </>
   );
 };

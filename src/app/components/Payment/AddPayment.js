@@ -108,7 +108,7 @@ const AddPayment = ({user,service,bookingData}) => {
         <div>
         <div className="pt-5">
           <div className="font-weight-bold text-center" style={{ fontSize: '23px' }}>
-            <p className="">Add Payment Method</p>
+            <p className="">Payment</p>
           </div>
         </div>
         <div className="px-5 py-4 d-flex justify-content-center">
@@ -130,7 +130,7 @@ const AddPayment = ({user,service,bookingData}) => {
                 <button className="btn btn-secondary">CANCEL</button>
               </div>
               <div className="">
-                <button onClick={handlePayment} className="btn btn-success">Save</button>
+                <button onClick={handlePayment} className="btn btn-success">Purchase</button>
               </div>
             </div>
           </form>

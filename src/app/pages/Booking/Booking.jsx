@@ -27,8 +27,10 @@ const Booking = () => {
   const [coupon, setCoupon] = useState(null);
   const [addressForm, setAddressForm] = useState(false);
   const [message, setMessage] = useState('');
+  const [errorMethod, setErrorMethod] = useState('');
   const [clientSecret,setClientSecret]=useState('');
   const [service, setService] = useState('');
+  const [booking, setBooking] = useState('');
   let [paymentForm, setPaymentForm] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState('');
   const [methods, setMethods] = useState('');
@@ -94,13 +96,13 @@ const Booking = () => {
     getUserData();
     const getService = async () => {
       await axios
-        .get(RootURL + `e_services${id}`, {
+        .get(RootURL + `e_services/${id}`, {
           headers: {
             Authorization: 'Bearer ' + cookies,
           },
         })
         .then((response) => {
-          setService(response.data);
+          setService(response?.data?.data);
         })
         .catch((error) => {
           // setMessage("Failed to update!");
@@ -204,8 +206,44 @@ const Booking = () => {
     }
   };
 
-  const submitHandler = (e) => {
-    setShowConfirm(true);
+  const getBooking= async () => {
+    await axios
+      .get(RootURL + `bookings/${booking?.id}`, {
+        headers: {
+          Authorization: 'Bearer ' + cookies,
+        },
+      })
+      .then((response) => {
+        setBooking(response?.data?.data);
+      })
+      .catch((error) => {});
+  };
+
+  const submitHandler = async (event) => {
+        event.preventDefault();
+        if(selectedMethod){
+
+        // create booking
+        await axios
+        .post(RootURL + `bookings`, bookingData, {
+          headers: {
+            Authorization: 'Bearer ' + cookies,
+          },
+        })
+        .then((response) => {
+          console.log("submit booking res:",response)
+          setBooking(response?.data?.data);
+          setMessage(response?.data?.message);
+          setAddressForm(false);
+          setPaymentForm(true);
+          setShowConfirm(true);
+        })
+        .catch((error) => {
+          setMessage('Failed to update!');
+        });
+    }else{
+      setErrorMethod('Payment Method required!');
+    }
   };
 
   const handleCoupon = () => {
@@ -224,26 +262,9 @@ const Booking = () => {
     //   }
     // });
 
-    // create booking
-    await axios
-    .post(RootURL + `bookings`, bookingData, {
-      headers: {
-        Authorization: 'Bearer ' + cookies,
-      },
-    })
-    .then((response) => {
-      console.log("submit booking res:",response)
-      setMessage(response?.data?.message);
-      setAddressForm(false);
-      setPaymentForm(true);
-    })
-    .catch((error) => {
-      setMessage('Failed to update!');
-    });
-
     // create payment
     await axios
-    .post(RootURL + `payments/cash`, {id:38}, {
+    .post(RootURL + `payments/cash`, {id:booking?.id}, {
       headers: {
         Authorization: 'Bearer ' + cookies,
       },
@@ -301,6 +322,10 @@ const Booking = () => {
     return () => clearTimeout(timer);
   }, [messageCoupon, errorCoupon]);
 
+  useEffect(() => {
+      getBooking();
+  }, [booking]);
+
   return (
     <>
       <div
@@ -329,8 +354,17 @@ const Booking = () => {
       <div className='md-m-5 md-p-5 bg-gray'>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-6 col-sm-12 col-lg-6'>
-              <div className='bg-white pt-5 px-5 rounded'>
+            <div className='col-md-6 col-sm-12 col-lg-6 my-5'>
+            <div className='bg-white py-3 px-5 rounded d-flex justify-content-center align-items-center mb-3'>
+                <div>
+                  <p className='text-center'>Requested Service on</p>
+                  <h3 className='text-center'>
+                    {moment().format('MMMM Do YYYY, h:mm a')}
+                  </h3>
+                </div>
+              </div>
+
+              <div className='bg-white py-3 px-5 rounded mb-3'>
                 <div className='d-flex mb-3'>
                   <div className='pr-5'>
                     <p>Your Address</p>
@@ -358,23 +392,13 @@ const Booking = () => {
                   </div>:""}
 
                 {bookingData?.address?.address ? 
-                <div className='d-flex py-5'>
+                <div className='d-flex py-3'>
                   <BiMap size={20} />
                   <p className='pl-3'>{bookingData?.address?.address}</p>
                 </div>:""}
 
               </div>
 
-              <div className='d-flex justify-content-center align-items-center mt-3'>
-                <div>
-                  <p className='text-center'>Requested Service on</p>
-                  <h3 className='text-center'>
-                    {moment().format('MMMM Do YYYY, h:mm a')}
-                  </h3>
-                </div>
-              </div>
-            </div>
-            <div className='col-md-6 col-sm-12 col-lg-6'>
               <div className='bg-white rounded pt-5 px-3 mb-3'>
                 <p>
                   <strong>Hint</strong>
@@ -429,6 +453,11 @@ const Booking = () => {
               </div>
               {methods?
               <div className='bg-white rounded p-3 mb-3'>
+                {errorMethod && (
+                  <div className='p-3 m-3 text-white bg-danger'>
+                {errorMethod}
+                  </div>
+                )}
                 <p className='px-3'>
                   <strong>Payment Method</strong>
                 </p>
@@ -462,76 +491,81 @@ const Booking = () => {
               </div>:""
               }
             </div>
-            <div className='container'>
-            <div className='d-flex justify-content-center my-5'>
-              <button
-                className='btn btn-orenge'
-                type='button'
-                onClick={submitHandler}
-              >
-                Continue
-              </button>
-            </div>
-          </div>
-
-          </div>
-          {showConfirm ? (
-            <div>
-              <div className='md-m-5 bg-gray d-flex justify-content-center'>
-                <div className='text-center'>
-                  <div className='mb-5'>
-                    <h3>Booking Summary</h3>
-                  </div>
-                  <div className='row d-flex justify-content-center mb-1'>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Cost of service</strong></div>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>{service?.price}</div>
-                  </div>
-                  <div className='row d-flex justify-content-center mb-1'>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Discount Price</strong> </div>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>
-                      {service?.discount_price}
-                    </div>
-                  </div>
-                  <div className='row d-flex justify-content-center mb-1'>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Quantity</strong> </div>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>x1</div>
-                  </div>
-                  <div className='row d-flex justify-content-center mb-1'>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Maintenance</strong> </div>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>$2.0</div>
-                  </div>
-                  <div className='row d-flex justify-content-center mb-1'>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Tax Amount</strong> </div>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>$2.0</div>
-                  </div>
-
-                  <div className='row d-flex justify-content-center mb-1'>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Sub Amount</strong> </div>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>$32.43</div>
-                  </div>
-                  <div className='row d-flex justify-content-center mb-1'>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Total Amount</strong> </div>
-                    <div className='col-md-2 col-lg-2 text-nowrap mr-5'>$32.43</div>
-                  </div>
-                  <div className='container'>
-                    <div className='d-flex justify-content-center my-5' onClick={submitBook} >
-                      <button className='btn btn-orenge' type='button'>
-                        Confirm & Book Service
-                      </button>
-                    </div>
-                  </div>
+            <div className='col-md-6 col-sm-12 col-lg-6'>
+              <div className='container'>
+                <div className='d-flex justify-content-center my-5'>
+                  <button
+                    className='btn btn-orenge'
+                    type='button'
+                    onClick={submitHandler}
+                  >
+                    Book Now
+                  </button>
                 </div>
+
+                  {showConfirm ? (
+                    <div>
+                      <div className='md-m-5 bg-gray d-flex justify-content-center'>
+                        <div className='text-center'>
+                          <div className='mb-5'>
+                            <h3>Booking Summary</h3>
+                          </div>
+                          <div className='row d-flex justify-content-center mb-1'>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Cost of service</strong></div>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>{service?.price}</div>
+                          </div>
+                          <div className='row d-flex justify-content-center mb-1'>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Discount Price</strong> </div>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>
+                              {service?.discount_price}
+                            </div>
+                          </div>
+                          <div className='row d-flex justify-content-center mb-1'>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Quantity</strong> </div>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>x1</div>
+                          </div>
+                          {/* <div className='row d-flex justify-content-center mb-1'>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Maintenance</strong> </div>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>$2.0</div>
+                          </div> */}
+                          <div className='row d-flex justify-content-center mb-1'>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Tax Amount</strong> </div>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>{booking?.taxes[0] ? booking?.taxes[0] : 0}</div>
+                          </div>
+
+                          <div className='row d-flex justify-content-center mb-1'>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Sub Amount</strong> </div>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>{booking?.total}</div>
+                          </div>
+                          <div className='row d-flex justify-content-center mb-1'>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Total Amount</strong> </div>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>{booking?.total}</div>
+                          </div>
+
+                          {/* payment form */}
+                          {paymentForm ?
+                          <Elements stripe={stripePromise}>
+                            <AddPayment user={user} service={service} bookingData={bookingData} />
+                          </Elements>:""}
+
+                          <div className='container'>
+                            <div className='d-flex justify-content-center my-5' onClick={submitBook} >
+                              <button className='btn btn-orenge' type='button'>
+                                Confirm & Book Service
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    ''
+                  )}
+
               </div>
             </div>
-          ) : (
-            ''
-          )}
+          </div>
 
-          {/* payment form */}
-          {paymentForm ?
-          <Elements stripe={stripePromise}>
-            <AddPayment user={user} service={service} bookingData={bookingData} />
-          </Elements>:""}
         </div>
       </div>
     </>
