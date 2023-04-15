@@ -1,5 +1,8 @@
 import { CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js"
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
+import axios from 'axios';
+import RootURL from '../../components/Contants';
+import Cookies from 'js-cookie';
 
 const useCardNumberOptions = () => {
     const cardNumberOptions = useMemo(
@@ -82,12 +85,14 @@ const useCvvOptions = () => {
     return cvvOptions
 }
 
-const AddPayment = ({user,service,bookingData}) => {
+const AddPayment = ({user,service,bookingData, paymentMethod}) => {
     const stripe = useStripe()
     const elements = useElements()
     const cardNumberOptions = useCardNumberOptions()
     const expiredOptions = useExpiredOptions()
     const cvvOptions = useCvvOptions();
+    const cookies = Cookies.get('api_token');
+  const [message, setMessage] = useState('');
 
     const handlePayment = async(event) =>{
         event.preventDefault();
@@ -102,6 +107,35 @@ const AddPayment = ({user,service,bookingData}) => {
             }
         })
         console.log("payment:",payment);
+        if(payment){
+
+            // create payment
+            await axios
+            .post(RootURL + `payment`, {id:bookingData?.id, payment_method_id:paymentMethod}, {
+              headers: {
+                Authorization: 'Bearer ' + cookies,
+              },
+            })
+            .then((response) => {
+              setMessage(response?.data?.message);
+            })
+            .catch((error) => {
+              setMessage('Failed to update!');
+            });
+
+            // create wallets
+            await axios
+            .post(RootURL + `wallets`, {name: "My USD Wallet for booking", user: user?.id}, {
+            headers: {
+                Authorization: 'Bearer ' + cookies,
+            },
+            })
+            .then((response) => {
+            })
+            .catch((error) => {
+            setMessage('Failed to create wallets!');
+            });
+        }
     }
 
     return(
@@ -110,8 +144,11 @@ const AddPayment = ({user,service,bookingData}) => {
           <div className="font-weight-bold text-center" style={{ fontSize: '23px' }}>
             <p className="">Payment</p>
           </div>
+          {message && (
+              <div className='p-3 m-3 text-white bg-success'>{message}</div>
+            )}
         </div>
-        <div className="px-5 py-4 d-flex justify-content-center">
+        <div className="px-5 py-4">
           <form onSubmit="(function(e) {e.preventDefault()})()">
             <div className="">
               <CardNumberElement options={cardNumberOptions} id="ccnumber" className='form-control py-2 pl-2 w-100 border border-1 border-secondary' type="text" name='card_number' />

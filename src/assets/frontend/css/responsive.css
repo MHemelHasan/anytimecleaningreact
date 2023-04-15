@@ -363,7 +363,7 @@
 
 /* medium tablet layout 599px */
 
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 767px) {
     .header-area .title {
         font-size: 42px;
         line-height: 52px;

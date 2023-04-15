@@ -16,6 +16,7 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import AddPayment from '../../components/Payment/AddPayment';
 
 const Booking = () => {
@@ -31,10 +32,11 @@ const Booking = () => {
   const [clientSecret,setClientSecret]=useState('');
   const [service, setService] = useState('');
   const [booking, setBooking] = useState('');
+  console.log("booking:",booking);
   let [paymentForm, setPaymentForm] = useState(false);
-  const [selectedMethod, setSelectedMethod] = useState('');
+  const [selectedMethod, setSelectedMethod] = useState();
+  console.log("selected method:",selectedMethod);
   const [methods, setMethods] = useState('');
-  console.log("methods:",methods);
 
   // const [user, setUser] = useState('');
   // console.log("user:",user)
@@ -161,13 +163,39 @@ const Booking = () => {
         },
       })
       .then((response) => {
-        const enable_method = response?.data?.data.find((value) => {
-          return value.enabled === true;
-        });
-        setMethods(enable_method);
+        const enable_method = response?.data?.data.filter((value) => value.enabled);
+        setMethods(...methods,enable_method);
       })
       .catch((error) => {});
   };
+
+    const setPayment = async() =>{
+        await axios
+      .post(RootURL + `payment`, {id:bookingData?.id,payment_method_id:selectedMethod}, {
+        headers: {
+          Authorization: 'Bearer ' + cookies,
+        },
+      })
+      .then((response) => {
+        setMessage(response?.data?.message);
+      })
+      .catch((error) => {
+        setMessage('Failed to update!');
+      });
+
+      // create wallets
+      await axios
+      .post(RootURL + `wallets`, {name: "My USD Wallet for booking", user: user?.id}, {
+      headers: {
+          Authorization: 'Bearer ' + cookies,
+      },
+      })
+      .then((response) => {
+      })
+      .catch((error) => {
+      setMessage('Failed to create wallets!');
+      });
+    }
 
   const getBookingStatuses = async () => {
     await axios
@@ -206,9 +234,9 @@ const Booking = () => {
     }
   };
 
-  const getBooking= async () => {
+  const getBooking= async (booking_id) => {
     await axios
-      .get(RootURL + `bookings/${booking?.id}`, {
+      .get(RootURL + `bookings/${booking_id}`, {
         headers: {
           Authorization: 'Bearer ' + cookies,
         },
@@ -233,6 +261,7 @@ const Booking = () => {
         .then((response) => {
           console.log("submit booking res:",response)
           setBooking(response?.data?.data);
+          getBooking(response?.data?.data?.id);
           setMessage(response?.data?.message);
           setAddressForm(false);
           setPaymentForm(true);
@@ -261,38 +290,6 @@ const Booking = () => {
     //     },
     //   }
     // });
-
-    // create payment
-    await axios
-    .post(RootURL + `payments/cash`, {id:booking?.id}, {
-      headers: {
-        Authorization: 'Bearer ' + cookies,
-      },
-    })
-    .then((response) => {
-      setMessage(response?.data?.message);
-      setAddressForm(false);
-      setPaymentForm(true);
-    })
-    .catch((error) => {
-      setMessage('Failed to update!');
-    });
-    
-    // create wallets
-    await axios
-    .post(RootURL + `wallets`, {name: "My USD Wallet for booking", user: user?.id}, {
-      headers: {
-        Authorization: 'Bearer ' + cookies,
-      },
-    })
-    .then((response) => {
-      setMessage(response?.data?.message);
-      setAddressForm(false);
-      setPaymentForm(true);
-    })
-    .catch((error) => {
-      setMessage('Failed to update!');
-    });
   };
   
 
@@ -322,9 +319,9 @@ const Booking = () => {
     return () => clearTimeout(timer);
   }, [messageCoupon, errorCoupon]);
 
-  useEffect(() => {
-      getBooking();
-  }, [booking]);
+  // useEffect(() => {
+  //     getBooking();
+  // }, [booking]);
 
   return (
     <>
@@ -451,7 +448,7 @@ const Booking = () => {
                   </button>
                 </div>
               </div>
-              {methods?
+              {methods ?
               <div className='bg-white rounded p-3 mb-3'>
                 {errorMethod && (
                   <div className='p-3 m-3 text-white bg-danger'>
@@ -464,24 +461,24 @@ const Booking = () => {
                 <div className='d-flex'>
                   <div className='px-3 mt-1 '>
                   {/* <select className='' value={selectedMethod} onChange={(e)=>setSelectedMethod(e.target.value)}> */}
-                    {/* {methods &&  methods?.map((method,index)=>( */}
-                    <div>
+                    {methods?.map((method,index)=>(
+                    <div key={index}>
                     <input
                     className=''
                       type="radio"
-                      id={methods?.id}
-                      value={methods?.name?.en}
-                      checked={selectedMethod === methods?.name?.en}
-                      onChange={(e)=>setSelectedMethod(e.target.value)}
+                      id={method?.id}
+                      value={method?.id}
+                      checked={selectedMethod === method?.id}
+                      onChange={(e)=>setSelectedMethod(parseInt(e.target.value))}
                     />
-                    <label className='ml-3' htmlFor={methods?.name?.en}>{methods?.name?.en}</label>
+                    <label className='ml-3' htmlFor={method?.name?.en}>{method?.name?.en}</label>
                     <br />
                   </div>
-                    {/* ))} */}
+                  ))}
 
                   {/* </select> */}
-                  {selectedMethod?
-                  <p><strong>Selected Method: </strong> {selectedMethod}</p>:""}
+                  {/* {selectedMethod?
+                  <p><strong>Selected Method: </strong> {selectedMethod}</p>:""} */}
 
                   </div>
                   {/* <button onClick={handleCoupon} className='btn btn-white px-4'>
@@ -530,7 +527,7 @@ const Booking = () => {
                           </div> */}
                           <div className='row d-flex justify-content-center mb-1'>
                             <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Tax Amount</strong> </div>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>{booking?.taxes[0] ? booking?.taxes[0] : 0}</div>
+                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>{booking?.taxes[0]?.value ? booking?.taxes[0]?.value : 0}</div>
                           </div>
 
                           <div className='row d-flex justify-content-center mb-1'>
@@ -543,18 +540,51 @@ const Booking = () => {
                           </div>
 
                           {/* payment form */}
-                          {paymentForm ?
+                          {paymentForm && selectedMethod===7 && booking?.total ?
                           <Elements stripe={stripePromise}>
-                            <AddPayment user={user} service={service} bookingData={bookingData} />
+                            <AddPayment user={user} service={service} bookingData={booking} paymentMethod={selectedMethod} />
                           </Elements>:""}
+                          {paymentForm && selectedMethod===5 && booking?.total ?
+                          <div className='mb-5'>
+                          <PayPalScriptProvider options={{ "client-id": "ATAJlaXggQ3I8re_PoTUFPAXm3ZCFu0nX_qJNlhaeudC86XP50o9vlZvbK04lSSPaDjLAxho6VtAURCw" }}>
+                            <PayPalButtons 
+                            style={{ layout: "horizontal" }} 
+                            createOrder={(data, actions) => {
+                              return actions.order
+                                  .create({
+                                      purchase_units: [
+                                          {
+                                              amount: {
+                                                currency: "USD",
+                                                  value:parseInt(booking?.total),
+                                              },
+                                          },
+                                      ],
+                                  })
+                                  .then((orderId) => {
+                                      // Your code here after create the order
+                                      return orderId;
+                                  });
+                          }}
+                          onApprove={function (data, actions) {
+                            return actions.order.capture().then(function () {
+                                // Your code here after capture the order
+                                // create payment
+                                setPayment();
+                            });
+                        }}
+                          />
+                          </PayPalScriptProvider>
+                          </div>:""
+                          }
 
-                          <div className='container'>
+                          {/* <div className='container'>
                             <div className='d-flex justify-content-center my-5' onClick={submitBook} >
                               <button className='btn btn-orenge' type='button'>
                                 Confirm & Book Service
                               </button>
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>

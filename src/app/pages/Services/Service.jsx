@@ -20,7 +20,7 @@ import RootURL from "../../components/Contants";
 
 const Service = () => {
   const { id } = useParams();
-  const { serviceDetail } = useServiceDetails(id);
+  const [serviceDetail,setServiceDetail] = useState();
   const [isReadMore, setIsReadMore] = useState(true);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [message, setMessage] = useState('');
@@ -49,6 +49,23 @@ const Service = () => {
       setMessage('Failed to add!');
     });
   }
+
+  const getService = async() =>{
+    await axios
+    .get(RootURL + `e_services/${id}`)
+    .then((response) => {
+      setServiceDetail(response?.data?.data);
+      setMessage(response?.data?.message);
+      setModalIsOpen(false);
+    })
+    .catch((error) => {
+      setMessage('Failed to add!');
+    });
+  }
+
+  useEffect(() => {
+    getService();
+  }, [id]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -118,9 +135,13 @@ const Service = () => {
           <section className='booking'>
           <div className='row'>
             <div className='col-md-6 col-sm-12 col-lg-6 bg-section px-5 pt-3'>
+              {serviceDetail?.media?.length>0 ?
+              <img src={serviceDetail?.media[0]?.url} alt='service' />:
               <img src={Service_bg} alt='service' />
+              }
+
             </div>
-            <div className='col-md-6 col-sm-12 col-lg-6 b-shadow pt-5'>
+            <div className='col-md-6 col-sm-12 col-lg-6 b-shadow pt-5 mt-md-0 mt-5'>
               <h1>
                 <strong>{serviceDetail?.name?.en}</strong>
               </h1>
@@ -131,7 +152,7 @@ const Service = () => {
                 }}
               />
               <div className='py-3'>
-                <Link to={`/service-booking/${serviceDetail.id}`}>
+                <Link to={`/service-booking/${serviceDetail?.id}`}>
                   <button onClick={handleUrl} className='btn btn-info'>
                     Book Now
                   </button>
@@ -220,7 +241,11 @@ const Service = () => {
           <section className='container'>
           <div className='row py-5'>
             <div className='col-md-6 col-sm-12 col-lg-6'>
+              {serviceDetail?.media.length>1 ?
+              <img src={serviceDetail?.media[serviceDetail?.media.length-1]} alt='service' />:
               <img src={Service_bg} alt='service' />
+              }
+
             </div>
             <div className='col-md-6 col-sm-12 col-lg-6'>
               <h1>
@@ -325,7 +350,7 @@ const Service = () => {
           </section>
 
           <section className='container'>
-            <div className='d-flex justify-content-center py-5 px-100'>
+            <div className='d-flex justify-content-center py-5'>
               <div className=''>
                 <div className='py-5'>
                   <h1>
