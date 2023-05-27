@@ -12,7 +12,7 @@ const Header = () => {
   const cookies = Cookies.get('api_token');
   // eslint-disable-next-line no-unused-vars
   const [categories, setCategories] = useState('');
-  console.log("categories:",categories);
+  // console.log("categories:",categories);
 
   const handleLogout = async () => {
     await axios
@@ -65,6 +65,10 @@ const Header = () => {
                       </ul>
                     ) : (
                       <ul className='info-items'>
+                        <li>
+                          <Link to='/dashboard/account'>Profile</Link>
+                        </li>
+                        <li>&nbsp; | &nbsp;</li>
                         <li>
                           <Link onClick={handleLogout}>Logout</Link>
                         </li>
@@ -145,7 +149,7 @@ const Header = () => {
             <div className='collapse navbar-collapse' id='bizcoxx_main_menu'>
               <ul className='navbar-nav'>
                 <li>
-                  <a href='/home'>Home</a>
+                  <Link to='/home'>Home</Link>
                 </li>
                 <li>
                   <Link to='/about'>About Us</Link>
