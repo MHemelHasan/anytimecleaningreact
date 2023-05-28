@@ -1,5 +1,6 @@
 import image1 from '../../../assets/uploads/media-uploader/breadcrumb1619334343.png';
 import { Link, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2'
 import axios from 'axios';
 import RootURL from '../../components/Contants';
 import React,{ Fragment, useEffect, useState }from 'react';
@@ -9,21 +10,63 @@ import { BiCurrentLocation, BiFile, BiGift, BiMap } from 'react-icons/bi';
 import moment from 'moment/moment';
 import Cookies from 'js-cookie';
 import { Dialog, Transition } from '@headlessui/react'
-import {loadStripe} from '@stripe/stripe-js';
-import {
-  CardElement,
-  Elements,
-  useStripe,
-  useElements,
-} from '@stripe/react-stripe-js';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import AddPayment from '../../components/Payment/AddPayment';
 
+import StripeCheckout from 'react-stripe-checkout';
+
 const Booking = () => {
+  
+  const makePayment = async token => {
+    const body = {
+      token,
+      bookingData
+    }
+    const headers = {
+      "Content-Type": "application/json",
+      "Authorization": 'Bearer ' + cookies,
+    }
+
+    console.log(JSON.stringify(body));
+
+    axios.post(RootURL + `stripe`, body, {
+      headers: headers
+    })
+    .then((response) => {
+      console.log(response);
+      return response.data;
+    })
+    .then((data) => {
+      console.log(data);
+      if(data.success){
+        Swal.fire({
+          icon: 'success',
+          title: 'Payment Successfull !!!',
+          text: 'We will get back to you soon. Thank you.',
+        })
+        saveBooking();
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Payment Failed !!!',
+          text: 'Something went wrong! Please try again.',
+        })
+      }
+    })
+    .catch((error) => {
+      console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Payment Failed !!!',
+        text: 'Something went wrong! Please try again.',
+      })
+    })
+  }
+
   const { id } = useParams();
   const cookies = Cookies.get('api_token');
   // const stripe = new Stripe('sk_test_51LPIPWB1kF8HAmvfcoEXCOj06Jw35GdKW2uUpSsgZaGT2cZwNnjvevB4MDlzv2FqrYkdzZMena6fotQBqc2wdkmo00pvj6s2Bl');
-  const stripePromise = loadStripe('pk_test_51LPIPWB1kF8HAmvf0qMGYdXYGd2jJ4t0fUYqPMBSzc5myAUjcZb957bbcewISXEa5jk5XI8yX0MaxRvTnUdWIyc100Xzmg4NFZ');
+  // const stripePromise = loadStripe("pk_test_51N92EqHlksmrUrbhJ6HycGKMIqXefWS8X2ZGRQ0iyTW7q6IFUGljjZvRkVwrLDn1ZGyH2ndcm1I6MWjAYuIazg2A00eN5iU0hv");
   // const stripe = useStripe()
   const [coupon, setCoupon] = useState(null);
   const [addressForm, setAddressForm] = useState(false);
@@ -31,11 +74,13 @@ const Booking = () => {
   const [errorMethod, setErrorMethod] = useState('');
   const [clientSecret,setClientSecret]=useState('');
   const [service, setService] = useState('');
+  // console.log("service:",service);
+  const [stripeSecret, setStripeSecret] = useState('');
   const [booking, setBooking] = useState('');
-  console.log("booking:",booking);
+  // console.log("booking:",booking);
   let [paymentForm, setPaymentForm] = useState(false);
-  const [selectedMethod, setSelectedMethod] = useState();
-  console.log("selected method:",selectedMethod);
+  const [selectedMethod, setSelectedMethod] = useState('');
+  // console.log("selected method:",selectedMethod);
   const [methods, setMethods] = useState('');
 
   // const [user, setUser] = useState('');
@@ -44,9 +89,9 @@ const Booking = () => {
   const [messageCoupon, setMessageCoupon] = useState('');
   const [errorCoupon, setErrorCoupon] = useState('');
   const [options, setOptions] = useState(null);
-  console.log('options:', options);
+  // console.log('options:', options);
   const [bookingStatuses, setBookingStatuses] = useState(null);
-  console.log('booking status:', bookingStatuses);
+  // console.log('booking status:', bookingStatuses);
 
   const [user, setUser] = useState({
     id: '',
@@ -74,7 +119,7 @@ const Booking = () => {
     booking_at: new Date().toISOString(),
     hint: '',
   });
-  console.log('bookingData', bookingData);
+  // console.log('bookingData', bookingData);
 
   useEffect(() => {
     if(cookies){
@@ -247,11 +292,38 @@ const Booking = () => {
       .catch((error) => {});
   };
 
-  const submitHandler = async (event) => {
-        event.preventDefault();
-        if(selectedMethod){
+  const getStripeSecret = async () => {
+    await axios
+      .get(RootURL + `stripe`, {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + cookies,
+        },
+      })
+      .then((response) => {
+        if(response.status === 200){
+          setStripeSecret(response.data?.data?.stripe_key)
+        }
+        else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed !!!',
+            text: 'Something went wrong! Please try again.',
+          })
+        }
+        // console.log("getStripeSecret:",response.data.data.stripe_key);
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed !!!',
+          text: 'Something went wrong! Please try again.',
+        })
+        // console.log("getStripeSecret:",error);
+      });
+  };
 
-        // create booking
+  const saveBooking = async ()=>{
         await axios
         .post(RootURL + `bookings`, bookingData, {
           headers: {
@@ -259,17 +331,46 @@ const Booking = () => {
           },
         })
         .then((response) => {
-          console.log("submit booking res:",response)
-          setBooking(response?.data?.data);
-          getBooking(response?.data?.data?.id);
-          setMessage(response?.data?.message);
-          setAddressForm(false);
-          setPaymentForm(true);
-          setShowConfirm(true);
+          if(response.data.success === true){
+            Swal.fire({
+              icon: 'success',
+              title: 'Booking Successfull !!!',
+              text: 'Booking Saved successfully. Thank you.',
+            })
+            window.location.href = '/dashboard/orders';
+            setBooking(response?.data?.data);
+            getBooking(response?.data?.data?.id);
+            setAddressForm(false);
+          }
+          else{
+            Swal.fire({
+              icon: 'error',
+              title: 'booking Failed!!!',
+              text: 'Try Again',
+            })
+          }
         })
         .catch((error) => {
-          setMessage('Failed to update!');
+          setMessage('booking Failed!');
+          Swal.fire({
+            icon: 'error',
+            title: 'booking Failed!!!',
+            text: 'Try Again',
+          })
         });
+
+  }
+
+  const submitHandler = async (event) => {
+        event.preventDefault();
+        if(selectedMethod){
+          setAddressForm(false);
+          setPaymentForm(true);
+          getStripeSecret();
+          // console.log(selectedMethod);
+          // console.log("service:",service);
+          // console.log("bookingData:",bookingData);
+
     }else{
       setErrorMethod('Payment Method required!');
     }
@@ -448,15 +549,19 @@ const Booking = () => {
                   </button>
                 </div>
               </div>
+              
+            </div>
+            <div className='col-md-6 col-sm-12 col-lg-6'>
+              <div className='container'>
               {methods ?
-              <div className='bg-white rounded p-3 mb-3'>
+              <div className='bg-white rounded p-3 mt-5'>
                 {errorMethod && (
                   <div className='p-3 m-3 text-white bg-danger'>
                 {errorMethod}
                   </div>
                 )}
                 <p className='px-3'>
-                  <strong>Payment Method</strong>
+                  <strong> Select Payment Method</strong>
                 </p>
                 <div className='d-flex'>
                   <div className='px-3 mt-1 '>
@@ -487,9 +592,6 @@ const Booking = () => {
                 </div>
               </div>:""
               }
-            </div>
-            <div className='col-md-6 col-sm-12 col-lg-6'>
-              <div className='container'>
                 <div className='d-flex justify-content-center my-5'>
                   <button
                     className='btn btn-orenge'
@@ -500,92 +602,20 @@ const Booking = () => {
                   </button>
                 </div>
 
-                  {showConfirm ? (
-                    <div>
-                      <div className='md-m-5 bg-gray d-flex justify-content-center'>
-                        <div className='text-center'>
-                          <div className='mb-5'>
-                            <h3>Booking Summary</h3>
-                          </div>
-                          <div className='row d-flex justify-content-center mb-1'>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Cost of service</strong></div>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>{service?.price}</div>
-                          </div>
-                          <div className='row d-flex justify-content-center mb-1'>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Discount Price</strong> </div>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>
-                              {service?.discount_price}
-                            </div>
-                          </div>
-                          <div className='row d-flex justify-content-center mb-1'>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Quantity</strong> </div>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>x1</div>
-                          </div>
-                          {/* <div className='row d-flex justify-content-center mb-1'>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Maintenance</strong> </div>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>$2.0</div>
-                          </div> */}
-                          <div className='row d-flex justify-content-center mb-1'>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Tax Amount</strong> </div>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>{booking?.taxes[0]?.value ? booking?.taxes[0]?.value : 0}</div>
-                          </div>
-
-                          <div className='row d-flex justify-content-center mb-1'>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Sub Amount</strong> </div>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>{booking?.total}</div>
-                          </div>
-                          <div className='row d-flex justify-content-center mb-1'>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5 text-md-left'><strong>Total Amount</strong> </div>
-                            <div className='col-md-2 col-lg-2 text-nowrap mr-5'>{booking?.total}</div>
-                          </div>
-
-                          {/* payment form */}
-                          {paymentForm && selectedMethod===7 && booking?.total ?
-                          <Elements stripe={stripePromise}>
-                            <AddPayment user={user} service={service} bookingData={booking} paymentMethod={selectedMethod} />
-                          </Elements>:""}
-                          {paymentForm && selectedMethod===5 && booking?.total ?
-                          <div className='mb-5'>
-                          <PayPalScriptProvider options={{ "client-id": "ATAJlaXggQ3I8re_PoTUFPAXm3ZCFu0nX_qJNlhaeudC86XP50o9vlZvbK04lSSPaDjLAxho6VtAURCw" }}>
-                            <PayPalButtons 
-                            style={{ layout: "horizontal" }} 
-                            createOrder={(data, actions) => {
-                              return actions.order
-                                  .create({
-                                      purchase_units: [
-                                          {
-                                              amount: {
-                                                currency: "USD",
-                                                  value:parseInt(booking?.total),
-                                              },
-                                          },
-                                      ],
-                                  })
-                                  .then((orderId) => {
-                                      // Your code here after create the order
-                                      return orderId;
-                                  });
-                          }}
-                          onApprove={function (data, actions) {
-                            return actions.order.capture().then(function () {
-                                // Your code here after capture the order
-                                // create payment
-                                setPayment();
-                            });
-                        }}
-                          />
-                          </PayPalScriptProvider>
-                          </div>:""
-                          }
-
-                          {/* <div className='container'>
-                            <div className='d-flex justify-content-center my-5' onClick={submitBook} >
-                              <button className='btn btn-orenge' type='button'>
-                                Confirm & Book Service
-                              </button>
-                            </div>
-                          </div> */}
-                        </div>
+                  {paymentForm && selectedMethod === 7 && stripeSecret !=='' ? (
+                    <div className='card text-center border-info w-75 m-auto pb-4'>
+                      <div className='card-body' >
+                        <h4 className='card-title text-center mb-2'>Complete the payment for booking</h4>
+                        <StripeCheckout
+                          name={service?.name?.en+` Booking`} // the pop-in header title
+                          description="Complete the payment for booking"
+                          image={service?.media[0]?.url}
+                          token={makePayment}
+                          stripeKey={stripeSecret}
+                          amount={service?.price * 100}
+                          panelLabel="Pay Total"
+                          currency="USD"
+                        />
                       </div>
                     </div>
                   ) : (

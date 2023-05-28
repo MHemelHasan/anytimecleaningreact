@@ -282,7 +282,7 @@ const Home = () => {
                               <h3 className="title">
                                 We provide best {services[0]?.name?.en} service
                               </h3>
-                              <p>{shortDesc(services[0]?.description?.en,250)}</p>
+                              <p dangerouslySetInnerHTML={{__html: services[0]?.description?.en}}></p>
                             </div>
                             <div className='content mt-4'>
                               <ul>
