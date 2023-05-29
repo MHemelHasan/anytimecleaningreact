@@ -14,7 +14,7 @@ const Provider = ({ slice_value, serviceProvider }) => {
   const { providers } = useProviders();
   const [allProviders, setAllProviders] = useState(null);
   // console.log('providers:', serviceProvider);
-
+  console.log(slice_value, serviceProvider );
   useEffect(() => {
     if (slice_value) {
       setAllProviders(providers?.data);
@@ -57,8 +57,8 @@ const Provider = ({ slice_value, serviceProvider }) => {
                     className='thumb'
                     style={{
                       backgroundImage: `url(${
-                        provider?.media[0]?.url
-                          ? provider.media[0].url
+                        provider?.media[0]?.thumb
+                          ? provider.media[0].thumb
                           : provider_img
                       })`,
                     }}
