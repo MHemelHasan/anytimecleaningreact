@@ -159,69 +159,36 @@ const Header = () => {
                   <div className='xg_mega_menu_wrapper service_mega_menu'>
                     <div className='xg-mega-menu-container'>
                       <div className='row'>
-                        <div className='col-lg-3 col-md-6 d-flex justify-content-center align-items-center'>
-                          <div className='xg-mega-menu-single-column-wrap'>
-                            <img
-                              src={service2}
-                              alt='Residential Service'
-                              style={{ height: 200, width: 200 }}
-                            />
+                        {Object.values(categories).map( (category,cindex) => (
+                          <>
+                            {/* <div className='col-lg-3 col-md-6 d-flex justify-content-center align-items-center'>
+                              <div className='xg-mega-menu-single-column-wrap'>
+                                <img
+                                  src={category.media[0]?.thumb}
+                                  alt={category.name?.en}
+                                  style={{ height: 100, width: 100 }}
+                                />
+                              </div>
+                            </div> */}
+                            <div className='col-lg-3 col-md-6'>
+                              {category.e_services.length > 0 ? 
+                                <div className='xg-mega-menu-single-column-wrap'>
+                                  <h4 key={cindex} className='mega-menu-title'>
+                                    {category.name?.en}
+                                  </h4>
+                                  <ul>
+                                    {category.e_services?.map((service,sindex)=>( 
+                                      <li key={sindex}>
+                                        <Link to={`/service/${service?.id}`}> {service?.name?.en}</Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                :''
+                              }
                           </div>
-                        </div>
-                        <div className='col-lg-3 col-md-6'>
-                          <div className='xg-mega-menu-single-column-wrap'>
-                            <h4 className='mega-menu-title'>
-                              {categories[0]?.name}
-                            </h4>
-                            <ul>
-                            {categories[0]?.e_services?.map((service,index)=>( 
-                              <li key={index}>
-                                <Link to={`/service/${service?.id}`}>{service?.name?.en}</Link>
-                              </li>
-                            ))}
-                            </ul>
-                          </div>
-                        </div>
-                        <div className='col-lg-3 col-md-6 d-flex justify-content-center align-items-center'>
-                          <div className='xg-mega-menu-single-column-wrap'>
-                            <img
-                              src={service1}
-                              alt='Commercial Service'
-                              style={{ height: 200, width: 200 }}
-                            />
-                          </div>
-                        </div>
-                        <div className='col-lg-3 col-md-6'>
-                          <div className='xg-mega-menu-single-column-wrap'>
-                          <h4 className='mega-menu-title'>
-                              {categories[1]?.name}
-                            </h4>
-                            <ul>
-                            {categories[1]?.e_services.map((service,index)=>( 
-                              <li key={index}>
-                                <Link to={`/service/${service?.id}`}>{service?.name?.en}</Link>
-                              </li>
-                            ))}
-                            </ul>
-                          </div>
-                        </div>
-                        {/* <div className="col-lg-3 col-md-6">
-                                                <div className="xg-mega-menu-single-column-wrap">
-                                                    <h4 className="mega-menu-title">Others Service</h4>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">
-                                                                Global cleaning service
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                Colonel or passage to ability
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div> */}
+                          </>
+                        ))}
                       </div>
                     </div>
                   </div>

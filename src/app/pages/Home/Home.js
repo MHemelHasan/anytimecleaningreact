@@ -87,6 +87,10 @@ const Home = () => {
       });
   }, []);
 
+  useEffect(() => {
+    console.log(services);
+  }, [services]);
+
   return (
     <>
       <Banner />
@@ -107,186 +111,68 @@ const Home = () => {
                 <div className="content-wrapper row">
                   <div className="left-content bg-blue col-md-3">
                     <ul className="nav nav-tabs" id="myTab" role="tablist">
-                      <li className="nav-item">
-                        <a
-                          className='nav-link active service-item-list show'
-                          id='residential-service-tab'
-                          data-toggle='tab'
-                          href='#residential-service'
-                          role='tab'
-                          aria-controls='residential-service'
-                          aria-selected='true'
-                        >
-                          <div className='service-icon style-01'>
-                            {/* <i className='flaticon-vacuum'></i> */}
-                            {services[0]?.media && services[0].media.length > 0 ? (
-                            <img
-                            height={50}
-                            width={50}
-                            src={services[0].media[services[0].media.length - 1].url}
-                            alt='service'
-                          />):
-                          <img
-                          height={50}
-                          width={50}
-                          src={logo}
-                          alt='service'
-                        />
-                          }
-                          </div>
-                          <div className="service-title">
-                            <h4 className="title">{services[0]?.name?.en}</h4>
-                          </div>
-                        </a>
-                      </li>
-                      <li className='nav-item'>
-                        <a
-                          className='nav-link service-item-list show'
-                          id='commercial-service-tab'
-                          data-toggle='tab'
-                          href='#commercial-service'
-                          role='tab'
-                          aria-controls='commercial-service'
-                          aria-selected='true'
-                        >
-                          <div className='service-icon style-01'>
-                            {/* <i className='flaticon-liquid-soap'></i> */}
-                            {services[1]?.media && services[1].media.length > 0 ? (
-                            <img
-                            height={50}
-                            width={50}
-                            src={services[1].media[services[1].media.length - 1].url}
-                            alt='service'
-                          />):
-                          <img
-                          height={50}
-                          width={50}
-                          src={logo}
-                          alt='serivice'
-                        />}
-                          </div>
-                          <div className="service-title">
-                            <h4 className="title">{services[1]?.name?.en}</h4>
-                          </div>
-                        </a>
-                      </li>
-                      <li className='nav-item'>
-                        <a
-                          className='nav-link service-item-list show'
-                          id='vehicle-service-tab'
-                          data-toggle='tab'
-                          href='#vehicle-service'
-                          role='tab'
-                          aria-controls='vehicle-service'
-                          aria-selected='true'
-                        >
-                          <div className='service-icon style-01'>
-                            {/* <i className='flaticon-lawn-mower'></i> */}
-                            {services[2]?.media && services[2].media.length > 0 ? (
-                            <img
-                            height={50}
-                            width={50}
-                            src={services[2].media[services[2].media.length - 1].url}
-                            alt='Product'
-                          />):
-                          <img
-                          height={50}
-                          width={50}
-                          src={logo}
-                          alt='serivice'
-                        />}
-                          </div>
-                          <div className="service-title">
-                            <h4 className="title">{services[2]?.name?.en}</h4>
-                          </div>
-                        </a>
-                      </li>
-                      <li className='nav-item'>
-                        <a
-                          className='nav-link service-item-list show'
-                          id='institutional-service-tab'
-                          data-toggle='tab'
-                          href='#institutional-service'
-                          role='tab'
-                          aria-controls='institutional-service'
-                          aria-selected='true'
-                        >
-                          <div className='service-icon style-01'>
-                            {/* <i className='flaticon-wash-1'></i> */}
-                            {services[3]?.media && services[3].media.length > 0 ? (
-                            <img
-                            height={50}
-                            width={50}
-                            src={services[3].media[services[3].media.length - 1].url}
-                            alt='Product'
-                          />):
-                          <img
-                          height={50}
-                          width={50}
-                          src={logo}
-                          alt='serivice'
-                        />}
-                          </div>
-                          <div className="service-title">
-                            <h4 className="title">{services[3]?.name?.en}</h4>
-                          </div>
-                        </a>
-                      </li>
-                      <li className='nav-item'>
-                        <a
-                          className='nav-link service-item-list show'
-                          id='others-service-tab'
-                          data-toggle='tab'
-                          href='#others-service'
-                          role='tab'
-                          aria-controls='others-service'
-                          aria-selected='true'
-                        >
-                          <div className='service-icon style-01'>
-                            {/* <i className='flaticon-washing-hands'></i> */}
-                            {services[4]?.media && services[4].media.length > 0 ? (
-                            <img
-                            height={50}
-                            width={50}
-                            src={services[4].media[services[4].media.length - 1].url}
-                            alt='Product'
-                          />):
-                          <img
-                          height={50}
-                          width={50}
-                          src={logo}
-                          alt='serivice'
-                        />}
-                          </div>
-                          <div className="service-title">
-                            <h4 className="title">{services[4]?.name?.en}</h4>
-                          </div>
-                        </a>
-                      </li>
+                      {
+                        services.map( (service,index) =>(
+                          <li className="nav-item">
+                            <a
+                              className={`nav-link service-item-list ${index === 0 ? 'active show':'' }`}
+                              id={`service-${service.name.en+'-'+index}`}
+                              data-toggle='tab'
+                              href={`#service-${index}`}
+                              role='tab'
+                              aria-controls={`service-${index}`}
+                              aria-selected='true'
+                            >
+                              <div className='service-icon style-01'>
+                                {/* <i className='flaticon-vacuum'></i> */}
+                                {service.media && service.media.length > 0 ? (
+                                <img
+                                height={50}
+                                width={50}
+                                src={service.media[service.media.length - 1].url}
+                                alt='service'
+                              />):
+                              <img
+                              height={50}
+                              width={50}
+                              src={logo}
+                              alt='service'
+                            />
+                              }
+                              </div>
+                              <div className="service-title">
+                                <h4 className="title">{service?.name?.en}</h4>
+                              </div>
+                            </a>
+                          </li>
+                      ))
+                    }
                     </ul>
                   </div>
                   <div className="right-content col-md-9">
                     <div className="tab-content" id="myTabContent">
+                    {
+                        services.map((service,index) =>(
                       <div
-                        className='tab-pane fade active show'
-                        id='residential-service'
+                        className={`tab-pane fade show ${index === 0 ? 'active':''}`}
+                        id={`service-${index}`}
                         role='tabpanel'
-                        aria-labelledby='residential-service-tab'
+                        aria-labelledby={`service-${index}-tab`}
                       >
                         <div className="description-tab-content row">
                           <div className="text-content-tab col-md-8">
                             <div className="section-title">
                               <span className="subtitle">
-                              {services[0]?.name?.en}
+                              {service.name.en}
                               </span>
                               <h3 className="title">
-                                We provide best {services[0]?.name?.en} service
+                                We provide best {service.name.en} service
                               </h3>
-                              <p dangerouslySetInnerHTML={{__html: services[0]?.description?.en}}></p>
+                              <p dangerouslySetInnerHTML={{__html: service.description.en}}></p>
                             </div>
                             <div className='content mt-4'>
                               <ul>
-                              <Link to={`service/${services[0]?.id}`}>
+                              <Link to={`/service/${service.id}`}>
                               <div className="btn btn-info">Call Now</div>
                               </Link>
                               </ul>
@@ -300,136 +186,8 @@ const Home = () => {
                           ></div>
                         </div>
                       </div>
-                      <div
-                        className='tab-pane fade'
-                        id='commercial-service'
-                        role='tabpanel'
-                        aria-labelledby='commercial-service-tab'
-                      >
-                        <div className="description-tab-content">
-                          <div className="text-content-tab">
-                            <div className="section-title">
-                              <span className="subtitle">
-                              {services[1]?.name?.en} Service
-                              </span>
-                              <h3 className="title">
-                                We provide best {services[1]?.name?.en} service
-                              </h3>
-                              <p>{shortDesc(services[1]?.description?.en,250)}
-                              </p>
-                            </div>
-                            <div className='content mt-4'>
-                              <ul>
-                              <Link to={`service/${services[1]?.id}`}>
-                              <div className="btn btn-info">Call Now</div>
-                              </Link>
-                              </ul>
-                            </div>
-                          </div>
-                          <div
-                            className='serivce-bg'
-                            style={{
-                              backgroundImage: `url(${service2})`,
-                            }}
-                          ></div>
-                        </div>
-                      </div>
-                      <div
-                        className='tab-pane fade'
-                        id='vehicle-service'
-                        role='tabpanel'
-                        aria-labelledby='vehicle-service-tab'
-                      >
-                        <div className="description-tab-content">
-                          <div className="text-content-tab">
-                            <div className="section-title">
-                              <span className="subtitle">{services[2]?.name?.en} Service</span>
-                              <h3 className="title">
-                                We provide best {services[2]?.name?.en} service
-                              </h3>
-                              <p>{shortDesc(services[2]?.description?.en,250)}
-                              </p>
-                            </div>
-                            <div className='content mt-4'>
-                              <ul>
-                              <Link to={`service/${services[2]?.id}`}>
-                              <div className="btn btn-info">Call Now</div>
-                              </Link>
-                              </ul>
-                            </div>
-                          </div>
-                          <div
-                            className='serivce-bg'
-                            style={{
-                              backgroundImage: `url(${service3})`,
-                            }}
-                          ></div>
-                        </div>
-                      </div>
-                      <div
-                        className='tab-pane fade'
-                        id='institutional-service'
-                        role='tabpanel'
-                        aria-labelledby='institutional-service-tab'
-                      >
-                        <div className="description-tab-content">
-                          <div className="text-content-tab">
-                            <div className="section-title">
-                              <span className="subtitle">
-                              {services[3]?.name?.en}
-                              </span>
-                              <h3 className="title">
-                                We provide best {services[3]?.name?.en} service
-                              </h3>
-                              <p>{shortDesc(services[3]?.description?.en,250)}</p>
-                            </div>
-                            <div className='content mt-4'>
-                              <ul>
-                              <Link to={`service/${services[3]?.id}`}>
-                              <div className="btn btn-info">Call Now</div>
-                              </Link>
-                              </ul>
-                            </div>
-                          </div>
-                          <div
-                            className='serivce-bg'
-                            style={{
-                              backgroundImage: `url(${service4})`,
-                            }}
-                          ></div>
-                        </div>
-                      </div>
-                      <div
-                        className='tab-pane fade'
-                        id='others-service'
-                        role='tabpanel'
-                        aria-labelledby='others-service-tab'
-                      >
-                        <div className="description-tab-content">
-                          <div className="text-content-tab">
-                            <div className="section-title">
-                              <span className="subtitle">{services[4]?.name?.en} Service</span>
-                              <h3 className="title">
-                                We provide best {services[4]?.name?.en} service
-                              </h3>
-                              <p>{shortDesc(services[4]?.description?.en,250)}</p>
-                            </div>
-                            <div className='content mt-4'>
-                              <ul>
-                              <Link to={`service/${services[4]?.id}`}>
-                              <div className="btn btn-info">Call Now</div>
-                              </Link>
-                              </ul>
-                            </div>
-                          </div>
-                          <div
-                            className='serivce-bg'
-                            style={{
-                              backgroundImage: `url(${service5})`,
-                            }}
-                          ></div>
-                        </div>
-                      </div>
+                      ))
+                    }
                     </div>
                   </div>
                 </div>
