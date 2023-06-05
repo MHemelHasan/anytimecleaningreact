@@ -168,6 +168,9 @@ const Home = () => {
                               <h3 className="title">
                                 We provide best {service.name.en} service
                               </h3>
+                              <h5 className="">
+                                Price: ${service.price}
+                              </h5>
                               <p dangerouslySetInnerHTML={{__html: service.description.en}}></p>
                             </div>
                             <div className='content mt-4'>
@@ -668,7 +671,7 @@ const Home = () => {
             </div>
           </div>
           <div className='row d-flex justify-content-center justify-content-md-between'>
-            {services?.slice(0, 3).map((service, index) => (
+            {services?.slice(0, 4).map((service, index) => (
               <div key={index} className='card w-80 glass cursor-pointer'>
                 <figure className='d-flex justify-content-center'>
                   <Link to={`/service/${service.id}`}>

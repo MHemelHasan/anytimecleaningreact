@@ -145,6 +145,9 @@ const Service = () => {
               <h1>
                 <strong>{serviceDetail?.name?.en}</strong>
               </h1>
+              <h2 className="">
+                Price: ${serviceDetail.price}
+              </h2>
               <h3>We raise the bar so you don’t have to</h3>
               <p
                 dangerouslySetInnerHTML={{
