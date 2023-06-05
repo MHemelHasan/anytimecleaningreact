@@ -671,7 +671,7 @@ const Home = () => {
             {services?.slice(0, 3).map((service, index) => (
               <div key={index} className='card w-80 glass cursor-pointer'>
                 <figure className='d-flex justify-content-center'>
-                  <Link to={`service/${service.id}`}>
+                  <Link to={`/service/${service.id}`}>
                     {service?.media && service.media.length > 0 ? (
                     <img
                     height={250}
@@ -691,7 +691,7 @@ const Home = () => {
                       Featured
                     </button>
                   </div>
-                  <Link to={`service/${service.id}`}>
+                  <Link to={`/service/${service.id}`}>
                     <h2 className='card-title'>{service?.name?.en}</h2>
                   </Link>
 
